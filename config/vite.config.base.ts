@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueSetUp from 'vite-plugin-vue-setup-extend'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.cn/config/
@@ -8,6 +9,7 @@ export default defineConfig({
   // 需要用到的插件数组。Falsy 虚值的插件将被忽略，插件数组将被扁平化（flatten）
   plugins: [
     vue(),
+    vueSetUp(),
     vueDevTools(),
   ],
   // 配置 `@` 访问别名
