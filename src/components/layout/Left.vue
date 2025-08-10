@@ -29,8 +29,8 @@
 
 <script setup lang="ts" name="Left">
 import { ref, watch } from 'vue'
-import logoUrl from '@/assets/vue.svg'
-import avatarUrl from '@/assets/vue.svg'
+import logoUrl from 'assets/avatar.png'
+import avatarUrl from 'assets/avatar.png'
 // 防止某些静态分析未识别到模板中的使用
 void logoUrl; void avatarUrl;
 

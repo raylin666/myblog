@@ -4,9 +4,7 @@
     <Left />
 
     <!-- 中间主内容区 + 顶部导航/面包屑等 -->
-    <a-layout class="content">
-      
-    </a-layout>
+    <Content />
 
     <!-- 右侧始终折叠且不可展开的侧栏 -->
     <Right />
@@ -14,14 +12,12 @@
 </template>
 
 <script setup lang="ts" name="App">
-import Left from '@/components/layout/Left.vue'
-import Right from '@/components/layout/Right.vue'
+import { Left, Content, Right } from '@/components'
 </script>
 
 <style scoped>
 .layout {
   height: 100vh;
-  background: transparent;
   border: none;
 }
 .layout :deep(.arco-layout-sider) .logo {
@@ -34,12 +30,5 @@ import Right from '@/components/layout/Right.vue'
 }
 .layout :deep(.arco-layout-sider-light) .logo{
   background: var(--color-fill-2);
-}
-
-.content {
-  margin: 20px;
-  padding: 10px;
-  background-color: white;
-  border-radius: 10px;
 }
 </style>
