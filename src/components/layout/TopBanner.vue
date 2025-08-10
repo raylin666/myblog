@@ -16,7 +16,7 @@
 
 <script setup lang="ts" name="TopBanner" >
 import { ref, onMounted } from 'vue'
-import avatarUrl from 'assets/avatar.png'
+import avatarUrl from 'assets/tavatar.png'
 import gsap from 'gsap'
 
 const title = 'KAKA - 梦很美 技术博客'
