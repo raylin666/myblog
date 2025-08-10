@@ -88,6 +88,52 @@
                     </div>
                 </a-col>
             </a-row>
+
+            <br />
+
+            <a-row>
+                <a-col :span="24">
+                    <div class="article-card">
+                        <a-card hoverable>
+                            <template #cover>
+                            <div class="cover-container">
+                                <img
+                                class="cover-image"
+                                alt="article cover"
+                                :src="articleCover"
+                                />
+                                <div class="cover-tag">设计</div>
+                                <div class="cover-date">2023-11-10</div>
+                            </div>
+                            </template>
+                            <a-card-meta>
+                            <template #title>
+                                <a href="/article/2" class="article-title">现代Web设计趋势与实现</a>
+                            </template>
+                            <template #description>
+                                <div class="article-meta">
+                                    <span class="read-count">
+                                        <icon-eye /> 2.4K
+                                    </span>
+                                    <span class="article-author">
+                                        <icon-user /> 林山
+                                    </span>
+                                </div>
+                                <div class="article-tags">
+                                    <a-tag color="purple">UI/UX</a-tag>
+                                    <a-tag color="red">设计</a-tag>
+                                    <a-tag color="cyan">CSS</a-tag>
+                                </div>
+                                <div class="article-desc">
+                                    探索2023年最新的Web设计趋势，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效
+                                    ，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效果的实现方式...
+                                </div>
+                            </template>
+                            </a-card-meta>
+                        </a-card>
+                    </div>
+                </a-col>
+            </a-row>
         </a-col>
 
         <a-col :span="6">
@@ -250,10 +296,6 @@ import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
     justify-content: center;
     min-height: 400px;
     gap: 15px; /* 统一元素间距 */
-}
-
-.article {
-    align-items: stretch; /* 使所有列等高 */
 }
 
 .article .user-info .avatar-wrapper {
