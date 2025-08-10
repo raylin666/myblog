@@ -30,12 +30,48 @@
         作者
       </a-menu-item>
     </a-menu>
+
+    <!-- 底部图标区域 -->
+    <div class="bottom-icons">
+      <a-tooltip content="音乐播放" position="right">
+        <div class="icon-item" @click="toggleMusic">
+          <icon-music />
+        </div>
+      </a-tooltip>
+      <a-tooltip content="切换主题" position="right">
+        <div class="icon-item" @click="toggleTheme">
+          <icon-moon-fill v-if="darkTheme" />
+          <icon-sun-fill v-else />
+        </div>
+      </a-tooltip>
+    </div>
   </a-layout-sider>
   
 </template>
 
 <script setup lang="ts" name="Right">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { 
+  IconBookmark, 
+  IconApps, 
+  IconUser,
+  IconMusic,
+  IconMoonFill,
+  IconSunFill
+} from '@arco-design/web-vue/es/icon'
+
+const darkTheme = ref(false)
+const musicPlaying = ref(false)
+
+const toggleTheme = () => {
+  darkTheme.value = !darkTheme.value
+  // 这里可以添加主题切换逻辑
+}
+
+const toggleMusic = () => {
+  musicPlaying.value = !musicPlaying.value
+  // 这里可以添加音乐播放逻辑
+}
 
 // 右侧侧栏：保持折叠且不可展开，不提供 collapsible/trigger
 const isFullscreen = ref<boolean>(false)
@@ -116,6 +152,35 @@ onBeforeUnmount(() => {
 }
 
 .sider-head { height: 40px; border-radius: 8px; background: transparent; }
+
+.bottom-icons {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-item {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--color-text-1);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.icon-item:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: scale(1.1);
+}
 </style>
 
 
