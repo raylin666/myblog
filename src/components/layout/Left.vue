@@ -23,6 +23,30 @@
         <IconUser />
         作者
       </a-menu-item>
+      <a-menu-item key="l_4">
+        <IconBookmark />
+        导航
+      </a-menu-item>
+      <a-menu-item key="l_5">
+        <IconApps />
+        分类
+      </a-menu-item>
+      <a-menu-item key="l_6">
+        <IconUser />
+        作者
+      </a-menu-item>
+      <a-menu-item key="l_7">
+        <IconBookmark />
+        导航
+      </a-menu-item>
+      <a-menu-item key="l_8">
+        <IconApps />
+        分类
+      </a-menu-item>
+      <a-menu-item key="l_9">
+        <IconUser />
+        作者
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>

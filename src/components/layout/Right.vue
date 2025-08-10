@@ -29,6 +29,18 @@
         <IconUser />
         作者
       </a-menu-item>
+      <a-menu-item key="r_4">
+        <IconBookmark />
+        导航
+      </a-menu-item>
+      <a-menu-item key="r_5">
+        <IconApps />
+        分类
+      </a-menu-item>
+      <a-menu-item key="r_6">
+        <IconUser />
+        作者
+      </a-menu-item>
     </a-menu>
 
     <!-- 底部图标区域 -->
