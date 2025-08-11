@@ -1,5 +1,5 @@
 <template>
-    <a-layout class="content">
+    <a-layout class="content-container">
       <RouterView></RouterView>
     </a-layout>
 </template>
@@ -9,7 +9,7 @@ import { RouterView } from 'vue-router'
 </script>
 
 <style scoped>
-.content {
+.content-container {
     padding: 12px;
 }
 </style>

@@ -3,8 +3,8 @@
 
     <br />
 
-    <a-row class="article">
-        <a-col :span="18">
+    <a-row class="content">
+        <a-col :span="18" class="article">
             <a-row>
                 <a-col :span="12">
                     <div class="article-card">
@@ -136,7 +136,7 @@
             </a-row>
         </a-col>
 
-        <a-col :span="6">
+        <a-col :span="6" class="sider">
             <div class="user-info">
                 <div class="avatar-wrapper">
                     <a-avatar :size="80" class="avatar">
@@ -174,20 +174,20 @@ import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
 </script>
 
 <style scoped>
-.article .article-card {
+.content .article-card {
     padding: 0px 10px 0px 0px;
 }
-.article .article-card :deep(.arco-card) {
+.content .article-card :deep(.arco-card) {
     background-color: white;
     border-radius: 10px;
     border: 0px;
     overflow: hidden;
 }
-.article .article-card :deep(.arco-card):hover {
+.content .article-card :deep(.arco-card):hover {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
-.article .article-card :deep(.arco-card-body) {
+.content .article-card :deep(.arco-card-body) {
     padding: 16px;
 }
 
@@ -281,7 +281,7 @@ import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
     min-height: 63px; /* 3行文字高度 */
 }
 
-.article .user-info {
+.content .user-info {
     border-radius: 10px;
     background: linear-gradient(130deg, rgb(126 235 250), rgb(220 135 228) 41.07%, rgb(113 200 220) 76.05%);
     /* background: linear-gradient(130deg, rgb(188 255 34), rgb(99 182 135) 41.07%, rgb(175 134 230) 76.05%); */
@@ -298,7 +298,7 @@ import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
     gap: 15px; /* 统一元素间距 */
 }
 
-.article .user-info .avatar-wrapper {
+.content .user-info .avatar-wrapper {
     margin: 0 auto;
     width: 80px;
     height: 80px;
@@ -308,21 +308,21 @@ import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
     background-color: rgba(255,255,255,0.2);
 }
 
-.article .user-info .avatar {
+.content .user-info .avatar {
     display: block;
     transition: transform 0.3s ease;
 }
 
-.article .user-info .avatar:hover {
+.content .user-info .avatar:hover {
     transform: scale(1.1);
 }
 
-.article .user-info .name {
+.content .user-info .name {
     font-size: 18px;
     font-weight: 600;
 }
 
-.article .user-info .stats {
+.content .user-info .stats {
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
@@ -331,22 +331,22 @@ import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
     margin-top: 30px;
 }
 
-.article .user-info .stat-item {
+.content .user-info .stat-item {
     display: flex;
     flex-direction: column;
 }
 
-.article .user-info .stat-number {
+.content .user-info .stat-number {
     font-size: 18px;
     font-weight: bold;
 }
 
-.article .user-info .stat-label {
+.content .user-info .stat-label {
     font-size: 12px;
     opacity: 0.8;
 }
 
-.article .user-info .desc {
+.content .user-info .desc {
     font-size: 14px;
     line-height: 1.5;
     opacity: 0.9;
