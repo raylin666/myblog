@@ -13,11 +13,11 @@
     <a-menu :defaultSelectedKeys="['l_1']" mode="vertical">
       <a-menu-item key="l_1">
         <IconBookmark />
-        导航
+        <RouterLink to="/">首页</RouterLink>
       </a-menu-item>
       <a-menu-item key="l_2">
         <IconApps />
-        分类
+        <RouterLink to="/article">分类</RouterLink>
       </a-menu-item>
       <a-menu-item key="l_3">
         <IconUser />
@@ -53,6 +53,7 @@
 
 <script setup lang="ts" name="Left">
 import { ref, watch } from 'vue'
+import { RouterLink } from 'vue-router'
 import logoUrl from 'assets/avatar.png'
 import avatarUrl from 'assets/avatar.png'
 // 防止某些静态分析未识别到模板中的使用

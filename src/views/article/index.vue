@@ -1,8 +1,4 @@
 <template>
-    <TopBanner />
-
-    <br />
-
     <a-row class="content">
         <a-col :span="18" class="article">
             <a-row>
@@ -207,7 +203,6 @@
 </template>
 
 <script setup lang="ts" >
-import { TopBanner } from '@/components'
 import articleCover from 'assets/articleCover.png'
 import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
 import { ref } from 'vue'
