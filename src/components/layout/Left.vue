@@ -62,7 +62,6 @@
 
 <script setup lang="ts" name="Left">
 import { ref, watch } from 'vue'
-import { RouterLink } from 'vue-router'
 import logoUrl from 'assets/avatar.png'
 import avatarUrl from 'assets/avatar.png'
 // 防止某些静态分析未识别到模板中的使用

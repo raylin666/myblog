@@ -17,30 +17,51 @@
       </a-tooltip>
     </div>
     <a-menu :defaultSelectedKeys="['r_1']" mode="vertical">
-      <a-menu-item key="r_1">
-        <IconBookmark />
-        导航
-      </a-menu-item>
-      <a-menu-item key="r_2">
-        <IconApps />
-        分类
-      </a-menu-item>
-      <a-menu-item key="r_3">
-        <IconUser />
-        作者
-      </a-menu-item>
-      <a-menu-item key="r_4">
-        <IconBookmark />
-        导航
-      </a-menu-item>
-      <a-menu-item key="r_5">
-        <IconApps />
-        分类
-      </a-menu-item>
-      <a-menu-item key="r_6">
-        <IconUser />
-        作者
-      </a-menu-item>
+      <RouterLink to="/">
+        <a-menu-item key="l_1">
+          <IconBookmark /> 首页
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/article">
+        <a-menu-item key="l_2">
+          <IconApps /> 分类
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/">
+        <a-menu-item key="l_3">
+          <IconUser /> 作者
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/article">
+        <a-menu-item key="l_4">
+          <IconBookmark /> 导航
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/">
+        <a-menu-item key="l_5">
+          <IconApps /> 分类
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/article">
+        <a-menu-item key="l_6">
+          <IconUser /> 作者
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/">
+        <a-menu-item key="l_7">
+          <IconBookmark /> 导航
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/article">
+        <a-menu-item key="l_8">
+          <IconApps /> 分类
+        </a-menu-item>
+      </RouterLink>
+      <RouterLink to="/">
+        <a-menu-item key="l_9">
+          <IconUser /> 作者
+        </a-menu-item>
+      </RouterLink>
     </a-menu>
 
     <!-- 底部图标区域 -->
