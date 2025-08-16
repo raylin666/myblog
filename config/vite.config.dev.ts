@@ -36,6 +36,10 @@ export default mergeConfig(
       },
       hmr: {
         overlay: true,
+      },
+      watch: {
+        // 解决热更新失效问题, Docker 容器内使用, 开启轮询模式监控文件变化
+        usePolling: true
       }
     },
     plugins: []
