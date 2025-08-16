@@ -33,6 +33,9 @@ export default mergeConfig(
           rewrite: (path: string) =>
             path.replace(new RegExp(`^${env.VITE_API_BASIC_URL}`), '')
         }
+      },
+      hmr: {
+        overlay: true,
       }
     },
     plugins: []

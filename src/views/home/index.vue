@@ -1,10 +1,10 @@
 <template>
-    <TopBanner />
+    <TopBanner v-bind="{ aimPositionId: 'recommend-aritcle' }" />
 
     <br />
 
     <a-row class="content">
-        <a-col :span="18" class="article">
+        <a-col :span="18" class="article" id="recommend-aritcle">
             <a-row>
                 <a-col :span="12">
                     <div class="article-card">

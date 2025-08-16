@@ -19,6 +19,14 @@ import { ref, onMounted } from 'vue'
 import avatarUrl from 'assets/tavatar.png'
 import gsap from 'gsap'
 
+const props = defineProps({
+    // 点击箭头时，滚动到指定DOM ID的位置
+    aimPositionId: {
+        type: String,
+        default: ''
+    }
+})
+
 const title = 'KAKA - 梦很美 技术博客'
 
 let titleText = ref('')
@@ -50,6 +58,20 @@ onMounted(() => {
         })
         arrow.addEventListener('mouseout', () => {
             gsap.to(arrow, { scale: 1, duration: 0.2 })
+        })
+    }
+    
+    // 点击箭头时平滑滚动到DOM ID指定位置
+    const moveElement = document.querySelector('.move') as HTMLElement
+    if (moveElement && props.aimPositionId) {
+        moveElement.addEventListener('click', () => {
+            const aimPosition = document.getElementById(props.aimPositionId)
+            if (aimPosition) {
+                aimPosition.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            }
         })
     }
 })

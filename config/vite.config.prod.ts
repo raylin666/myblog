@@ -31,6 +31,9 @@ export default mergeConfig(
         }
       }
     },
+    hmr: {
+      overlay: true,
+    },
     plugins: [],
     build: {
       chunkSizeWarningLimit: 2000
