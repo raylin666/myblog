@@ -164,28 +164,11 @@ onBeforeUnmount(() => {
   height: 40px;
 }
 
-:deep(.arco-layout-sider) {
-  background: #ffffff;
-  border-left: 1px solid #eeeeee;
-  padding-top: 16px;
-}
+.sider-head { height: 40px; border-radius: 8px; background: transparent; color: #000;}
 
-:deep(.arco-menu) {
-  background: transparent;
+.sider-head :deep(.arco-btn) {
+  color: var(--text-color-primary);
 }
-
-:deep(.arco-menu-item) {
-  color: var(--color-text-2);
-}
-
-:deep(.arco-menu-item.arco-menu-selected),
-:deep(.arco-menu-item:hover) {
-  color: #111111;
-  background: rgba(0,0,0,0.06);
-  border-radius: 8px;
-}
-
-.sider-head { height: 40px; border-radius: 8px; background: transparent; }
 
 .bottom-icons {
   position: absolute;
@@ -207,12 +190,12 @@ onBeforeUnmount(() => {
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: var(--color-text-1);
-  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-color-primary);
+  background: var(--bg-color-tertiary);
 }
 
 .icon-item:hover {
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--bg-color-secondary);
   transform: scale(1.1);
 }
 </style>

@@ -59,17 +59,27 @@ export const useThemeStore = defineStore('theme', () => {
     if (theme.value === 'dark') {
       style.innerHTML = `
         :root {
-          --bg-color: #1a1a1a;
-          --text-color: #ffffff;
-          --border-color: #444444;
+          --bg-color: #0f172a;
+          --text-color: #f1f5f9;
+          --border-color: #334155;
+          --accent-color: #818cf8;
+          --secondary-color: #64748b;
+          --success-color: #34d399;
+          --warning-color: #fbbf24;
+          --error-color: #f87171;
         }
       `
     } else {
       style.innerHTML = `
         :root {
-          --bg-color: #ffffff;
-          --text-color: #333333;
-          --border-color: #dddddd;
+          --bg-color: #f8fafc;
+          --text-color: #0f172a;
+          --border-color: #cbd5e1;
+          --accent-color: #4f46e5;
+          --secondary-color: #64748b;
+          --success-color: #10b981;
+          --warning-color: #f59e0b;
+          --error-color: #ef4444;
         }
       `
     }

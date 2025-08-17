@@ -75,26 +75,5 @@ const themeStore = useThemeStore()
   object-fit: cover;
 }
 
-:deep(.arco-layout-sider) {
-  background: #ffffff;
-  border-right: 1px solid #eeeeee;
-  padding-top: 16px;
-}
-
 :where(.sider-head) { height: 48px; margin: 8px 8px 12px; border-radius: 8px; background: transparent; }
-
-:deep(.arco-menu) {
-  background: transparent;
-}
-
-:deep(.arco-menu-item) {
-  color: #333333;
-}
-
-:deep(.arco-menu-item.arco-menu-selected),
-:deep(.arco-menu-item:hover) {
-  color: #111111;
-  background: rgba(0,0,0,0.06);
-  border-radius: 8px;
-}
 </style>

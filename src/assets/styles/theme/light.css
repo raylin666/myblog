@@ -1,30 +1,30 @@
 /* 主题配色变量 */
 :root {
-  /* 主色调 */
-  --primary-color: #165DFF;
-  --primary-color-hover: #3C7EFF;
-  --primary-color-active: #0E42D2;
+  /* 主色调 - 时尚的蓝色 */
+  --primary-color: #2563eb;
+  --primary-color-hover: #3b82f6;
+  --primary-color-active: #1d4ed8;
   
-  /* 背景色 */
+  /* 背景色 - 明亮、干净的背景 */
   --bg-color-primary: #ffffff;
-  --bg-color-secondary: #f2f3f5;
-  --bg-color-tertiary: #e5e6eb;
+  --bg-color-secondary: #f8fafc;
+  --bg-color-tertiary: #f1f5f9;
   
-  /* 文字颜色 */
-  --text-color-primary: #1d2129;
-  --text-color-secondary: #ffffff;
-  --text-color-tertiary: #86909c;
-  --text-color-quaternary: #c9cdd4;
+  /* 文字颜色 - 清晰易读 */
+  --text-color-primary: #0f172a;
+  --text-color-secondary: #334155;
+  --text-color-tertiary: #64748b;
+  --text-color-quaternary: #94a3b8;
   
   /* 边框颜色 */
-  --border-color: #e5e6eb;
+  --border-color: #e2e8f0;
   
-  /* 阴影 */
-  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --box-shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.15);
+  /* 阴影 - 现代柔和阴影 */
+  --box-shadow: 0 1px 3px rgba(30, 41, 59, 0.1);
+  --box-shadow-hover: 0 4px 6px rgba(30, 41, 59, 0.15);
   
-  /* 成功/警告/错误色 */
-  --success-color: #00B42A;
-  --warning-color: #FF7D00;
-  --error-color: #F53F3F;
+  /* 状态颜色 */
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
 }

@@ -1,30 +1,30 @@
 /* 主题配色变量 */
 :root {
-  /* 主色调 */
-  --primary-color: #165DFF;
-  --primary-color-hover: #3C7EFF;
-  --primary-color-active: #0E42D2;
+  /* 主色调 - 深空蓝 */
+  --primary-color: #3b82f6;
+  --primary-color-hover: #60a5fa;
+  --primary-color-active: #2563eb;
   
-  /* 背景色 */
-  --bg-color-primary: #ffffff;
-  --bg-color-secondary: #f2f3f5;
-  --bg-color-tertiary: #e5e6eb;
+  /* 背景色 - 深色但不压抑 */
+  --bg-color-primary: #0f172a;
+  --bg-color-secondary: #1e293b;
+  --bg-color-tertiary: #334155;
   
-  /* 文字颜色 */
-  --text-color-primary: #1d2129;
-  --text-color-secondary: #ffffff;
-  --text-color-tertiary: #86909c;
-  --text-color-quaternary: #c9cdd4;
+  /* 文字颜色 - 在深色背景下清晰可读 */
+  --text-color-primary: #f1f5f9;
+  --text-color-secondary: #e2e8f0;
+  --text-color-tertiary: #cbd5e1;
+  --text-color-quaternary: #94a3b8;
   
   /* 边框颜色 */
-  --border-color: #e5e6eb;
+  --border-color: #475569;
   
-  /* 阴影 */
-  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --box-shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.15);
+  /* 阴影 - 适合深色主题的微妙发光效果 */
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --box-shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.4);
   
-  /* 成功/警告/错误色 */
-  --success-color: #00B42A;
-  --warning-color: #FF7D00;
-  --error-color: #F53F3F;
+  /* 状态颜色 */
+  --success-color: #34d399;
+  --warning-color: #fbbf24;
+  --error-color: #f87171;
 }
