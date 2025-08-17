@@ -28,7 +28,11 @@ const tags = ref([
   { name: 'Node.js', color: 'purple', count: 7 },
   { name: '前端', color: 'cyan', count: 20 },
   { name: '后端', color: 'pinkpurple', count: 5 },
-  { name: '数据库', color: 'lime', count: 6 }
+  { name: '数据库', color: 'lime', count: 6 },
+  { name: 'PHP', color: 'purple', count: 6 },
+  { name: 'Golang', color: 'green', count: 6 },
+  { name: 'Python', color: 'orangered', count: 6 },
+  { name: '人工智能', color: 'arcoblue', count: 6 },
 ])
 
 // 处理标签点击

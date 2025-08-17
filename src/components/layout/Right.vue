@@ -96,14 +96,20 @@ import {
 const darkTheme = ref(false)
 const musicPlaying = ref(false)
 
-const toggleTheme = () => {
-  darkTheme.value = !darkTheme.value
-  // 这里可以添加主题切换逻辑
-}
-
 const toggleMusic = () => {
   musicPlaying.value = !musicPlaying.value
   // 这里可以添加音乐播放逻辑
+}
+
+const toggleTheme = () => {
+  darkTheme.value = !darkTheme.value
+  if (darkTheme.value) {
+    document.body.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    document.body.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
 }
 
 // 右侧侧栏：保持折叠且不可展开，不提供 collapsible/trigger

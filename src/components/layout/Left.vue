@@ -1,7 +1,7 @@
 <template>
   <a-layout-sider
     theme="light"
-    :width="220"
+    :width="140"
     collapsible
     :collapsed="collapsed"
     @collapse="onCollapse"
@@ -62,7 +62,7 @@
 
 <script setup lang="ts" name="Left">
 import { ref, watch } from 'vue'
-import logoUrl from 'assets/avatar.png'
+import logoUrl from 'assets/logo.png'
 import avatarUrl from 'assets/avatar.png'
 // 防止某些静态分析未识别到模板中的使用
 void logoUrl; void avatarUrl;
@@ -97,7 +97,7 @@ const onCollapse = (value: boolean) => {
   margin: 8px 8px 12px;
 }
 .logo-img {
-  height: 28px;
+  width: 100%;
   object-fit: contain;
 }
 .avatar-img {
@@ -111,6 +111,10 @@ const onCollapse = (value: boolean) => {
   background: #ffffff;
   border-right: 1px solid #eeeeee;
   padding-top: 16px;
+}
+
+:deep(.arco-layout-sider-trigger) {
+  border-top: 1px solid #eee;
 }
 
 :where(.sider-head) { height: 48px; margin: 8px 8px 12px; border-radius: 8px; background: transparent; }

@@ -20,10 +20,9 @@
 
 <style scoped>
 .footer-container {
-  background-color: #f8f9fa;
+  background-color: white;
   padding: 20px 0;
   margin-top: auto; /* 关键修改 */
-  border-top: 1px solid #eee;
   width: 100%;
 }
 

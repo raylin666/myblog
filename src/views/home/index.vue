@@ -553,13 +553,19 @@ const handlePageChange = (page: number) => {
     font-size: 14px;
     white-space: nowrap;
     flex-shrink: 0;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
     border: none;
 }
 .category-tag:hover {
-    transform: scale(1.03); /* 减小缩放比例 */
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-    z-index: 1; /* 确保悬停时在最上层 */
+    transform: scale(1.03);
+    z-index: 1;
+    animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0) scale(1.03); }
+    25% { transform: translateX(-2px) scale(1.03); }
+    50% { transform: translateX(2px) scale(1.03); }
+    75% { transform: translateX(-2px) scale(1.03); }
 }
 
 /* 分类标签配色调整 */
