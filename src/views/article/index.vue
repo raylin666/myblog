@@ -132,7 +132,7 @@
             </a-row>
         </a-col>
 
-        <a-col :span="6">
+        <a-col :span="6" id="side-main">
             <Side />
         </a-col>
     </a-row>
