@@ -1,0 +1,30 @@
+/* 主题配色变量 */
+:root {
+  /* 主色调 */
+  --primary-color: #165DFF;
+  --primary-color-hover: #3C7EFF;
+  --primary-color-active: #0E42D2;
+  
+  /* 背景色 */
+  --bg-color-primary: #ffffff;
+  --bg-color-secondary: #f2f3f5;
+  --bg-color-tertiary: #e5e6eb;
+  
+  /* 文字颜色 */
+  --text-color-primary: #1d2129;
+  --text-color-secondary: #ffffff;
+  --text-color-tertiary: #86909c;
+  --text-color-quaternary: #c9cdd4;
+  
+  /* 边框颜色 */
+  --border-color: #e5e6eb;
+  
+  /* 阴影 */
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.15);
+  
+  /* 成功/警告/错误色 */
+  --success-color: #00B42A;
+  --warning-color: #FF7D00;
+  --error-color: #F53F3F;
+}

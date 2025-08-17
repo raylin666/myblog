@@ -1,6 +1,6 @@
 <template>
   <a-layout-sider
-    theme="light"
+    :theme="themeStore.theme"
     :width="220"
     :collapsed="true"
   >
@@ -73,7 +73,7 @@
       </a-tooltip>
       <a-tooltip content="切换主题" position="right">
         <div class="icon-item" @click="toggleTheme">
-          <icon-moon-fill v-if="darkTheme" />
+          <icon-moon-fill v-if="themeStore.theme === 'light'" />
           <icon-sun-fill v-else />
         </div>
       </a-tooltip>
@@ -92,24 +92,19 @@ import {
   IconMoonFill,
   IconSunFill
 } from '@arco-design/web-vue/es/icon'
+import { useThemeStore } from '@/store/themeStore'
 
-const darkTheme = ref(false)
+const themeStore = useThemeStore()
+
+const toggleTheme = () => {
+  themeStore.toggleTheme()
+}
+
 const musicPlaying = ref(false)
 
 const toggleMusic = () => {
   musicPlaying.value = !musicPlaying.value
   // 这里可以添加音乐播放逻辑
-}
-
-const toggleTheme = () => {
-  darkTheme.value = !darkTheme.value
-  if (darkTheme.value) {
-    document.body.classList.add('dark')
-    localStorage.setItem('theme', 'dark')
-  } else {
-    document.body.classList.remove('dark')
-    localStorage.setItem('theme', 'light')
-  }
 }
 
 // 右侧侧栏：保持折叠且不可展开，不提供 collapsible/trigger

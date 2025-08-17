@@ -1,6 +1,6 @@
 <template>
   <a-layout-sider
-    theme="light"
+    :theme="themeStore.theme"
     :width="140"
     collapsible
     :collapsed="collapsed"
@@ -13,47 +13,12 @@
     <a-menu :defaultSelectedKeys="['l_1']" mode="vertical">
       <RouterLink to="/">
         <a-menu-item key="l_1">
-          <IconBookmark /> 首页
+          <IconBookmark /> H O M E
         </a-menu-item>
       </RouterLink>
       <RouterLink to="/article">
         <a-menu-item key="l_2">
-          <IconApps /> 分类
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_3">
-          <IconUser /> 作者
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_4">
-          <IconBookmark /> 导航
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_5">
-          <IconApps /> 分类
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_6">
-          <IconUser /> 作者
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_7">
-          <IconBookmark /> 导航
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_8">
-          <IconApps /> 分类
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_9">
-          <IconUser /> 作者
+          <IconApps /> 关于作者
         </a-menu-item>
       </RouterLink>
     </a-menu>
@@ -62,6 +27,7 @@
 
 <script setup lang="ts" name="Left">
 import { ref, watch } from 'vue'
+import { useThemeStore } from '@/store/themeStore'
 import logoUrl from 'assets/logo.png'
 import avatarUrl from 'assets/avatar.png'
 // 防止某些静态分析未识别到模板中的使用
@@ -86,6 +52,8 @@ watch(
 const onCollapse = (value: boolean) => {
   collapsed.value = value
 }
+
+const themeStore = useThemeStore()
 </script>
 
 <style scoped>
@@ -111,10 +79,6 @@ const onCollapse = (value: boolean) => {
   background: #ffffff;
   border-right: 1px solid #eeeeee;
   padding-top: 16px;
-}
-
-:deep(.arco-layout-sider-trigger) {
-  border-top: 1px solid #eee;
 }
 
 :where(.sider-head) { height: 48px; margin: 8px 8px 12px; border-radius: 8px; background: transparent; }
