@@ -34,7 +34,7 @@
 }
 
 .footer-links {
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 
 .footer-links a {
@@ -51,5 +51,6 @@
 .footer-copyright {
   color: #999;
   font-size: 14px;
+  line-height: 40px;
 }
 </style>
