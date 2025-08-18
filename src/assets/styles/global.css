@@ -6,11 +6,11 @@ html, body, #app {
 
 /* 进度条样式定制 */
 #nprogress .peg {
-  box-shadow: 0 0 10px #1e88e5, 0 0 5px #14c52b !important;
+  box-shadow: 0 0 10px var(--nprogress-peg-0), 0 0 5px var(--nprogress-peg-1) !important;
 }
 
 #nprogress .bar {
-  background: linear-gradient(to right, #1e88e5, #14c52b) !important;
+  background: linear-gradient(to right, var(--nprogress-bar-0), var(--nprogress-bar-1)) !important;
   height: 6px !important;
 }
 
@@ -19,6 +19,10 @@ html, body, #app {
  */
 .arco-layout-sider {
   padding-top: 16px;
+}
+
+.arco-layout-sider-trigger {
+  background-color: var(--bg-color-secondary);
 }
 
 .arco-menu {
@@ -36,17 +40,34 @@ html, body, #app {
 
 .arco-menu-dark .arco-menu-item:hover .arco-icon,
 .arco-menu-light .arco-menu-item:hover .arco-icon {
-  color: var(--primary-color);
+  color: var(--primary-color-hover);
 }
 
-.arco-menu-item.arco-menu-selected,
-.arco-menu-item:hover {
-  color: var(--text-color-secondary);
-  background: var(--bg-color-primary);
-  border-radius: 8px;
+.arco-menu-dark .arco-menu-item:hover,
+.arco-menu-light .arco-menu-item:hover {
+  background-color: var(--primary-color-hover);
+  color: white;
+}
+
+.arco-menu-dark .arco-menu-item:hover .arco-icon,
+.arco-menu-light .arco-menu-item:hover .arco-icon {
+  color: white;
+}
+
+.arco-menu-dark .arco-menu-item.arco-menu-selected,
+.arco-menu-light .arco-menu-item.arco-menu-selected {
+  background-color: var(--primary-color-active);
+  color: white;
 }
 
 .arco-menu-dark .arco-menu-item.arco-menu-selected .arco-icon,
 .arco-menu-light .arco-menu-item.arco-menu-selected .arco-icon {
-  color: var(--primary-color);
+  color: white;
+}
+
+.arco-menu-item.arco-menu-selected,
+.arco-menu-item:hover {
+  color: var(--text-color-primary);
+  background: var(--primary-color-hover);
+  border-radius: 8px;
 }

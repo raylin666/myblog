@@ -178,7 +178,7 @@ onBeforeUnmount(() => {
   cursor: pointer;
   transition: all 0.3s ease;
   color: var(--text-color-primary);
-  background: var(--bg-color-primary);
+  background: var(--bg-color-tertiary);
 }
 
 .icon-item :deep(.arco-btn) {

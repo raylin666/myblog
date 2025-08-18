@@ -6,9 +6,9 @@
   --primary-color-active: #b91c1c;
   
   /* 背景色 - 深色背景，红黑搭配 */
-  --bg-color-primary: #000000;
-  --bg-color-secondary: #1a090d;
-  --bg-color-tertiary: #331111;
+  --bg-color-primary: #232324;
+  --bg-color-secondary: #31313c;
+  --bg-color-tertiary: #444456;
   
   /* 文字颜色 - 在深色背景下清晰可读 */
   --text-color-primary: #f1f5f9;
@@ -27,4 +27,10 @@
   --success-color: #34d399;
   --warning-color: #fbbf24;
   --error-color: #f87171;
+
+  /* 进度条 */
+  --nprogress-peg-0: #dc2626;
+  --nprogress-peg-1: #232324;
+  --nprogress-bar-0: #dc2626;
+  --nprogress-bar-1: #232324;
 }

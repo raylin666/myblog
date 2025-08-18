@@ -7,8 +7,8 @@
   
   /* 背景色 - 明亮、干净的背景 */
   --bg-color-primary: #ffffff;
-  --bg-color-secondary: #f8fafc;
-  --bg-color-tertiary: #f1f5f9;
+  --bg-color-secondary: #fcfcfc;
+  --bg-color-tertiary: #f8f8f8;
   
   /* 文字颜色 - 清晰易读 */
   --text-color-primary: #0f172a;
@@ -27,4 +27,10 @@
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --error-color: #ef4444;
+
+  /* 进度条 */
+  --nprogress-peg-0: #2563eb;
+  --nprogress-peg-1: #0f172a;
+  --nprogress-bar-0: #2563eb;
+  --nprogress-bar-1: #0f172a;
 }

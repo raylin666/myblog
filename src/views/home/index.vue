@@ -432,7 +432,7 @@ const handlePageChange = (page: number) => {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #fb3d3d;
+    background-color: var(--primary-color);
     color: white;
     padding: 8px 16px;
     border-radius: 0 0 10px 0;
@@ -521,7 +521,7 @@ const handlePageChange = (page: number) => {
 }
 
 .category-container {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-color-secondary);
     border-radius: 12px;
     padding: 8px 20px; /* 增加左右内边距 */
     margin-bottom: 20px;
@@ -708,19 +708,20 @@ const handlePageChange = (page: number) => {
 }
 
 .custom-pagination :deep(.arco-pagination-item-active) {
-    background-color: #14c52b;
+    background-color: var(--primary-color-active);
+    border-color: var(--primary-color-active);
     color: white;
-    border-color: #14c52b;
 }
 
 .custom-pagination :deep(.arco-pagination-item:hover) {
-    background-color: #e6f7ea;
-    color: #14c52b;
-    border-color: #14c52b;
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+    color: white;
 }
 
 .custom-pagination :deep(.arco-pagination-item-active:hover) {
-    background-color: #14c52b;
+    background-color: var(--primary-color-active);
+    border-color: var(--primary-color-active);
     color: white;
 }
 </style>
