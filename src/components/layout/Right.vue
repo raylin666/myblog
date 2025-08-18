@@ -164,7 +164,7 @@ onBeforeUnmount(() => {
   height: 40px;
 }
 
-.sider-head { height: 40px; border-radius: 8px; background: transparent; color: #000;}
+.sider-head { height: 40px; border-radius: 8px; background: transparent; color: var(--text-color-primary);}
 
 .sider-head :deep(.arco-btn) {
   color: var(--text-color-primary);
