@@ -4,18 +4,6 @@
     :width="220"
     :collapsed="true"
   >
-    <div class="toolbar sider-head">
-      <a-tooltip :content="isFullscreen ? '退出全屏' : '全屏'" position="left">
-        <a-button
-          type="text"
-          shape="circle"
-          size="small"
-          @click="toggleFullscreen"
-        >
-          <component :is="isFullscreen ? 'IconFullscreenExit' : 'IconFullscreen'" />
-        </a-button>
-      </a-tooltip>
-    </div>
     <a-menu :defaultSelectedKeys="['r_1']" mode="vertical">
       <RouterLink to="/">
         <a-menu-item key="l_1">
@@ -66,6 +54,18 @@
 
     <!-- 底部图标区域 -->
     <div class="bottom-icons">
+      <a-tooltip :content="isFullscreen ? '退出全屏' : '全屏模式'" position="left">
+        <div class="icon-item">
+          <a-button
+            type="text"
+            shape="circle"
+            size="small"
+            @click="toggleFullscreen"
+          >
+            <component :is="isFullscreen ? 'IconFullscreenExit' : 'IconFullscreen'" />
+          </a-button>
+        </div>
+      </a-tooltip>
       <a-tooltip content="音乐播放" position="right">
         <div class="icon-item" @click="toggleMusic">
           <icon-music />
@@ -157,19 +157,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-}
-
-.sider-head { height: 40px; border-radius: 8px; background: transparent; color: var(--text-color-primary);}
-
-.sider-head :deep(.arco-btn) {
-  color: var(--text-color-primary);
-}
-
 .bottom-icons {
   position: absolute;
   bottom: 20px;
@@ -191,12 +178,21 @@ onBeforeUnmount(() => {
   cursor: pointer;
   transition: all 0.3s ease;
   color: var(--text-color-primary);
-  background: var(--bg-color-tertiary);
+  background: var(--bg-color-primary);
+}
+
+.icon-item :deep(.arco-btn) {
+  color: var(--text-color-primary);
+}
+
+.icon-item:hover :deep(.arco-btn) {
+  color: var(--primary-color-hover);
 }
 
 .icon-item:hover {
-  background: var(--bg-color-secondary);
+  background: var(--primary-color);
   transform: scale(1.1);
+  color: var(--text-color-primary);
 }
 </style>
 

@@ -1,14 +1,14 @@
 /* 主题配色变量 */
 :root {
-  /* 主色调 - 深空蓝 */
-  --primary-color: #3b82f6;
-  --primary-color-hover: #60a5fa;
-  --primary-color-active: #2563eb;
+  /* 主色调 - 深红/酒红色 */
+  --primary-color: #dc2626;
+  --primary-color-hover: #ef4444;
+  --primary-color-active: #b91c1c;
   
-  /* 背景色 - 深色但不压抑 */
-  --bg-color-primary: #0f172a;
-  --bg-color-secondary: #1e293b;
-  --bg-color-tertiary: #334155;
+  /* 背景色 - 深色背景，红黑搭配 */
+  --bg-color-primary: #000000;
+  --bg-color-secondary: #1a090d;
+  --bg-color-tertiary: #331111;
   
   /* 文字颜色 - 在深色背景下清晰可读 */
   --text-color-primary: #f1f5f9;

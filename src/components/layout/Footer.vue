@@ -20,9 +20,9 @@
 
 <style scoped>
 .footer-container {
-  background-color: white;
+  background-color: var(--bg-color-primary);
   padding: 20px 0;
-  margin-top: auto; /* 关键修改 */
+  margin-top: auto;
   width: 100%;
 }
 
@@ -38,13 +38,13 @@
 
 .footer-links a {
   margin: 0 15px;
-  color: #666;
+  color: var(--text-color-primary);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-links a:hover {
-  color: #14c52b;
+  color: var(--primary-color-hover);
 }
 
 .footer-copyright {

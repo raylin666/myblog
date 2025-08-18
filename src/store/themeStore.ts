@@ -38,7 +38,6 @@ export const useThemeStore = defineStore('theme', () => {
     }
     
     link.onerror = () => {
-      console.error(`Failed to load theme ${theme.value}`)
       // 添加降级处理，使用内联样式确保主题生效
       applyThemeStyleFallback()
     }
