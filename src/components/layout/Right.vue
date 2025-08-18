@@ -186,13 +186,18 @@ onBeforeUnmount(() => {
 }
 
 .icon-item:hover :deep(.arco-btn) {
-  color: var(--primary-color-hover);
+  color: white;
+}
+
+.icon-item:hover :deep(.arco-btn):hover {
+  color: white;
+  background-color: var(--primary-color);
 }
 
 .icon-item:hover {
   background: var(--primary-color);
   transform: scale(1.1);
-  color: var(--text-color-primary);
+  color: white;
 }
 </style>
 
