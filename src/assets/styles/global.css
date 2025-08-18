@@ -29,20 +29,14 @@ html, body, #app {
   color: var(--text-color-primary);
 }
 
-.arco-menu-dark .arco-menu-item .arco-icon {
-  color: var(--text-color-primary);
-}
-
-.arco-menu-dark .arco-menu-item:hover .arco-icon {
-  color: var(--text-color-primary);
-}
-
+.arco-menu-dark .arco-menu-item .arco-icon,
 .arco-menu-light .arco-menu-item .arco-icon {
   color: var(--text-color-primary);
 }
 
+.arco-menu-dark .arco-menu-item:hover .arco-icon,
 .arco-menu-light .arco-menu-item:hover .arco-icon {
-  color: var(--text-color-primary);
+  color: var(--primary-color);
 }
 
 .arco-menu-item.arco-menu-selected,
@@ -50,4 +44,9 @@ html, body, #app {
   color: var(--text-color-secondary);
   background: var(--bg-color-primary);
   border-radius: 8px;
+}
+
+.arco-menu-dark .arco-menu-item.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-item.arco-menu-selected .arco-icon {
+  color: var(--primary-color);
 }
