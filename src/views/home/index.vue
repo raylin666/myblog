@@ -178,7 +178,7 @@
     </a-row>
 </template>
 
-<script setup lang="ts" >
+<script setup lang="ts">
 import { TopBanner, Side } from '@/components'
 import articleCover from 'assets/articleCover.png'
 import { IconEye, IconUser, IconLeft, IconRight } from '@arco-design/web-vue/es/icon'
@@ -495,6 +495,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
     display: inline-block;
     position: relative;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
 }
 
 .article-title::after {
@@ -507,6 +508,21 @@ const scrollCategories = (direction: 'left' | 'right') => {
     background: linear-gradient(160deg, #ff7c09, #14c52b);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: left;
+}
+
+.article-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.article-title:hover::before {
+    left: 100%;
 }
 
 .article-title:hover {
@@ -723,6 +739,23 @@ const scrollCategories = (direction: 'left' | 'right') => {
     display: inline-block;
     transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: left center;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-item-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.article-item-title:hover::before {
+    left: 100%;
 }
 
 .article-item-title:hover {
