@@ -17,6 +17,9 @@
 <script setup lang="ts" name="TopBanner" >
 import { ref, onMounted } from 'vue'
 import avatarUrl from 'assets/tavatar.png'
+import backgroundImage1 from 'assets/background/1.jpeg'
+import backgroundImage2 from 'assets/background/2.jpeg'
+import backgroundImage3 from 'assets/background/3.jpeg'
 import gsap from 'gsap'
 
 const props = defineProps({
@@ -45,7 +48,24 @@ function textEffect(text: string) {
     }, 200)
 }
 
+// 预加载背景图片
+const backgroundImages = [
+  new URL(backgroundImage1, import.meta.url).href,
+  new URL(backgroundImage2, import.meta.url).href,
+  new URL(backgroundImage3, import.meta.url).href
+]
+
+const preloadImages = () => {
+  backgroundImages.forEach(src => {
+    const img = new Image()
+    img.src = src
+  })
+}
+
 onMounted(() => {
+    // 预加载背景图片
+    preloadImages()
+    
     // 标题打字效果
     textEffect(title)
     // 使用GSAP创建动画效果，使其无限循环上下移动
@@ -84,26 +104,55 @@ onMounted(() => {
     flex-direction: column;
     justify-content: space-between;
     /* border-radius: 10px; */
+    background-image: url('assets/background/1.jpeg');
     background-repeat:no-repeat;
     background-position: center;
     background-size: cover;
-    animation: changeTopBackground 10s infinite;
+    position: relative;
 }
+
+.top-banner::before,
+.top-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+}
+
+.top-banner::before {
+    background-image: url('assets/background/2.jpeg');
+}
+
+.top-banner::after {
+    background-image: url('assets/background/3.jpeg');
+}
+
 .top-banner .avatar {
     height: 40vh;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 5vh;
+    position: relative;
+    z-index: 1;
 }
+
 .top-banner .avatar :deep(.arco-avatar-image) {
     border-radius: 60px;
     border: 3px solid white;
     transition: transform 0.8s ease; /* 平滑过渡效果 */
 }
+
 .top-banner .avatar :deep(.arco-avatar-image):hover {
     transform: rotate(360deg); /* 旋转360度 */
 }
+
 .top-banner .title {
     height: 25vh;
     font-size: 3rem;
@@ -112,26 +161,128 @@ onMounted(() => {
     color: white;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
+
 .top-banner .move {
     height: 26.8vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
+
 .top-banner .move .arrow-down {
     color: white;
 }
 
-@keyframes changeTopBackground {
-    0%, 33% {
-        background-image: url('assets/background/1.jpeg');
-    }
-    34%, 66% {
-        background-image: url('assets/background/2.jpeg');
-    }
-    67%, 100% {
-        background-image: url('assets/background/3.jpeg');
-    }
+/* 删除:@keyframes bgSwitch {
+  0%, 28% {
+    opacity: 1;
+  }
+  32%, 64% {
+    opacity: 0;
+  }
+  68%, 96% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bgSwitchBefore {
+  0%, 28% {
+    opacity: 0;
+  }
+  32%, 60% {
+    opacity: 1;
+  }
+  64%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bgSwitchAfter {
+  0%, 60% {
+    opacity: 0;
+  }
+  64%, 96% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.top-banner {
+  animation: bgSwitch 15s infinite;
+}
+
+.top-banner::before {
+  animation: bgSwitchBefore 15s infinite;
+}
+
+.top-banner::after {
+  animation: bgSwitchAfter 15s infinite;
+} */
+
+/* 新增背景切换动画：使用缩放和旋转效果 */
+@keyframes bgTransform {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  33% {
+    opacity: 1;
+  }
+  34% {
+    opacity: 0;
+    transform: scale(1.1) rotate(3deg);
+  }
+  35% {
+    background-image: url('assets/background/2.jpeg');
+    opacity: 0;
+    transform: scale(1.1) rotate(3deg);
+  }
+  36% {
+    opacity: 1;
+  }
+  58% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  67% {
+    opacity: 0;
+    transform: scale(1.05) rotate(-2deg);
+  }
+  68% {
+    background-image: url('assets/background/3.jpeg');
+    opacity: 0;
+    transform: scale(1.05) rotate(-2deg);
+  }
+  69% {
+    opacity: 1;
+  }
+  92% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.top-banner {
+  animation: bgTransform 15s infinite;
 }
 </style>
+
