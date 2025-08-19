@@ -178,57 +178,6 @@ onMounted(() => {
     color: white;
 }
 
-/* 删除:@keyframes bgSwitch {
-  0%, 28% {
-    opacity: 1;
-  }
-  32%, 64% {
-    opacity: 0;
-  }
-  68%, 96% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes bgSwitchBefore {
-  0%, 28% {
-    opacity: 0;
-  }
-  32%, 60% {
-    opacity: 1;
-  }
-  64%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes bgSwitchAfter {
-  0%, 60% {
-    opacity: 0;
-  }
-  64%, 96% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.top-banner {
-  animation: bgSwitch 15s infinite;
-}
-
-.top-banner::before {
-  animation: bgSwitchBefore 15s infinite;
-}
-
-.top-banner::after {
-  animation: bgSwitchAfter 15s infinite;
-} */
-
 /* 新增背景切换动画：使用缩放和旋转效果 */
 @keyframes bgTransform {
   0% {
@@ -282,7 +231,6 @@ onMounted(() => {
 }
 
 .top-banner {
-  animation: bgTransform 15s infinite;
+  animation: bgTransform 45s infinite; /* 从15s调整为45s，使动画更慢 */
 }
 </style>
-
