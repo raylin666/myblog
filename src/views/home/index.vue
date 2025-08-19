@@ -94,16 +94,27 @@
             <a-row id="index-article-category">
                 <a-col :span="24" class="article-category">
                     <div class="category-container">
-                        <div class="category-tags">
-                            <a-tag 
-                                v-for="category in categories" 
-                                :key="category.name"
-                                :color="category.color"
-                                class="category-tag"
-                                @click="filterByCategory(category.name)"
-                            >
-                                {{ category.name }} ({{ category.count }})
-                            </a-tag>
+                        <!-- 添加左右箭头按钮 -->
+                        <div class="category-navigation">
+                            <div class="nav-arrow left-arrow" @click="scrollCategories('left')">
+                                <icon-left />
+                            </div>
+                            <div class="category-tags-wrapper">
+                                <div class="category-tags" ref="categoryTagsRef">
+                                    <a-tag 
+                                        v-for="category in categories" 
+                                        :key="category.name"
+                                        :color="category.color"
+                                        class="category-tag"
+                                        @click="filterByCategory(category.name)"
+                                    >
+                                        {{ category.name }} ({{ category.count }})
+                                    </a-tag>
+                                </div>
+                            </div>
+                            <div class="nav-arrow right-arrow" @click="scrollCategories('right')">
+                                <icon-right />
+                            </div>
                         </div>
                     </div>
                 </a-col>
@@ -170,7 +181,7 @@
 <script setup lang="ts" >
 import { TopBanner, Side } from '@/components'
 import articleCover from 'assets/articleCover.png'
-import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
+import { IconEye, IconUser, IconLeft, IconRight } from '@arco-design/web-vue/es/icon'
 import { useNProgress } from '@/hooks/useNProgress'
 import { ref, computed } from 'vue'
 
@@ -391,6 +402,27 @@ const handlePageChange = (page: number) => {
     }
 };
 
+// 添加分类标签的引用
+const categoryTagsRef = ref<HTMLElement | null>(null)
+
+// 添加滚动分类标签的方法
+const scrollCategories = (direction: 'left' | 'right') => {
+    if (categoryTagsRef.value) {
+        const scrollAmount = 200
+        const scrollOptions: ScrollToOptions = {
+            behavior: 'smooth'
+        }
+        
+        if (direction === 'left') {
+            scrollOptions.left = categoryTagsRef.value.scrollLeft - scrollAmount
+        } else {
+            scrollOptions.left = categoryTagsRef.value.scrollLeft + scrollAmount
+        }
+        
+        categoryTagsRef.value.scrollTo(scrollOptions)
+    }
+}
+
 </script>
 
 <style scoped>
@@ -523,25 +555,68 @@ const handlePageChange = (page: number) => {
 .category-container {
     background: var(--bg-color-secondary);
     border-radius: 12px;
-    padding: 8px 20px; /* 增加左右内边距 */
+    padding: 8px 20px;
     margin-bottom: 20px;
     backdrop-filter: blur(5px);
-    overflow: hidden; /* 防止内容溢出 */
+    overflow: hidden;
     margin-right: 10px;
+}
+
+/* 添加分类导航容器 */
+.category-navigation {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* 添加箭头样式 */
+.nav-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.nav-arrow:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-arrow.left-arrow {
+    margin-right: 10px;
+}
+
+.nav-arrow.right-arrow {
+    margin-left: 10px;
+}
+
+/* 包装器用于隐藏滚动条但保持功能 */
+.category-tags-wrapper {
+    flex: 1;
+    overflow: hidden;
 }
 
 .category-tags {
     display: flex;
     gap: 12px;
+    padding: 8px 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -4px;
     overflow-x: auto;
-    padding: 8px 4px; /* 调整内边距 */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    margin: 0 -4px; /* 抵消部分内边距 */
+    scroll-behavior: smooth;
 }
 
 .category-tags::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
 }
 
 .category-tag {
