@@ -2,13 +2,10 @@
   <a-layout-sider
     :theme="themeStore.theme"
     :width="140"
-    collapsible
-    :collapsed="collapsed"
-    @collapse="onCollapse"
+    :collapsed="true"
   >
     <div class="brand">
-      <img v-if="!collapsed" :src="logoUrl" class="logo-img" alt="logo" />
-      <img v-else :src="avatarUrl" class="avatar-img" alt="avatar" />
+      <img :src="avatarUrl" class="avatar-img" alt="avatar" />
     </div>
     <a-menu :defaultSelectedKeys="['l_1']" mode="vertical">
       <RouterLink to="/">
@@ -26,32 +23,10 @@
 </template>
 
 <script setup lang="ts" name="Left">
-import { ref, watch } from 'vue'
 import { useThemeStore } from '@/store/themeStore'
-import logoUrl from 'assets/logo.png'
 import avatarUrl from 'assets/avatar.png'
 // 防止某些静态分析未识别到模板中的使用
-void logoUrl; void avatarUrl;
-
-const props = defineProps({
-  collapsed: {
-    type: Boolean,
-    default: true,
-  },
-})
-
-const collapsed = ref<boolean>(props.collapsed)
-
-watch(
-  () => props.collapsed,
-  (value) => {
-    collapsed.value = value
-  }
-)
-
-const onCollapse = (value: boolean) => {
-  collapsed.value = value
-}
+void avatarUrl;
 
 const themeStore = useThemeStore()
 </script>

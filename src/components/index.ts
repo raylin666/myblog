@@ -3,6 +3,7 @@ import Right from './layout/Right.vue'
 import Side from './layout/Side.vue'
 import TopBanner from './layout/TopBanner.vue'
 import Content from './layout/Content.vue'
+import ContentRow from './layout/ContentRow.vue'
 import Footer from './layout/Footer.vue'
 
 import ToolsCardCommentList from './layout/tools-card/CommentList.vue'
@@ -16,6 +17,7 @@ export {
     Side,
     TopBanner,
     Content,
+    ContentRow,
     Footer,
 
     ToolsCardCommentList,

@@ -3,183 +3,185 @@
 
     <br />
 
-    <a-row class="content" id="index-main">
-        <a-col :span="18" class="article">
-            <a-row>
-                <a-col :span="12">
-                    <div class="article-card">
-                        <a-card hoverable>
-                            <template #cover>
-                            <div class="cover-container">
-                                <img
-                                class="cover-image"
-                                alt="article cover"
-                                :src="articleCover"
-                                />
-                                <div class="cover-tag">置顶文章</div>
-                                <div class="cover-date">2023-11-15</div>
-                            </div>
-                            </template>
-                            <a-card-meta>
-                            <template #title>
-                                <a href="/article/1" class="article-title">Vue 3 Composition API 最佳实践</a>
-                            </template>
-                            <template #description>
-                                <div class="article-meta">
-                                    <span class="read-count">
-                                        <icon-eye /> 1.2K
-                                    </span>
-                                    <span class="article-author">
-                                        <icon-user /> 林山
-                                    </span>
+    <div id="index-main">
+        <ContentRow>
+            <a-col :span="18" class="article">
+                <a-row>
+                    <a-col :span="12">
+                        <div class="article-card">
+                            <a-card hoverable>
+                                <template #cover>
+                                <div class="cover-container">
+                                    <img
+                                    class="cover-image"
+                                    alt="article cover"
+                                    :src="articleCover"
+                                    />
+                                    <div class="cover-tag">置顶文章</div>
+                                    <div class="cover-date">2023-11-15</div>
                                 </div>
-                                <div class="article-tags">
-                                    <a-tag color="blue">Vue</a-tag>
-                                    <a-tag color="green">前端</a-tag>
-                                    <a-tag color="orange">教程</a-tag>
+                                </template>
+                                <a-card-meta>
+                                <template #title>
+                                    <a href="/article/1" class="article-title">Vue 3 Composition API 最佳实践</a>
+                                </template>
+                                <template #description>
+                                    <div class="article-meta">
+                                        <span class="read-count">
+                                            <icon-eye /> 1.2K
+                                        </span>
+                                        <span class="article-author">
+                                            <icon-user /> 林山
+                                        </span>
+                                    </div>
+                                    <div class="article-tags">
+                                        <a-tag color="blue">Vue</a-tag>
+                                        <a-tag color="green">前端</a-tag>
+                                        <a-tag color="orange">教程</a-tag>
+                                    </div>
+                                    <div class="article-desc">
+                                        本文详细介绍了Vue 3 Composition API的使用技巧和最佳实践，帮助开发者更好地组织组件逻辑...
+                                    </div>
+                                </template>
+                                </a-card-meta>
+                            </a-card>
+                        </div>
+                    </a-col>
+                    <a-col :span="12">
+                        <div class="article-card">
+                            <a-card hoverable>
+                                <template #cover>
+                                <div class="cover-container">
+                                    <img
+                                    class="cover-image"
+                                    alt="article cover"
+                                    :src="articleCover"
+                                    />
+                                    <div class="cover-tag">置顶文章</div>
+                                    <div class="cover-date">2023-11-10</div>
                                 </div>
-                                <div class="article-desc">
-                                    本文详细介绍了Vue 3 Composition API的使用技巧和最佳实践，帮助开发者更好地组织组件逻辑...
-                                </div>
-                            </template>
-                            </a-card-meta>
-                        </a-card>
-                    </div>
-                </a-col>
-                <a-col :span="12">
-                    <div class="article-card">
-                        <a-card hoverable>
-                            <template #cover>
-                            <div class="cover-container">
-                                <img
-                                class="cover-image"
-                                alt="article cover"
-                                :src="articleCover"
-                                />
-                                <div class="cover-tag">置顶文章</div>
-                                <div class="cover-date">2023-11-10</div>
-                            </div>
-                            </template>
-                            <a-card-meta>
-                            <template #title>
-                                <a href="/article/2" class="article-title">现代Web设计趋势与实现</a>
-                            </template>
-                            <template #description>
-                                <div class="article-meta">
-                                    <span class="read-count">
-                                        <icon-eye /> 2.4K
-                                    </span>
-                                    <span class="article-author">
-                                        <icon-user /> 林山
-                                    </span>
-                                </div>
-                                <div class="article-tags">
-                                    <a-tag color="purple">UI/UX</a-tag>
-                                    <a-tag color="red">设计</a-tag>
-                                    <a-tag color="cyan">CSS</a-tag>
-                                </div>
-                                <div class="article-desc">
-                                    探索2023年最新的Web设计趋势，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效
-                                    ，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效果的实现方式...
-                                </div>
-                            </template>
-                            </a-card-meta>
-                        </a-card>
-                    </div>
-                </a-col>
-            </a-row>
+                                </template>
+                                <a-card-meta>
+                                <template #title>
+                                    <a href="/article/2" class="article-title">现代Web设计趋势与实现</a>
+                                </template>
+                                <template #description>
+                                    <div class="article-meta">
+                                        <span class="read-count">
+                                            <icon-eye /> 2.4K
+                                        </span>
+                                        <span class="article-author">
+                                            <icon-user /> 林山
+                                        </span>
+                                    </div>
+                                    <div class="article-tags">
+                                        <a-tag color="purple">UI/UX</a-tag>
+                                        <a-tag color="red">设计</a-tag>
+                                        <a-tag color="cyan">CSS</a-tag>
+                                    </div>
+                                    <div class="article-desc">
+                                        探索2023年最新的Web设计趋势，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效
+                                        ，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效果的实现方式...
+                                    </div>
+                                </template>
+                                </a-card-meta>
+                            </a-card>
+                        </div>
+                    </a-col>
+                </a-row>
 
-            <br />
+                <br />
 
-            <a-row id="index-article-category">
-                <a-col :span="24" class="article-category">
-                    <div class="category-container">
-                        <!-- 添加左右箭头按钮 -->
-                        <div class="category-navigation">
-                            <div class="nav-arrow left-arrow" @click="scrollCategories('left')">
-                                <icon-left />
-                            </div>
-                            <div class="category-tags-wrapper">
-                                <div class="category-tags" ref="categoryTagsRef">
-                                    <a-tag 
-                                        v-for="category in categories" 
-                                        :key="category.name"
-                                        :color="category.color"
-                                        class="category-tag"
-                                        @click="filterByCategory(category.name)"
-                                    >
-                                        {{ category.name }} ({{ category.count }})
-                                    </a-tag>
+                <a-row id="index-article-category">
+                    <a-col :span="24" class="article-category">
+                        <div class="category-container">
+                            <!-- 添加左右箭头按钮 -->
+                            <div class="category-navigation">
+                                <div class="nav-arrow left-arrow" @click="scrollCategories('left')">
+                                    <icon-left />
                                 </div>
-                            </div>
-                            <div class="nav-arrow right-arrow" @click="scrollCategories('right')">
-                                <icon-right />
+                                <div class="category-tags-wrapper">
+                                    <div class="category-tags" ref="categoryTagsRef">
+                                        <a-tag 
+                                            v-for="category in categories" 
+                                            :key="category.name"
+                                            :color="category.color"
+                                            class="category-tag"
+                                            @click="filterByCategory(category.name)"
+                                        >
+                                            {{ category.name }} ({{ category.count }})
+                                        </a-tag>
+                                    </div>
+                                </div>
+                                <div class="nav-arrow right-arrow" @click="scrollCategories('right')">
+                                    <icon-right />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a-col>
-            </a-row>
+                    </a-col>
+                </a-row>
 
-            <a-row>
-                <a-col :span="24" class="article-list-item">
-                    <div v-for="article in paginatedArticles" :key="article.id" class="article-item">
-                        <a-card hoverable>
-                            <template #cover>
-                                <img
-                                class="article-item-cover"
-                                alt="article cover"
-                                :src="article.cover"
-                                />
-                            </template>
-                            <a-card-meta>
-                            <template #title>
-                                <a :href="`/article/${article.id}`" class="article-item-title">{{ article.title }}</a>
-                            </template>
-                            <template #description>
-                                <div class="article-item-meta">
-                                    <span class="read-count">
-                                        <icon-eye /> {{ article.readCount }}
-                                    </span>
-                                    <span class="article-author">
-                                        <icon-user /> {{ article.author }}
-                                    </span>
-                                </div>
-                                <div class="article-item-tags">
-                                    <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
-                                </div>
-                                <div class="article-item-desc">
-                                    {{ article.description }}
-                                </div>
-                            </template>
-                            </a-card-meta>
-                        </a-card>
-                    </div>
-                </a-col>
-            </a-row>
+                <a-row>
+                    <a-col :span="24" class="article-list-item">
+                        <div v-for="article in paginatedArticles" :key="article.id" class="article-item">
+                            <a-card hoverable>
+                                <template #cover>
+                                    <img
+                                    class="article-item-cover"
+                                    alt="article cover"
+                                    :src="article.cover"
+                                    />
+                                </template>
+                                <a-card-meta>
+                                <template #title>
+                                    <a :href="`/article/${article.id}`" class="article-item-title">{{ article.title }}</a>
+                                </template>
+                                <template #description>
+                                    <div class="article-item-meta">
+                                        <span class="read-count">
+                                            <icon-eye /> {{ article.readCount }}
+                                        </span>
+                                        <span class="article-author">
+                                            <icon-user /> {{ article.author }}
+                                        </span>
+                                    </div>
+                                    <div class="article-item-tags">
+                                        <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
+                                    </div>
+                                    <div class="article-item-desc">
+                                        {{ article.description }}
+                                    </div>
+                                </template>
+                                </a-card-meta>
+                            </a-card>
+                        </div>
+                    </a-col>
+                </a-row>
 
-            <a-row>
-                <a-col :span="24" class="pagination-container">
-                    <a-pagination 
-                        v-model:current="currentPage"
-                        :total="totalArticles"
-                        :page-size="pageSize"
-                        :show-total="false"
-                        :show-jumper="false"
-                        @change="handlePageChange"
-                        class="custom-pagination"
-                    />
-                </a-col>
-            </a-row>
-        </a-col>
+                <a-row>
+                    <a-col :span="24" class="pagination-container">
+                        <a-pagination 
+                            v-model:current="currentPage"
+                            :total="totalArticles"
+                            :page-size="pageSize"
+                            :show-total="false"
+                            :show-jumper="false"
+                            @change="handlePageChange"
+                            class="custom-pagination"
+                        />
+                    </a-col>
+                </a-row>
+            </a-col>
 
-        <a-col :span="6" id="side-main">
-            <Side />
-        </a-col>
-    </a-row>
+            <a-col :span="6" id="side-main">
+                <Side />
+            </a-col>
+        </ContentRow>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { TopBanner, Side } from '@/components'
+import { TopBanner, ContentRow, Side } from '@/components'
 import articleCover from 'assets/articleCover.png'
 import { IconEye, IconUser, IconLeft, IconRight } from '@arco-design/web-vue/es/icon'
 import { useNProgress } from '@/hooks/useNProgress'
@@ -426,20 +428,20 @@ const scrollCategories = (direction: 'left' | 'right') => {
 </script>
 
 <style scoped>
-.content .article-card {
+.article-card {
     padding: 0px 10px 0px 0px;
 }
-.content .article-card :deep(.arco-card) {
+.article-card :deep(.arco-card) {
     background-color: white;
     border-radius: 10px;
     border: 0px;
     overflow: hidden;
 }
-.content .article-card :deep(.arco-card):hover {
+.article-card :deep(.arco-card):hover {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
-.content .article-card :deep(.arco-card-body) {
+.article-card :deep(.arco-card-body) {
     padding: 16px;
 }
 

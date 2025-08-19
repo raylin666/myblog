@@ -83,7 +83,7 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background-repeat:no-repeat;
     background-position: center;
     background-size: cover;

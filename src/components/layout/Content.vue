@@ -15,7 +15,4 @@ import { Footer } from '@/components'
 </script>
 
 <style scoped>
-.content-container {
-    padding: 12px;
-}
 </style>
