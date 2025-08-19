@@ -45,13 +45,12 @@ html, body, #app {
 
 .arco-menu-dark .arco-menu-item:hover,
 .arco-menu-light .arco-menu-item:hover {
-  background-color: var(--primary-color-hover);
-  color: white;
+  background-color: var(--bg-color-secondary);
 }
 
 .arco-menu-dark .arco-menu-item:hover .arco-icon,
 .arco-menu-light .arco-menu-item:hover .arco-icon {
-  color: white;
+  color: var(--text-color-primary);
 }
 
 .arco-menu-dark .arco-menu-item.arco-menu-selected,
