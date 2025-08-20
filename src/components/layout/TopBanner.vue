@@ -94,6 +94,30 @@ onMounted(() => {
             }
         })
     }
+    
+    // 平滑背景切换效果
+    let currentIndex = 0
+    const banner = document.querySelector('.top-banner') as HTMLElement
+    if (banner) {
+        const switchBackground = () => {
+            currentIndex = (currentIndex + 1) % backgroundImages.length
+            gsap.to(banner, {
+                duration: 1.5,
+                opacity: 0,
+                onComplete: () => {
+                    if (banner) {
+                        banner.style.backgroundImage = `url(${backgroundImages[currentIndex]})`
+                        gsap.to(banner, {
+                            duration: 1.5,
+                            opacity: 1
+                        })
+                    }
+                }
+            })
+        }
+        
+        setInterval(switchBackground, 10000)
+    }
 })
 </script>
 
@@ -109,28 +133,7 @@ onMounted(() => {
     background-position: center;
     background-size: cover;
     position: relative;
-}
-
-.top-banner::before,
-.top-banner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    opacity: 0;
-}
-
-.top-banner::before {
-    background-image: url('assets/background/2.jpeg');
-}
-
-.top-banner::after {
-    background-image: url('assets/background/3.jpeg');
+    overflow: hidden;
 }
 
 .top-banner .avatar {
@@ -146,11 +149,9 @@ onMounted(() => {
 .top-banner .avatar :deep(.arco-avatar-image) {
     border-radius: 60px;
     border: 3px solid white;
-    transition: transform 0.8s ease; /* 平滑过渡效果 */
 }
 
 .top-banner .avatar :deep(.arco-avatar-image):hover {
-    transform: rotate(360deg); /* 旋转360度 */
 }
 
 .top-banner .title {
@@ -176,61 +177,5 @@ onMounted(() => {
 
 .top-banner .move .arrow-down {
     color: white;
-}
-
-/* 新增背景切换动画：使用缩放和旋转效果 */
-@keyframes bgTransform {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  25% {
-    transform: scale(1.05) rotate(2deg);
-  }
-  33% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 0;
-    transform: scale(1.1) rotate(3deg);
-  }
-  35% {
-    background-image: url('assets/background/2.jpeg');
-    opacity: 0;
-    transform: scale(1.1) rotate(3deg);
-  }
-  36% {
-    opacity: 1;
-  }
-  58% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  66% {
-    opacity: 1;
-  }
-  67% {
-    opacity: 0;
-    transform: scale(1.05) rotate(-2deg);
-  }
-  68% {
-    background-image: url('assets/background/3.jpeg');
-    opacity: 0;
-    transform: scale(1.05) rotate(-2deg);
-  }
-  69% {
-    opacity: 1;
-  }
-  92% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.top-banner {
-  animation: bgTransform 45s infinite; /* 从15s调整为45s，使动画更慢 */
 }
 </style>
