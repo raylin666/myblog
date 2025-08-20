@@ -15,7 +15,7 @@
                                     <img
                                     class="cover-image"
                                     alt="article cover"
-                                    :src="articleCover"
+                                    :src="articleRecommendCover"
                                     />
                                     <div class="cover-tag">置顶文章</div>
                                     <div class="cover-date">2023-11-15</div>
@@ -55,7 +55,7 @@
                                     <img
                                     class="cover-image"
                                     alt="article cover"
-                                    :src="articleCover"
+                                    :src="articleRecommendCover"
                                     />
                                     <div class="cover-tag">置顶文章</div>
                                     <div class="cover-date">2023-11-10</div>
@@ -183,6 +183,7 @@
 <script setup lang="ts">
 import { TopBanner, ContentRow, Side } from '@/components'
 import articleCover from 'assets/articleCover.png'
+import articleRecommendCover from 'assets/articleRecommendCover.png'
 import { IconEye, IconUser, IconLeft, IconRight } from '@arco-design/web-vue/es/icon'
 import { useNProgress } from '@/hooks/useNProgress'
 import { ref, computed } from 'vue'
