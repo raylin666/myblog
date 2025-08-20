@@ -157,7 +157,7 @@ const preloadImages = () => {
 // 创建爆炸粒子效果
 function createExplodeParticles(fromCenter = false) {
     particles = []
-    const particleCount = 500
+    const particleCount = 300 // 减少粒子数量以提高性能
     
     // 创建从四周向中心爆炸的粒子效果
     const centerX = canvasWidth / 2
