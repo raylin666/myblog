@@ -456,6 +456,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    background-color: #f5f5f5; /* 添加背景色防止空白 */
 }
 
 .article-card:hover .cover-image {
@@ -723,13 +724,14 @@ const scrollCategories = (direction: 'left' | 'right') => {
 
 .article-item-cover {
     width: 100%;
-    height: 160px; /* 稍小的高度 */
+    height: 160px;
     object-fit: cover;
     transition: transform 0.5s ease;
+    background-color: #f5f5f5; /* 添加背景色防止空白 */
 }
 
 .article-item :deep(.arco-card):hover .article-item-cover {
-    transform: scale(1.03); /* 较小的缩放比例 */
+    transform: scale(1.03);
 }
 
 .article-item-title {
