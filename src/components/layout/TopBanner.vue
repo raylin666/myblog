@@ -95,12 +95,24 @@ onMounted(() => {
         })
     }
     
-    // 平滑背景切换效果
+    // 无缝背景切换效果
     let currentIndex = 0
     const banner = document.querySelector('.top-banner') as HTMLElement
     if (banner) {
+        // 创建第二个背景层
+        const backLayer = document.createElement('div')
+        backLayer.className = 'background-layer'
+        backLayer.style.backgroundImage = `url(${backgroundImages[1]})`
+        banner.appendChild(backLayer)
+        
         const switchBackground = () => {
             currentIndex = (currentIndex + 1) % backgroundImages.length
+            const nextIndex = (currentIndex + 1) % backgroundImages.length
+            
+            // 更新后层背景
+            backLayer.style.backgroundImage = `url(${backgroundImages[nextIndex]})`
+            
+            // 交叉淡入淡出
             gsap.to(banner, {
                 duration: 1.5,
                 opacity: 0,
@@ -151,9 +163,6 @@ onMounted(() => {
     border: 3px solid white;
 }
 
-.top-banner .avatar :deep(.arco-avatar-image):hover {
-}
-
 .top-banner .title {
     height: 25vh;
     font-size: 3rem;
@@ -177,5 +186,17 @@ onMounted(() => {
 
 .top-banner .move .arrow-down {
     color: white;
+}
+
+.background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
 }
 </style>
