@@ -44,12 +44,12 @@ const handleTagClick = (tag: any) => {
 <style scoped>
 /* 侧边栏模块样式 */
 .sidebar-module {
-    background: linear-gradient(135deg, var(--gradient-light-0) 0%, var(--gradient-light-1) 100%);
+    background: linear-gradient(135deg, #f0f2f5 0%, #e2e6eb 100%);
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .module-title {
@@ -58,7 +58,7 @@ const handleTagClick = (tag: any) => {
     color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 /* 标签云样式 */
@@ -71,18 +71,18 @@ const handleTagClick = (tag: any) => {
 .tag-cloud-item {
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 4px 12px;
     font-weight: 500;
 }
 
 .tag-cloud-item:hover {
-    transform: scale(1.05);
-    background-color: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 </style>

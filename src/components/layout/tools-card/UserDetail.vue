@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts" name="UserDetail">
-
 </script>
 
 <style scoped>
@@ -46,7 +45,7 @@
     justify-content: center;
     min-height: 400px;
     gap: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
 }
 
 .user-detail .avatar-wrapper {
@@ -54,10 +53,10 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.4);
     padding: 2px;
-    background-color: rgba(255,255,255,0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
 .user-detail .avatar {
@@ -72,19 +71,19 @@
 .user-detail .name {
     font-size: 20px;
     font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .user-detail .stats {
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     margin-top: 20px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .user-detail .stat-item {
@@ -95,22 +94,22 @@
 .user-detail .stat-number {
     font-size: 20px;
     font-weight: bold;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .user-detail .stat-label {
     font-size: 14px;
-    opacity: 0.9;
+    opacity: 0.95;
     margin-top: 4px;
 }
 
 .user-detail .desc {
     font-size: 15px;
     line-height: 1.6;
-    opacity: 0.95;
+    opacity: 0.98;
     margin-top: 10px;
     background: transparent;
     padding: 0 10px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 </style>

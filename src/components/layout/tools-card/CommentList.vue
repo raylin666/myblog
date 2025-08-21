@@ -56,12 +56,12 @@ const latestComments = ref([
 <style scoped>
 /* 侧边栏模块样式 */
 .sidebar-module {
-    background: linear-gradient(135deg, var(--gradient-light-0) 0%, var(--gradient-light-1) 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .module-title {
@@ -82,18 +82,17 @@ const latestComments = ref([
 
 .comment-item {
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: #ffffff;
     border-radius: 8px;
     font-size: 13px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    border: 1px solid #e1e5eb;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .comment-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .comment-header {

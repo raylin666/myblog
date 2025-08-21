@@ -35,12 +35,12 @@ const getNewStory = () => {
 <style scoped>
 /* 侧边栏模块样式 */
 .sidebar-module {
-    background: linear-gradient(135deg, var(--gradient-light-0) 0%, var(--gradient-light-1) 100%);
+    background: linear-gradient(135deg, #f0f2f5 0%, #e2e6eb 100%);
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .module-title {
@@ -49,7 +49,7 @@ const getNewStory = () => {
     color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 /* 每日小故事样式 */
@@ -60,11 +60,17 @@ const getNewStory = () => {
     min-height: 100px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d1d7e0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.story-content:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
 .story-footer {
@@ -75,11 +81,10 @@ const getNewStory = () => {
 .change-story-btn {
     color: var(--text-secondary) !important;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .change-story-btn:hover {
     color: var(--text-primary) !important;
-    transform: scale(1.05);
 }
 </style>
