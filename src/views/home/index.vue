@@ -9,83 +9,89 @@
                 <a-row>
                     <a-col :span="12">
                         <div class="article-card">
-                            <a-card hoverable>
-                                <template #cover>
-                                <div class="cover-container">
-                                    <img
-                                    class="cover-image"
-                                    alt="article cover"
-                                    :src="articleRecommendCover"
-                                    />
-                                    <div class="cover-tag">置顶文章</div>
-                                    <div class="cover-date">2023-11-15</div>
-                                </div>
-                                </template>
-                                <a-card-meta>
-                                <template #title>
-                                    <a href="/article/1" class="article-title">Vue 3 Composition API 最佳实践</a>
-                                </template>
-                                <template #description>
-                                    <div class="article-meta">
-                                        <span class="read-count">
-                                            <icon-eye /> 1.2K
-                                        </span>
-                                        <span class="article-author">
-                                            <icon-user /> 林山
-                                        </span>
+                            <!-- 修改: 添加跳转链接容器和鼠标手势 -->
+                            <a :href="'/article/1'" class="card-link">
+                                <a-card hoverable class="featured-card">
+                                    <template #cover>
+                                    <div class="cover-container">
+                                        <img
+                                        class="cover-image"
+                                        alt="article cover"
+                                        :src="articleRecommendCover"
+                                        />
+                                        <div class="cover-tag">置顶文章</div>
+                                        <div class="cover-date">2023-11-15</div>
                                     </div>
-                                    <div class="article-tags">
-                                        <a-tag color="blue">Vue</a-tag>
-                                        <a-tag color="green">前端</a-tag>
-                                        <a-tag color="orange">教程</a-tag>
-                                    </div>
-                                    <div class="article-desc">
-                                        本文详细介绍了Vue 3 Composition API的使用技巧和最佳实践，帮助开发者更好地组织组件逻辑...
-                                    </div>
-                                </template>
-                                </a-card-meta>
-                            </a-card>
+                                    </template>
+                                    <a-card-meta>
+                                    <template #title>
+                                        <a href="/article/1" class="article-title">Vue 3 Composition API 最佳实践</a>
+                                    </template>
+                                    <template #description>
+                                        <div class="article-meta">
+                                            <span class="read-count">
+                                                <icon-eye /> 1.2K
+                                            </span>
+                                            <span class="article-author">
+                                                <icon-user /> 林山
+                                            </span>
+                                        </div>
+                                        <div class="article-tags">
+                                            <a-tag color="blue">Vue</a-tag>
+                                            <a-tag color="green">前端</a-tag>
+                                            <a-tag color="orange">教程</a-tag>
+                                        </div>
+                                        <div class="article-desc">
+                                            本文详细介绍了Vue 3 Composition API的使用技巧和最佳实践，帮助开发者更好地组织组件逻辑...
+                                        </div>
+                                    </template>
+                                    </a-card-meta>
+                                </a-card>
+                            </a>
                         </div>
                     </a-col>
                     <a-col :span="12">
                         <div class="article-card">
-                            <a-card hoverable>
-                                <template #cover>
-                                <div class="cover-container">
-                                    <img
-                                    class="cover-image"
-                                    alt="article cover"
-                                    :src="articleRecommendCover"
-                                    />
-                                    <div class="cover-tag">置顶文章</div>
-                                    <div class="cover-date">2023-11-10</div>
-                                </div>
-                                </template>
-                                <a-card-meta>
-                                <template #title>
-                                    <a href="/article/2" class="article-title">现代Web设计趋势与实现</a>
-                                </template>
-                                <template #description>
-                                    <div class="article-meta">
-                                        <span class="read-count">
-                                            <icon-eye /> 2.4K
-                                        </span>
-                                        <span class="article-author">
-                                            <icon-user /> 林山
-                                        </span>
+                            <!-- 修改: 添加跳转链接容器和鼠标手势 -->
+                            <a :href="'/article/2'" class="card-link">
+                                <a-card hoverable class="featured-card">
+                                    <template #cover>
+                                    <div class="cover-container">
+                                        <img
+                                        class="cover-image"
+                                        alt="article cover"
+                                        :src="articleRecommendCover"
+                                        />
+                                        <div class="cover-tag">置顶文章</div>
+                                        <div class="cover-date">2023-11-10</div>
                                     </div>
-                                    <div class="article-tags">
-                                        <a-tag color="purple">UI/UX</a-tag>
-                                        <a-tag color="red">设计</a-tag>
-                                        <a-tag color="cyan">CSS</a-tag>
-                                    </div>
-                                    <div class="article-desc">
-                                        探索2023年最新的Web设计趋势，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效
-                                        ，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效果的实现方式...
-                                    </div>
-                                </template>
-                                </a-card-meta>
-                            </a-card>
+                                    </template>
+                                    <a-card-meta>
+                                    <template #title>
+                                        <a href="/article/2" class="article-title">现代Web设计趋势与实现</a>
+                                    </template>
+                                    <template #description>
+                                        <div class="article-meta">
+                                            <span class="read-count">
+                                                <icon-eye /> 2.4K
+                                            </span>
+                                            <span class="article-author">
+                                                <icon-user /> 林山
+                                            </span>
+                                        </div>
+                                        <div class="article-tags">
+                                            <a-tag color="purple">UI/UX</a-tag>
+                                            <a-tag color="red">设计</a-tag>
+                                            <a-tag color="cyan">CSS</a-tag>
+                                        </div>
+                                        <div class="article-desc">
+                                            探索2023年最新的Web设计趋势，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效
+                                            ，包括玻璃拟态、微交互和动态渐变等效，包括玻璃拟态、微交互和动态渐变等效果的实现方式...
+                                        </div>
+                                    </template>
+                                    </a-card-meta>
+                                </a-card>
+                            </a>
                         </div>
                     </a-col>
                 </a-row>
@@ -124,36 +130,39 @@
                 <a-row>
                     <a-col :span="24" class="article-list-item">
                         <div v-for="article in paginatedArticles" :key="article.id" class="article-item">
-                            <a-card hoverable>
-                                <template #cover>
-                                    <img
-                                    class="article-item-cover"
-                                    alt="article cover"
-                                    :src="article.cover"
-                                    />
-                                </template>
-                                <a-card-meta>
-                                <template #title>
-                                    <a :href="`/article/${article.id}`" class="article-item-title">{{ article.title }}</a>
-                                </template>
-                                <template #description>
-                                    <div class="article-item-meta">
-                                        <span class="read-count">
-                                            <icon-eye /> {{ article.readCount }}
-                                        </span>
-                                        <span class="article-author">
-                                            <icon-user /> {{ article.author }}
-                                        </span>
-                                    </div>
-                                    <div class="article-item-tags">
-                                        <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
-                                    </div>
-                                    <div class="article-item-desc">
-                                        {{ article.description }}
-                                    </div>
-                                </template>
-                                </a-card-meta>
-                            </a-card>
+                            <!-- 修改: 添加跳转链接容器和鼠标手势 -->
+                            <a :href="`/article/${article.id}`" class="card-link">
+                                <a-card hoverable>
+                                    <template #cover>
+                                        <img
+                                        class="article-item-cover"
+                                        alt="article cover"
+                                        :src="article.cover"
+                                        />
+                                    </template>
+                                    <a-card-meta>
+                                    <template #title>
+                                        <a :href="`/article/${article.id}`" class="article-item-title">{{ article.title }}</a>
+                                    </template>
+                                    <template #description>
+                                        <div class="article-item-meta">
+                                            <span class="read-count">
+                                                <icon-eye /> {{ article.readCount }}
+                                            </span>
+                                            <span class="article-author">
+                                                <icon-user /> {{ article.author }}
+                                            </span>
+                                        </div>
+                                        <div class="article-item-tags">
+                                            <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
+                                        </div>
+                                        <div class="article-item-desc">
+                                            {{ article.description }}
+                                        </div>
+                                    </template>
+                                    </a-card-meta>
+                                </a-card>
+                            </a>
                         </div>
                     </a-col>
                 </a-row>
@@ -432,12 +441,48 @@ const scrollCategories = (direction: 'left' | 'right') => {
 .article-card {
     padding: 0px 16px 0px 0px;
 }
+
+/* 修改: 添加卡片链接样式 */
+.card-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card-link:hover {
+    cursor: pointer;
+}
+
+.featured-card {
+    height: 500px; /* 固定高度确保两个卡片高度一致 */
+    display: flex;
+    flex-direction: column;
+}
+.featured-card :deep(.arco-card-body) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.featured-card :deep(.arco-card-meta) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.featured-card :deep(.arco-card-meta .arco-card-meta-content) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.featured-card :deep(.arco-card-meta .arco-card-meta-description) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 .article-card :deep(.arco-card) {
     background-color: white;
     border-radius: 10px;
     border: 0px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     z-index: 1;
@@ -456,16 +501,17 @@ const scrollCategories = (direction: 'left' | 'right') => {
     transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .article-card :deep(.arco-card):hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .article-card :deep(.arco-card):hover::after {
     opacity: 1;
 }
 .article-card :deep(.arco-card-body) {
-    padding: 16px;
+    padding: 20px;
     position: relative;
     z-index: 2;
     background: white;
+
 }
 
 .cover-container {
@@ -490,7 +536,8 @@ const scrollCategories = (direction: 'left' | 'right') => {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: var(--primary-color);
+    /* 修改: 使用渐变色背景，与主题色贴切 */
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
     color: white;
     padding: 8px 16px;
     border-radius: 0 0 10px 0;
@@ -506,32 +553,40 @@ const scrollCategories = (direction: 'left' | 'right') => {
     top: 10px;
     right: 10px;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    /* 修改: 设置为椭圆形 */
+    border-radius: 20px;
     font-size: 12px;
     color: #333;
 }
 
 .article-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
-    margin-bottom: 8px;
-    color: #333;
+    margin-bottom: 16px;
+    /* 修改: 使用与主题色贴切的颜色 */
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-decoration: none;
     display: inline-block;
     position: relative;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     overflow: hidden;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .article-title::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -5px;
     left: 0;
     width: 0;
     height: 3px;
-    background: linear-gradient(160deg, #ff7c09, #14c52b);
+    /* 修改: 使用与主题色贴切的渐变色 */
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: left;
 }
@@ -543,7 +598,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
     transition: 0.5s;
 }
 
@@ -552,46 +607,127 @@ const scrollCategories = (direction: 'left' | 'right') => {
 }
 
 .article-title:hover {
-    background-image: linear-gradient(to right, rgb(215, 29, 29), rgb(7, 9, 7));
-    background-clip: text;
-    color: transparent;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .article-title:hover::after {
     width: 100%;
-    box-shadow: 0 0 10px rgba(30, 136, 229, 0.3);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
 }
 
 .article-meta {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     font-size: 14px;
-    color: #666;
-    margin-bottom: 12px;
+    color: #718096;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.article-meta :deep(.arco-icon) {
+    margin-right: 6px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.read-count, .article-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.read-count:hover, .article-author:hover {
+    color: #1e88e5;
+    transform: translateY(-2px);
 }
 
 .article-tags {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .article-tags :deep(.arco-tag) {
     margin-right: 0 !important;
+    border-radius: 20px;
+    padding: 2px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
+.article-tags :deep(.arco-tag:hover) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.article-tags :deep(.arco-tag[color="blue"]) {
+    background: linear-gradient(120deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.article-tags :deep(.arco-tag[color="green"]) {
+    background: linear-gradient(120deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.article-tags :deep(.arco-tag[color="orange"]) {
+    background: linear-gradient(120deg, #fa709a 0%, #fee140 100%);
+    color: white;
+}
+
+.article-tags :deep(.arco-tag[color="purple"]) {
+    background: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    color: white;
+}
+
+.article-tags :deep(.arco-tag[color="red"]) {
+    background: linear-gradient(120deg, #ff6b6b 0%, #ffa502 100%);
+    color: white;
+}
+
+.article-tags :deep(.arco-tag[color="cyan"]) {
+    background: linear-gradient(120deg, #6bede4 0%, #4ca1af 100%);
+    color: white;
+}
+
 .article-desc {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
+    font-size: 15px;
+    color: #4a5568;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 15px;
+    /* 修改: 使用渐变色边框 */
+    border-left: 3px solid;
+    border-image: linear-gradient(0deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    border-image-slice: 1;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    /* 添加以下样式以限制最多显示3行 */
     display: -webkit-box;
-    -webkit-line-clamp: 3;
     line-clamp: 3;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 63px; /* 3行文字高度 */
+}
+
+.article-desc::before {
+    content: '"';
+    position: absolute;
+    left: -20px;
+    top: -15px;
+    font-size: 60px;
+    color: #e2e8f0;
+    font-family: Georgia, serif;
+    line-height: 1;
 }
 
 .category-container {
@@ -734,6 +870,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
     border-radius: 8px; /* 稍小的圆角 */
     overflow: hidden;
     transition: all 0.3s ease;
+    cursor: pointer; /* 修改: 添加手势 */
 }
 
 .article-item :deep(.arco-card-bordered) {
@@ -788,7 +925,8 @@ const scrollCategories = (direction: 'left' | 'right') => {
 .article-item-title:hover {
     background-image: linear-gradient(to right, rgb(215, 29, 29), rgb(7, 9, 7));
     background-clip: text;
-    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     transform: scale(1.1) translateX(3px);
     text-shadow: 0 2px 8px rgba(30, 136, 229, 0.15);
 }
