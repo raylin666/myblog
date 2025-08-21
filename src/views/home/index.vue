@@ -430,20 +430,42 @@ const scrollCategories = (direction: 'left' | 'right') => {
 
 <style scoped>
 .article-card {
-    padding: 0px 10px 0px 0px;
+    padding: 0px 16px 0px 0px;
 }
 .article-card :deep(.arco-card) {
     background-color: white;
     border-radius: 10px;
     border: 0px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    z-index: 1;
+}
+.article-card :deep(.arco-card)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .article-card :deep(.arco-card):hover {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.article-card :deep(.arco-card):hover::after {
+    opacity: 1;
 }
 .article-card :deep(.arco-card-body) {
     padding: 16px;
+    position: relative;
+    z-index: 2;
+    background: white;
 }
 
 .cover-container {
