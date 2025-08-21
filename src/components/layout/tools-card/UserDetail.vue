@@ -34,8 +34,7 @@
 <style scoped>
 .user-detail {
     border-radius: 10px;
-    background: linear-gradient(130deg, rgb(126 235 250), rgb(220 135 228) 41.07%, rgb(113 200 220) 76.05%);
-    /* background: linear-gradient(130deg, rgb(188 255 34), rgb(99 182 135) 41.07%, rgb(175 134 230) 76.05%); */
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
     padding: 30px 20px;
     color: white;
     text-align: center;
@@ -46,7 +45,8 @@
     flex-direction: column;
     justify-content: center;
     min-height: 400px;
-    gap: 15px; /* 统一元素间距 */
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .user-detail .avatar-wrapper {
@@ -54,9 +54,10 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid white;
+    border: 3px solid rgba(255, 255, 255, 0.3);
     padding: 2px;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .user-detail .avatar {
@@ -69,17 +70,21 @@
 }
 
 .user-detail .name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .user-detail .stats {
     display: flex;
     justify-content: space-around;
-    padding: 15px 0;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 8px;
-    margin-top: 30px;
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .user-detail .stat-item {
@@ -88,21 +93,24 @@
 }
 
 .user-detail .stat-number {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .user-detail .stat-label {
-    font-size: 12px;
-    opacity: 0.8;
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
 }
 
 .user-detail .desc {
-    font-size: 14px;
-    line-height: 1.5;
-    opacity: 0.9;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.95;
     margin-top: 10px;
     background: transparent;
-    padding: 0;
+    padding: 0 10px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 </style>

@@ -822,7 +822,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
 }
 
 .custom-pagination :deep(.arco-pagination-item-active) {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
     border-color: transparent;
     color: white;
 }
@@ -834,7 +834,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
 }
 
 .custom-pagination :deep(.arco-pagination-item-active:hover) {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
     border-color: transparent;
     color: white;
 }

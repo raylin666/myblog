@@ -33,4 +33,8 @@
   --nprogress-peg-1: #0f172a;
   --nprogress-bar-0: #2563eb;
   --nprogress-bar-1: #0f172a;
+
+  /* 背景渐变基调色 */
+  --gradient-base-0: #667eea;
+  --gradient-base-1: #764ba2;
 }
