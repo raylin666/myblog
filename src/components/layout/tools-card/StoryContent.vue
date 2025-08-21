@@ -6,7 +6,7 @@
             {{ dailyStory.content }}
         </div>
         <div class="story-footer">
-            <a-button type="text" @click="getNewStory">换一个</a-button>
+            <a-button type="text" @click="getNewStory" class="change-story-btn">换一个</a-button>
         </div>
     </div>
 </template>
@@ -35,33 +35,51 @@ const getNewStory = () => {
 <style scoped>
 /* 侧边栏模块样式 */
 .sidebar-module {
-    background: white;
+    background: linear-gradient(135deg, var(--gradient-light-0) 0%, var(--gradient-light-1) 100%);
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .module-title {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* 每日小故事样式 */
 .story-content {
     font-size: 14px;
     line-height: 1.6;
-    color: #666;
+    color: var(--text-primary);
     min-height: 100px;
     display: flex;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .story-footer {
     text-align: right;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.change-story-btn {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.change-story-btn:hover {
+    color: var(--text-primary) !important;
+    transform: scale(1.05);
 }
 </style>

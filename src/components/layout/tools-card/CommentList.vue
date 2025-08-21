@@ -39,7 +39,7 @@ const latestComments = ref([
     author: '李四',
     avatar: avatarUrl,
     time: '昨天',
-    content: '感谢分享，对我帮助很大,这篇文章写得真好，学到了很多新知识！,这篇文章写得真好，学到了很多新知识！这篇文章写得真好，学到了很多新知识！这篇文章写得真好，学到了很多新知识！这篇文章写得真好，学到了很多新知识！',
+    content: '感谢分享，对我帮助很大,这篇文章写得真好，学到了很多新知识！,这篇文章写得真好，学到了很多新知识！这篇文章写得真好，学到了很多新知识！这篇文章写得真好，学到了很多新知识！',
     article: '现代Web设计趋势与实现'
   },
   {
@@ -56,19 +56,21 @@ const latestComments = ref([
 <style scoped>
 /* 侧边栏模块样式 */
 .sidebar-module {
-    background: white;
+    background: linear-gradient(135deg, var(--gradient-light-0) 0%, var(--gradient-light-1) 100%);
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .module-title {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* 最新评论样式 */
@@ -79,17 +81,19 @@ const latestComments = ref([
 }
 
 .comment-item {
-    padding: 12px;
-    background-color: #f8f9fa;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.03);
     border-radius: 8px;
     font-size: 13px;
     transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .comment-item:hover {
-    background-color: #f0f2f5;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
 }
 
 .comment-header {
@@ -106,17 +110,17 @@ const latestComments = ref([
 
 .comment-time {
     font-size: 12px;
-    color: #999;
+    color: var(--text-secondary);
     margin-top: 2px;
 }
 
 .comment-author {
     font-weight: bold;
-    color: #1e88e5;
+    color: var(--text-primary);
 }
 
 .comment-content {
-    color: #323232;
+    color: var(--text-primary);
     margin-bottom: 5px;
     line-height: 1.4;
     display: -webkit-box;
@@ -128,7 +132,7 @@ const latestComments = ref([
 }
 
 .comment-article {
-    color: #999;
+    color: var(--text-secondary);
     font-size: 12px;
     text-align: right;
     margin-top: 10px;
