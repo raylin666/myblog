@@ -288,10 +288,10 @@ function tagColor(tag: string) {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, transparent, var(--gradient-base-0), var(--gradient-base-1), transparent);
     border-radius: 3px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .article-meta :deep(.arco-icon) {
