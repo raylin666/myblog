@@ -12,6 +12,8 @@
                     </a-col>
                 </a-row>
 
+                <br />
+
                 <a-row id="index-article-category">
                     <a-col :span="24" class="article-category">
                         <ArticleCategoryCard />

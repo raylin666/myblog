@@ -21,6 +21,9 @@
                         <span class="article-author">
                             <icon-user /> {{ article.author }}
                         </span>
+                        <span class="comment-count">
+                            <icon-message /> {{ article.commentCount || 0 }}
+                        </span>
                     </div>
                     <div class="article-item-tags">
                         <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
@@ -36,7 +39,7 @@
 </template>
 
 <script lang="ts" setup name="BasicItemCard">
-import { IconEye, IconUser } from '@arco-design/web-vue/es/icon'
+import { IconEye, IconUser, IconMessage } from '@arco-design/web-vue/es/icon'
 import type { PropType } from 'vue'
 
 defineProps({
@@ -50,6 +53,7 @@ defineProps({
       author: string
       tags: string[]
       description: string
+      commentCount?: number
     }>,
     required: true
   }

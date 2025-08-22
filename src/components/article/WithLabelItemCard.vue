@@ -22,6 +22,9 @@
                         <span class="read-count">
                             <icon-eye /> {{ article.viewCount }}
                         </span>
+                        <span class="comment-count">
+                            <icon-message /> {{ article.commentCount || 0 }}
+                        </span>
                         <span class="article-author">
                             <icon-user /> {{ article.author }}
                         </span>
@@ -54,6 +57,7 @@ defineProps({
       author: string
       tags: string[]
       description: string
+      commentCount?: number
     }>,
     required: true
   }
@@ -147,7 +151,7 @@ function tagColor(tag: string) {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, var(--gradient-base-0), var(--gradient-base-1));
     z-index: -1;
     border-radius: 10px;
     opacity: 0;
@@ -215,7 +219,7 @@ function tagColor(tag: string) {
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    background: linear-gradient(135deg, #4a5568 0%, #333 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -256,6 +260,8 @@ function tagColor(tag: string) {
 }
 
 .article-title:hover {
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    background-clip: text;
     transform: translateY(-3px);
     text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -282,14 +288,14 @@ function tagColor(tag: string) {
     vertical-align: middle;
 }
 
-.read-count, .article-author {
+.read-count, .article-author, .comment-count {
     display: flex;
     align-items: center;
     gap: 6px;
     transition: all 0.3s ease;
 }
 
-.read-count:hover, .article-author:hover {
+.read-count:hover, .article-author:hover, .comment-count:hover {
     color: #1e88e5;
     transform: translateY(-2px);
 }
@@ -309,12 +315,12 @@ function tagColor(tag: string) {
     font-weight: 500;
     border: none;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .article-tags :deep(.arco-tag:hover) {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 .article-tags :deep(.arco-tag[color="blue"]) {
@@ -353,7 +359,6 @@ function tagColor(tag: string) {
     line-height: 1.7;
     position: relative;
     padding-left: 15px;
-    /* 修改: 使用渐变色边框 */
     border-left: 3px solid;
     border-image: linear-gradient(0deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
     border-image-slice: 1;
