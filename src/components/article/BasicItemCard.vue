@@ -1,13 +1,16 @@
 <template>
     <div class="article-card">
         <RouterLink :to="{ name: 'articleInfo', params: { id: article.id } }" class="card-link"> 
-            <a-card hoverable>
+            <a-card hoverable class="article-item">
                 <template #cover>
-                    <img
-                    class="article-item-cover"
-                    alt="article cover"
-                    :src="article.cover"
-                    />
+                    <div class="cover-container">
+                        <img
+                        class="article-item-cover"
+                        alt="article cover"
+                        :src="article.cover"
+                        />
+                        <div class="cover-overlay"></div>
+                    </div>
                 </template>
                 <a-card-meta>
                 <template #title>
@@ -15,21 +18,24 @@
                 </template>
                 <template #description>
                     <div class="article-item-meta">
-                        <span class="read-count">
-                            <icon-eye /> {{ article.viewCount }}
-                        </span>
-                        <span class="article-author">
-                            <icon-user /> {{ article.author }}
-                        </span>
-                        <span class="comment-count">
-                            <icon-message /> {{ article.commentCount || 0 }}
-                        </span>
-                    </div>
-                    <div class="article-item-tags">
-                        <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
+                        <div class="meta-item">
+                            <icon-eye class="meta-icon" />
+                            <span class="meta-text">{{ article.viewCount }}</span>
+                        </div>
+                        <div class="meta-item">
+                            <icon-message class="meta-icon" />
+                            <span class="meta-text">{{ article.commentCount || 0 }}</span>
+                        </div>
+                        <div class="meta-item">
+                            <icon-user class="meta-icon" />
+                            <span class="meta-text">{{ article.author }}</span>
+                        </div>
                     </div>
                     <div class="article-item-desc">
                         {{ article.description }}
+                    </div>
+                    <div class="article-item-tags">
+                        <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
                     </div>
                 </template>
                 </a-card-meta>
@@ -95,6 +101,8 @@ function tagColor(tag: string) {
 .card-link {
     text-decoration: none;
     cursor: pointer;
+    display: block;
+    height: 100%;
 }
 
 .card-link:hover {
@@ -104,84 +112,135 @@ function tagColor(tag: string) {
 .article-item {
     break-inside: auto;
     margin-bottom: 0;
-}
-
-.article-item :deep(.arco-card) {
-    background-color: #fafafa;
-    border-radius: 8px;
+    border-radius: 16px;
     overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer; 
-}
-
-.article-item :deep(.arco-card-bordered) {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* background: linear-gradient(145deg, #ffffff, #f0f0f0); */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     border: none;
 }
 
-.article-item :deep(.arco-card):hover {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transform: translateY(-3px); 
+.article-item :deep(.arco-card-body) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.article-item-cover {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    background-color: #f5f5f5; 
+.article-item:hover {
+    transform: translateY(-1px) scale(1.02);
 }
 
-.article-item :deep(.arco-card):hover .article-item-cover {
-    transform: scale(1.03);
-}
-
-.article-item-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #444;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform-origin: left center;
+.cover-container {
     position: relative;
     overflow: hidden;
 }
 
-.article-item-title::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: 0.5s;
+.cover-container:hover .cover-overlay {
+    opacity: 1;
+    transform: scale(1);
 }
 
-.article-item-title:hover::before {
-    left: 100%;
+.article-item-cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: #f5f5f5;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+}
+
+.cover-overlay :deep(.arco-icon) {
+    font-size: 36px;
+    color: white;
+}
+
+.article-item:hover .article-item-cover {
+    transform: scale(1.08);
+}
+
+.article-item-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    line-height: 1.4;
+    background-image: linear-gradient(80deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.article-item-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff4d4f, #1890ff);
+    transition: width 0.8s ease;
+}
+
+.article-item-title:hover::after {
+    width: 100%;
 }
 
 .article-item-title:hover {
-    background-image: linear-gradient(to right, rgb(215, 29, 29), rgb(7, 9, 7));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transform: scale(1.1) translateX(3px);
-    text-shadow: 0 2px 8px rgba(30, 136, 229, 0.15);
+    background-size: 100% 100%;
+    color: transparent;
+    transform: translateX(4px);
 }
 
 .article-item-meta {
     display: flex;
-    justify-content: space-between;
-    font-size: 12px;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
     color: #888; 
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.meta-icon {
+    font-size: 16px;
+}
+
+.meta-text {
+    font-size: 13px;
 }
 
 .article-item-tags {
-    margin-bottom: 10px;
+    margin: 12px 0;
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
@@ -191,19 +250,25 @@ function tagColor(tag: string) {
     margin-right: 0 !important;
     font-size: 11px; 
     padding: 0 6px; 
-    border-radius: 4px; 
+    border-radius: 8px; 
+    transition: all 0.3s ease;
+}
+
+.article-item-tags :deep(.arco-tag:hover) {
+    transform: translateY(-1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .article-item-desc {
-    font-size: 12px; 
-    color: #777; 
-    line-height: 1.5;
+    font-size: 14px; 
+    color: #666; 
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 54px; 
+    flex: 1;
 }
 </style>

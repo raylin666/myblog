@@ -139,9 +139,9 @@ function tagColor(tag: string) {
     border-radius: 10px;
     border: 0px;
     overflow: hidden;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
     z-index: 1;
 }
 .article-card :deep(.arco-card)::after {
@@ -158,7 +158,7 @@ function tagColor(tag: string) {
     transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .article-card :deep(.arco-card):hover {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 .article-card :deep(.arco-card):hover::after {
     opacity: 1;
@@ -226,7 +226,7 @@ function tagColor(tag: string) {
     text-decoration: none;
     display: inline-block;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
     overflow: hidden;
     line-height: 1.4;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -240,7 +240,7 @@ function tagColor(tag: string) {
     width: 0;
     height: 3px;
     background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: left;
 }
 
@@ -252,7 +252,7 @@ function tagColor(tag: string) {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    transition: 0.5s;
+    transition: 1.2s;
 }
 
 .article-title:hover::before {
@@ -295,9 +295,14 @@ function tagColor(tag: string) {
     transition: all 0.3s ease;
 }
 
-.read-count:hover, .article-author:hover, .comment-count:hover {
+.read-count:hover, .comment-count:hover {
     color: var(--primary-color);
     transform: translateY(-2px);
+
+}
+
+.article-author:hover {
+    color: #0f172a;
 }
 
 .article-tags {
