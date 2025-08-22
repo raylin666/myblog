@@ -255,7 +255,7 @@ const paginatedArticles = computed(() => {
 .article-list-item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 16px;
     padding: 0 10px 0 0;
 }
 

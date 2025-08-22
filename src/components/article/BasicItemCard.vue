@@ -130,7 +130,7 @@ function tagColor(tag: string) {
 }
 
 .article-item:hover {
-    transform: translateY(-1px) scale(1.02);
+    transform: translateY(-1px) scale(1);
 }
 
 .cover-container {
