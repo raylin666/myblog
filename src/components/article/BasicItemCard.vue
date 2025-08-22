@@ -222,7 +222,29 @@ function tagColor(tag: string) {
     color: #888; 
     margin-bottom: 14px;
     padding: 12px 0;
-    border-bottom: 1px dashed #eee;
+    position: relative;
+}
+
+.article-item-meta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    border-radius: 2px;
+}
+
+.article-item-meta::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    border-radius: 2px;
 }
 
 .meta-item {
@@ -271,4 +293,3 @@ function tagColor(tag: string) {
     text-overflow: ellipsis;
     flex: 1;
 }
-</style>

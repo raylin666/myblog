@@ -279,7 +279,19 @@ function tagColor(tag: string) {
     color: #718096;
     margin-bottom: 16px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #edf2f7;
+    position: relative;
+}
+
+.article-meta::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gradient-base-0), var(--gradient-base-1), transparent);
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .article-meta :deep(.arco-icon) {
