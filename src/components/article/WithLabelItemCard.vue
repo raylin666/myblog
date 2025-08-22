@@ -296,7 +296,7 @@ function tagColor(tag: string) {
 }
 
 .read-count:hover, .article-author:hover, .comment-count:hover {
-    color: #1e88e5;
+    color: var(--primary-color);
     transform: translateY(-2px);
 }
 
