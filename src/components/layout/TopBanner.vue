@@ -1,6 +1,5 @@
 <template>
     <div class="top-banner">
-        <!-- 删除:<canvas ref="particleCanvas" class="particle-canvas"></canvas> -->
         <div class="avatar">
             <a href="#"><a-avatar :size="120"><img :src="avatarUrl" class="avatar-img" alt="avatar" /></a-avatar></a>
         </div>
@@ -34,8 +33,6 @@ const props = defineProps({
 const title = 'KAKA - 梦很美 技术博客'
 
 let titleText = ref('')
-let canvasWidth = window.innerWidth
-let canvasHeight = window.innerHeight
 
 // 标题打字效果
 function textEffect(text: string) {
@@ -112,13 +109,6 @@ onMounted(() => {
             }
         })
     }
-    
-    // 监听窗口大小变化，更新canvas尺寸
-    const handleResize = () => {
-        canvasWidth = window.innerWidth
-        canvasHeight = window.innerHeight
-    }
-    window.addEventListener('resize', handleResize)
     
     // 无缝背景切换效果
     let currentIndex = 0
