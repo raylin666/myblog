@@ -48,7 +48,7 @@ const getNewStory = () => {
     color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* 每日小故事样式 */
@@ -68,7 +68,7 @@ const getNewStory = () => {
 }
 
 .story-content:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 

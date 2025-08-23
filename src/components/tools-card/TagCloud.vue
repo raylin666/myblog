@@ -57,7 +57,28 @@ const handleTagClick = (tag: any) => {
     color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 添加个性化装饰元素 */
+.module-title::before {
+    content: "✦";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 14px;
+}
+
+.module-title::after {
+    content: "✦";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 14px;
 }
 
 .tag-cloud {
