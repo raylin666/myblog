@@ -56,8 +56,8 @@ const latestComments = ref([
 <style scoped>
 /* 侧边栏模块样式 */
 .sidebar-module {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 10px;
+    background: var(--background-secondary);
+    border-radius: 8px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
@@ -70,7 +70,7 @@ const latestComments = ref([
     color: var(--text-primary);
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* 最新评论样式 */
@@ -82,7 +82,7 @@ const latestComments = ref([
 
 .comment-item {
     padding: 15px;
-    background-color: #ffffff;
+    background-color: var(--background-primary);
     border-radius: 8px;
     font-size: 13px;
     transition: all 0.2s ease;
@@ -91,7 +91,7 @@ const latestComments = ref([
 }
 
 .comment-item:hover {
-    background-color: #f8f9fa;
+    background-color: var(--background-secondary);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
