@@ -1,6 +1,6 @@
 <template>
     <a-row id="main">
-        <slot></slot>
+      <slot></slot>
     </a-row>
 </template>
 

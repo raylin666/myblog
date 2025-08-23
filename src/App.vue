@@ -1,6 +1,6 @@
 <template>
   <a-layout class="layout">
-    <!-- 左侧折叠导航（可展开/折叠，默认折叠） -->
+    <!-- 左侧始终折叠且不可展开的侧栏 -->
     <Left />
 
     <!-- 中间主内容区 + 顶部导航/面包屑等 -->
@@ -8,6 +8,19 @@
 
     <!-- 右侧始终折叠且不可展开的侧栏 -->
     <Right />
+
+    <!-- 返回顶部按钮 -->
+    <a-back-top
+      target-container=".layout"
+      :style="{ position: 'fixed', right: '30px', bottom: '30px' }"
+      :visible-height="200"
+    >
+      <a-button type="primary" shape="circle" size="large">
+        <template #icon>
+          <icon-up />
+        </template>
+      </a-button>
+    </a-back-top>
   </a-layout>
 </template>
 
@@ -22,8 +35,8 @@ useThemeStore().initTheme()
 <style scoped>
 .layout {
   height: 100vh;
-  border: none;
 }
+
 .layout :deep(.arco-layout-sider) .logo {
   height: 32px;
   margin: 12px 8px;

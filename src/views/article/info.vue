@@ -47,34 +47,34 @@
     
     <!-- 屏幕中间两侧的导航按钮 -->
     <div class="fixed-navigation">
-        <a-button 
-            v-if="prevArticle" 
-            @click="navigateTo(prevArticle.id)"
-            class="fixed-nav-button prev"
-        >
-            <span class="nav-arrow">←</span>
-            <!-- 悬停时显示文章标题 -->
-            <div class="tooltip tooltip-prev">{{ prevArticle.title }}</div>
-        </a-button>
-        <a-button 
-            v-if="nextArticle" 
-            @click="navigateTo(nextArticle.id)"
-            class="fixed-nav-button next"
-        >
-            <span class="nav-arrow">→</span>
-            <!-- 悬停时显示文章标题 -->
-            <div class="tooltip tooltip-next">{{ nextArticle.title }}</div>
-        </a-button>
+        <a-tooltip :content="prevArticle.title" position="right">
+            <a-button
+                v-if="prevArticle" 
+                @click="navigateTo(prevArticle.id)"
+                class="fixed-nav-button prev"
+            >
+                <span class="nav-arrow">←</span>
+            </a-button>
+        </a-tooltip>
+        
+        <a-tooltip :content="nextArticle.title" position="left">
+            <a-button
+                v-if="nextArticle" 
+                @click="navigateTo(nextArticle.id)"
+                class="fixed-nav-button next"
+            >
+                <span class="nav-arrow">→</span>
+            </a-button>
+        </a-tooltip>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ContentRow, Side } from '@/components'
 import { useNProgress } from '@/hooks/useNProgress'
 
-// 示例数据 - 实际应从API获取
 const article = ref({
     title: 'App Store Server API 实践总结',
     content: '<p>这里是富文本文章内容...</p>'.repeat(20),
@@ -105,10 +105,6 @@ const navigateTo = (id: string) => {
 
 // 使用封装的NProgress hooks
 useNProgress()
-
-onMounted(() => {
-
-})
 </script>
 
 <style scoped>
@@ -126,18 +122,13 @@ onMounted(() => {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* 添加过渡效果 */
 }
 
-/* 添加悬停效果 */
 .article-cover:hover .cover-image {
     transform: scale(1.05);
-    /* 轻微放大 */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    /* 增强阴影 */
 }
 
-/* 独立文章标题样式 */
 .article-title {
     font-size: 2.5rem;
     font-weight: 800;
@@ -198,8 +189,8 @@ onMounted(() => {
 
 .fixed-nav-button {
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     padding: 0;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3); /* 降低透明度 */
@@ -211,7 +202,7 @@ onMounted(() => {
     overflow: hidden;
     border: 2px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 1001; /* 提高z-index确保按钮在上层 */
     pointer-events: auto;
 }
 
@@ -222,7 +213,7 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), #00c6ff);
+    background: linear-gradient(135deg, var(--gradient-base-0), var(--gradient-base-1));
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
@@ -233,82 +224,19 @@ onMounted(() => {
 }
 
 .fixed-nav-button:hover {
-    transform: translateY(-5px) scale(1.1);
+    transform: translateY(-3px) scale(1.1);
     color: white;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-arrow {
-    font-size: 2.5rem;
-    line-height: 70px;
+    font-size: 2.2rem;
+    line-height: 60px;
     transition: transform 0.3s ease;
 }
 
 .fixed-nav-button:hover .nav-arrow {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
-/* 悬停提示样式 */
-.tooltip {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    z-index: 1001; /* 确保提示在最上层 */
-}
-
-.tooltip-prev {
-    right: calc(100% + 15px);
-}
-
-.tooltip-next {
-    left: calc(100% + 15px);
-}
-
-.fixed-nav-button:hover .tooltip {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0); /* 统一变换 */
-}
-
-.fixed-nav-button:hover .tooltip-prev {
-    transform: translateY(-50%) translateX(-10px);
-}
-
-.fixed-nav-button:hover .tooltip-next {
-    transform: translateY(-50%) translateX(10px);
-}
-
-/* 添加小三角形 */
-.tooltip::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-}
-
-.tooltip-prev::after {
-    left: 100%;
-    border-left: 6px solid rgba(0, 0, 0, 0.85);
-}
-
-.tooltip-next::after {
-    right: 100%;
-    border-right: 6px solid rgba(0, 0, 0, 0.85);
-}
 </style>

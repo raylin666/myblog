@@ -209,6 +209,13 @@ function formatDate(dateString: string): string {
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.2em;
 }
 
 .article-item-title::after {
@@ -274,6 +281,9 @@ function formatDate(dateString: string): string {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
+    /* 限制标签区域高度 */
+    max-height: 60px;
+    overflow: hidden;
 }
 
 .article-item-tags :deep(.arco-tag) {
@@ -300,5 +310,7 @@ function formatDate(dateString: string): string {
     overflow: hidden;
     text-overflow: ellipsis;
     flex: 1;
+    /* 固定描述区域高度 */
+    min-height: 4.8em;
 }
 </style>
