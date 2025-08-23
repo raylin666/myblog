@@ -3,19 +3,19 @@
     <div class="sidebar-module">
         <div class="module-title">最新评论</div>
         <div class="comment-list">
-<div class="comment-item" v-for="comment in latestComments" :key="comment.id">
-<div class="comment-header">
-    <a-avatar>
-        <img :src="comment.avatar || avatarUrl" alt="avatar">
-    </a-avatar>
-    <div class="comment-user-info">
-        <div class="comment-author">{{ comment.author }}</div>
-        <div class="comment-time">{{ comment.time || '刚刚' }}</div>
-    </div>
-</div>
-    <div class="comment-content">{{ comment.content }}</div>
-    <div class="comment-article">《{{ comment.article }}》</div>
-</div>
+            <div class="comment-item" v-for="comment in latestComments" :key="comment.id">
+            <div class="comment-header">
+                <a-avatar>
+                    <img :src="comment.avatar || avatarUrl" alt="avatar">
+                </a-avatar>
+                <div class="comment-user-info">
+                    <div class="comment-author">{{ comment.author }}</div>
+                    <div class="comment-time">{{ comment.time || '刚刚' }}</div>
+                </div>
+            </div>
+                <div class="comment-content">{{ comment.content }}</div>
+                <div class="comment-article">《{{ comment.article }}》</div>
+            </div>
         </div>
     </div>
 </template>
@@ -54,14 +54,13 @@ const latestComments = ref([
 </script>
 
 <style scoped>
-/* 侧边栏模块样式 */
 .sidebar-module {
     background: var(--background-secondary);
     border-radius: 8px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .module-title {

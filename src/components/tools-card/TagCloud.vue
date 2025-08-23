@@ -42,14 +42,13 @@ const handleTagClick = (tag: any) => {
 </script>
 
 <style scoped>
-/* 侧边栏模块样式 */
 .sidebar-module {
-    background: linear-gradient(135deg, #f0f2f5 0%, #e2e6eb 100%);
-    border-radius: 10px;
+    background: var(--background-secondary);
+    border-radius: 8px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .module-title {
@@ -61,7 +60,6 @@ const handleTagClick = (tag: any) => {
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-/* 标签云样式 */
 .tag-cloud {
     display: flex;
     flex-wrap: wrap;
@@ -72,17 +70,13 @@ const handleTagClick = (tag: any) => {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    padding: 4px 12px;
+    padding: 14px;
     font-weight: 500;
 }
 
 .tag-cloud-item:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
     background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    border-color: rgba(0, 0, 0, 0.2);
 }
 </style>

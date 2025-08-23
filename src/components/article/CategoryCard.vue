@@ -77,7 +77,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
 
 <style scoped>
 .category-container {
-    background: var(--category-container-bg, linear-gradient(135deg, var(--gradient-base-0), var(--gradient-base-1)));
+    background: var(--category-container-bg, linear-gradient(10deg, var(--gradient-base-0), var(--gradient-base-1)));
     border-radius: 16px;
     padding: 10px 20px;
     margin-bottom: 24px;

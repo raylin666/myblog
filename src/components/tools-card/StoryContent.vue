@@ -6,7 +6,7 @@
             {{ dailyStory.content }}
         </div>
         <div class="story-footer">
-            <a-button type="text" @click="getNewStory" class="change-story-btn">换一个</a-button>
+            <a-button type="primary" @click="getNewStory" class="change-story-btn">换一个</a-button>
         </div>
     </div>
 </template>
@@ -33,14 +33,13 @@ const getNewStory = () => {
 </script>
 
 <style scoped>
-/* 侧边栏模块样式 */
 .sidebar-module {
-    background: linear-gradient(135deg, #f0f2f5 0%, #e2e6eb 100%);
-    border-radius: 10px;
+    background: var(--background-secondary);
+    border-radius: 8px;
     padding: 20px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .module-title {
@@ -79,12 +78,17 @@ const getNewStory = () => {
 }
 
 .change-story-btn {
-    color: var(--text-secondary) !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
     font-weight: 500;
     transition: all 0.2s ease;
+    border-radius: 8px;
 }
 
 .change-story-btn:hover {
-    color: var(--text-primary) !important;
+    background-color: var(--primary-color-hover) !important;
+    border-color: var(--primary-color-hover) !important;
+    color: white !important;
 }
 </style>
