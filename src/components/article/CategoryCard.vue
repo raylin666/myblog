@@ -10,8 +10,9 @@
                     <a-tag 
                         v-for="category in categories" 
                         :key="category.name"
-                        :color="category.color"
+                        :color="selectedCategory === category.name ? 'dark' : category.color"
                         class="category-tag"
+                        :class="{ 'selected': selectedCategory === category.name }"
                         @click="filterByCategory(category.name)"
                     >
                         {{ category.name }} ({{ category.count }})
@@ -43,7 +44,12 @@ const categories = ref([
     { name: '服务器', count: 12, color: 'cyan' },
 ])
 
+// 添加选中分类状态
+const selectedCategory = ref('全部')
+
 function filterByCategory(category: string) {
+    // 设置当前选中的分类
+    selectedCategory.value = category
     // 这里可以添加分类筛选逻辑
 }
 
@@ -95,7 +101,7 @@ const scrollCategories = (direction: 'left' | 'right') => {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--nav-arrow-hover-bg, linear-gradient(135deg, var(--gradient-base-0), var(--gradient-base-1)));
+    background: var(--nav-arrow-hover-bg, linear-gradient(135deg, var(--gradient-base-secondary-0), var(--gradient-base-secondary-1)));
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -146,13 +152,14 @@ const scrollCategories = (direction: 'left' | 'right') => {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     white-space: nowrap;
     flex-shrink: 0;
     border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
     position: relative;
     overflow: hidden;
+    color: var(--color-text-1);
 }
 
 .category-tag::before {
@@ -168,64 +175,22 @@ const scrollCategories = (direction: 'left' | 'right') => {
 
 .category-tag:hover {
     z-index: 1;
-    /* 添加悬停时的放大效果 */
-    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* 添加抖动动画 */
-    animation: shake 1.2s ease-in-out;
+    animation: shake 0.8s ease-in-out;
 }
 
-.category-tag:active {
-    transform: translateY(0);
-    transition: all 0.2s ease;
+.category-tag.selected {
+    background-image: linear-gradient(130deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* 分类标签配色调整 */
-.category-tag[color="arcoblue"] {
-    background: var(--category-tag-arcoblue-bg, linear-gradient(135deg, rgba(30, 136, 229, 0.15), rgba(30, 136, 229, 0.05)));
-    color: var(--category-tag-arcoblue-color, #1e88e5);
-    border: 1px solid var(--category-tag-arcoblue-border, rgba(30, 136, 229, 0.2));
+.category-tag.selected::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
 }
 
-.category-tag[color="green"] {
-    background: var(--category-tag-green-bg, linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05)));
-    color: var(--category-tag-green-color, #4caf50);
-    border: 1px solid var(--category-tag-green-border, rgba(76, 175, 80, 0.2));
-}
-
-.category-tag[color="purple"] {
-    background: var(--category-tag-purple-bg, linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(156, 39, 176, 0.05)));
-    color: var(--category-tag-purple-color, #9c27b0);
-    border: 1px solid var(--category-tag-purple-border, rgba(156, 39, 176, 0.2));
-}
-
-.category-tag[color="orange"] {
-    background: var(--category-tag-orange-bg, linear-gradient(135deg, rgba(255, 152, 0, 0.15), rgba(255, 152, 0, 0.05)));
-    color: var(--category-tag-orange-color, #ff9800);
-    border: 1px solid var(--category-tag-orange-border, rgba(255, 152, 0, 0.2));
-}
-
-.category-tag[color="cyan"] {
-    background: var(--category-tag-cyan-bg, linear-gradient(135deg, rgba(0, 188, 212, 0.15), rgba(0, 188, 212, 0.05)));
-    color: var(--category-tag-cyan-color, #00bcd4);
-    border: 1px solid var(--category-tag-cyan-border, rgba(0, 188, 212, 0.2));
-}
-
-.category-tag[color="blue"] {
-    background: var(--category-tag-blue-bg, linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.05)));
-    color: var(--category-tag-blue-color, #2196f3);
-    border: 1px solid var(--category-tag-blue-border, rgba(33, 150, 243, 0.2));
-}
-
-/* 添加抖动动画关键帧 */
 @keyframes shake {
-    0%, 100% {
-        transform: translateY(-3px) translateX(0);
-    }
-    10%, 30%, 50%, 70%, 90% {
-        transform: translateY(-3px) translateX(-2px);
-    }
-    20%, 40%, 60%, 80% {
-        transform: translateY(-3px) translateX(2px);
-    }
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
 }
 </style>

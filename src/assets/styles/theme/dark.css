@@ -37,4 +37,6 @@
   /* 背景渐变基调色 */
   --gradient-base-0: #f54c4c;
   --gradient-base-1: #764ba2;
+  --gradient-base-secondary-0: #f26d6d;
+  --gradient-base-secondary-1: #9768c8;
 }
