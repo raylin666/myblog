@@ -45,7 +45,6 @@
     justify-content: center;
     min-height: 400px;
     gap: 15px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
 }
 
 .user-detail .avatar-wrapper {
