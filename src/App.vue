@@ -8,19 +8,6 @@
 
     <!-- 右侧始终折叠且不可展开的侧栏 -->
     <Right />
-
-    <!-- 返回顶部按钮 -->
-    <a-back-top
-      target-container=".layout"
-      :style="{ position: 'fixed', right: '30px', bottom: '30px' }"
-      :visible-height="200"
-    >
-      <a-button type="primary" shape="circle" size="large">
-        <template #icon>
-          <icon-up />
-        </template>
-      </a-button>
-    </a-back-top>
   </a-layout>
 </template>
 
@@ -35,6 +22,7 @@ useThemeStore().initTheme()
 <style scoped>
 .layout {
   height: 100vh;
+  overflow-y: auto;
 }
 
 .layout :deep(.arco-layout-sider) .logo {
