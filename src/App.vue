@@ -22,7 +22,6 @@ useThemeStore().initTheme()
 <style scoped>
 .layout {
   height: 100vh;
-  overflow-y: auto;
 }
 
 .layout :deep(.arco-layout-sider) .logo {

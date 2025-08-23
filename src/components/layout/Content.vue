@@ -2,11 +2,11 @@
     <a-layout>
       <div id="content-container">
         <RouterView></RouterView>
+
+        <br />
+
+        <Footer />
       </div>
-
-      <br />
-
-      <Footer />
 
       <!-- 返回顶部按钮 -->
       <a-back-top target-container="#content-container" :style="{ position:'fixed', right:'50px', bottom:'50px' }" >
@@ -21,7 +21,6 @@ import { Footer } from '@/components'
 
 <style scoped>
 #content-container {
-  height: 100%;
-  overflow: auto;
+  overflow-y: auto;
 }
 </style>
