@@ -1,70 +1,77 @@
 <template>
-    <a-row class="content">
-        <a-col :span="24" class="article-banner">
-            <!-- 文章封面区域 -->
-            <div class="article-cover">
-                <img :src="coverImage" alt="文章封面" class="cover-image" />
-            </div>
-        </a-col>
+    <ContentRow>
+        <a-row class="content">
+            <a-col :span="24" class="article-banner">
+                <!-- 文章封面区域 -->
+                <div class="article-cover">
+                    <img :src="coverImage" alt="文章封面" class="cover-image" />
+                </div>
+            </a-col>
 
-        <a-col :span="18" class="article">
-            <!-- 文章标题和meta信息移到这里 -->
-            <h1 class="article-title">{{ article.title }}</h1>
-            <div class="article-meta">
-                <span class="meta-item">
-                    <i class="far fa-calendar-alt"></i>
-                    {{ article.date || '2023-01-01' }}
-                </span>
-                <span class="meta-item">
-                    <i class="far fa-folder"></i>
-                    {{ article.category || '未分类' }}
-                </span>
-                <span class="meta-item">
-                    <i class="far fa-tags"></i>
-                    {{ article.tags?.join(' · ') || '无标签' }}
-                </span>
-                <span class="meta-item">
-                    <i class="far fa-file-word"></i>
-                    {{ article.wordCount || '0' }}字
-                </span>
-                <span class="meta-item">
-                    <i class="far fa-eye"></i>
-                    {{ article.views || '0' }}阅读
-                </span>
-            </div>
-            
-            <!-- 文章内容区域 -->
-            <div class="article-content" v-html="article.content"></div>
+            <a-col :span="18" class="article">
+                <!-- 文章标题和meta信息移到这里 -->
+                <h1 class="article-title">{{ article.title }}</h1>
+                <div class="article-meta">
+                    <span class="meta-item">
+                        <i class="far fa-calendar-alt"></i>
+                        {{ article.date || '2023-01-01' }}
+                    </span>
+                    <span class="meta-item">
+                        <i class="far fa-folder"></i>
+                        {{ article.category || '未分类' }}
+                    </span>
+                    <span class="meta-item">
+                        <i class="far fa-tags"></i>
+                        {{ article.tags?.join(' · ') || '无标签' }}
+                    </span>
+                    <span class="meta-item">
+                        <i class="far fa-file-word"></i>
+                        {{ article.wordCount || '0' }}字
+                    </span>
+                    <span class="meta-item">
+                        <i class="far fa-eye"></i>
+                        {{ article.views || '0' }}阅读
+                    </span>
+                </div>
+                
+                <!-- 文章内容区域 -->
+                <div class="article-content" v-html="article.content"></div>
 
-            <!-- 上一篇/下一篇导航 -->
-            <div class="article-navigation">
-                <a-button 
-                    v-if="prevArticle" 
-                    @click="navigateTo(prevArticle.id)"
-                    class="nav-button prev"
-                >
-                    <span class="nav-title">← {{ prevArticle.title }}</span>
-                </a-button>
-                <a-button 
-                    v-if="nextArticle" 
-                    @click="navigateTo(nextArticle.id)"
-                    class="nav-button next"
-                >
-                    <span class="nav-title">{{ nextArticle.title }} →</span>
-                </a-button>
-            </div>
-        </a-col>
+            </a-col>
 
-        <a-col :span="6" id="side-main">
-            <Side />
-        </a-col>
-    </a-row>
+            <a-col :span="6" id="side-main">
+                <Side />
+            </a-col>
+        </a-row>
+    </ContentRow>
+    
+    <!-- 屏幕中间两侧的导航按钮 -->
+    <div class="fixed-navigation">
+        <a-button 
+            v-if="prevArticle" 
+            @click="navigateTo(prevArticle.id)"
+            class="fixed-nav-button prev"
+        >
+            <span class="nav-arrow">←</span>
+            <!-- 悬停时显示文章标题 -->
+            <div class="tooltip tooltip-prev">{{ prevArticle.title }}</div>
+        </a-button>
+        <a-button 
+            v-if="nextArticle" 
+            @click="navigateTo(nextArticle.id)"
+            class="fixed-nav-button next"
+        >
+            <span class="nav-arrow">→</span>
+            <!-- 悬停时显示文章标题 -->
+            <div class="tooltip tooltip-next">{{ nextArticle.title }}</div>
+        </a-button>
+    </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { Side } from '@/components'
+import { ContentRow, Side } from '@/components'
 import { useNProgress } from '@/hooks/useNProgress'
 
 // 示例数据 - 实际应从API获取
@@ -177,92 +184,131 @@ onMounted(() => {
     font-size: 1.1rem;
 }
 
-.article-navigation {
+.fixed-navigation {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eee;
+    padding: 0 2rem;
+    z-index: 1000;
+    pointer-events: none;
 }
 
-.nav-button {
+.fixed-nav-button {
     position: relative;
-    width: 45%;
-    padding: 1.5rem;
-    border-radius: 8px;
-    background: white;
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3); /* 降低透明度 */
+    backdrop-filter: blur(10px);
     color: var(--text-color);
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-align: center;
     overflow: hidden;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    pointer-events: auto;
 }
 
-.nav-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgb(9, 255, 0), rgba(4, 255, 146, 0.578), rgb(4, 192, 255));
-    transition: left 0.5s ease;
-    z-index: -1;
-}
-
-.nav-button:hover::after {
-    background: linear-gradient(90deg, rgb(255, 60, 0), rgba(244, 21, 218, 0.874), rgb(34, 33, 33));
-    transition: left 1.3s ease;
-    left: 0%;
-}
-
-.nav-button::before {
+.fixed-nav-button::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 100%;
     height: 100%;
-    background: var(--primary-color);
-    transition: width 0.3s ease;
+    background: linear-gradient(135deg, var(--primary-color), #00c6ff);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
 }
 
-.nav-button:hover {
-    transform: translateY(-1px);
+.fixed-nav-button:hover::before {
+    opacity: 1;
+}
+
+.fixed-nav-button:hover {
+    transform: translateY(-5px) scale(1.1);
     color: white;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
-.nav-button:hover::before {
-    width: 8px;
+.nav-arrow {
+    font-size: 2.5rem;
+    line-height: 70px;
+    transition: transform 0.3s ease;
 }
 
-.nav-button.prev {
-    text-align: left;
-    padding-left: 2rem;
+.fixed-nav-button:hover .nav-arrow {
+    transform: scale(1.2);
 }
 
-.nav-button.next {
-    text-align: right;
-    padding-right: 2rem;
-    margin-right: 15px;
-}
-
-.nav-button .nav-label {
-    display: block;
-    font-size: 0.8rem;
-    color: #888;
-    margin-bottom: 0.5rem;
-}
-
-.nav-button .nav-title {
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+/* 悬停提示样式 */
+.tooltip {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--primary-color);
+    z-index: 1001; /* 确保提示在最上层 */
+}
+
+.tooltip-prev {
+    right: calc(100% + 15px);
+}
+
+.tooltip-next {
+    left: calc(100% + 15px);
+}
+
+.fixed-nav-button:hover .tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0); /* 统一变换 */
+}
+
+.fixed-nav-button:hover .tooltip-prev {
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.fixed-nav-button:hover .tooltip-next {
+    transform: translateY(-50%) translateX(10px);
+}
+
+/* 添加小三角形 */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+.tooltip-prev::after {
+    left: 100%;
+    border-left: 6px solid rgba(0, 0, 0, 0.85);
+}
+
+.tooltip-next::after {
+    right: 100%;
+    border-right: 6px solid rgba(0, 0, 0, 0.85);
 }
 </style>
