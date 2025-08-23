@@ -18,17 +18,25 @@
                 </template>
                 <template #description>
                     <div class="article-item-meta">
-                        <div class="meta-item">
-                            <icon-eye class="meta-icon" />
-                            <span class="meta-text">{{ article.viewCount }}</span>
+                        <div class="meta-left">
+                            <div class="meta-item">
+                                <icon-eye class="meta-icon" />
+                                <span class="meta-text">{{ article.viewCount }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <icon-message class="meta-icon" />
+                                <span class="meta-text">{{ article.commentCount || 0 }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <icon-user class="meta-icon" />
+                                <span class="meta-text">{{ article.author }}</span>
+                            </div>
                         </div>
-                        <div class="meta-item">
-                            <icon-message class="meta-icon" />
-                            <span class="meta-text">{{ article.commentCount || 0 }}</span>
-                        </div>
-                        <div class="meta-item">
-                            <icon-user class="meta-icon" />
-                            <span class="meta-text">{{ article.author }}</span>
+                        <div class="meta-right">
+                            <div class="meta-item">
+                                <icon-calendar class="meta-icon" />
+                                <span class="meta-text">{{ formatDate(article.date) }}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="article-item-desc">
@@ -45,7 +53,7 @@
 </template>
 
 <script lang="ts" setup name="BasicItemCard">
-import { IconEye, IconUser, IconMessage } from '@arco-design/web-vue/es/icon'
+import { IconEye, IconUser, IconMessage, IconCalendar } from '@arco-design/web-vue/es/icon'
 import type { PropType } from 'vue'
 
 defineProps({
@@ -94,6 +102,16 @@ function tagColor(tag: string) {
         default:
             return 'orange'
     }
+}
+
+// 添加日期格式化函数
+function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
 }
 </script>
 
@@ -216,14 +234,25 @@ function tagColor(tag: string) {
 
 .article-item-meta {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
     font-size: 13px;
     color: #888; 
     margin-bottom: 14px;
     padding: 12px 0;
     position: relative;
     border-bottom: 1px dashed #ddd;
+}
+
+.meta-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.meta-right {
+    display: flex;
+    align-items: center;
 }
 
 .meta-item {

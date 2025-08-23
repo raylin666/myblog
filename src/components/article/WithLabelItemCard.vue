@@ -10,7 +10,7 @@
                     :src="article.cover"
                     />
                     <div class="cover-tag">{{ article.tagName }}</div>
-                    <div class="cover-date">{{ article.date }}</div>
+                    <div class="cover-date"><icon-calendar /> {{ article.date }}</div>
                 </div>
                 </template>
                 <a-card-meta>
@@ -43,6 +43,7 @@
 </template>
 
 <script lang="ts" setup name="WithLabelItemCard">
+import { IconEye, IconUser, IconMessage, IconCalendar } from '@arco-design/web-vue/es/icon'
 import type { PropType } from 'vue'
 
 defineProps({
