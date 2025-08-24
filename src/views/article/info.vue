@@ -462,7 +462,7 @@ function tagColor(tag: string) {
 }
 
 .cover-meta .meta-item .meta-number {
-    color: #e32694;
+    color: var(--primary-color);
     font-weight: 800;
 }
 
