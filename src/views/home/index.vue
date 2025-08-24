@@ -68,6 +68,7 @@ const recommendArticles = ref([
         date: '2023-11-05',
         viewCount: '1.2K',
         author: '林山',
+        category: '系统架构',
         tags: ['JavaScript', '前端', '技术'],
         description: '本文详细介绍了Vue 3 Composition API的使用技巧和最佳实践，帮助开发者更好地组织组件逻辑...'
     },
@@ -79,6 +80,7 @@ const recommendArticles = ref([
         date: '2023-11-05',
         viewCount: '856',
         author: '林山',
+        category: 'JavaScript',
         tags: ['CSS', '前端', '教程'],
         description: '详细介绍JavaScript闭包的概念、使用场景以及常见误区，帮助开发者深入理解这一重要概念...'
     }

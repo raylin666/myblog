@@ -9,7 +9,6 @@
                         alt="article cover"
                         :src="article.cover"
                         />
-                        <!-- 添加文章分类标签 -->
                         <div class="category-tag" v-if="article.category">
                             {{ article.category }}
                         </div>
@@ -170,7 +169,7 @@ function formatDate(dateString: string): string {
     font-size: 12px;
     border-radius: 0 4px 4px 0;
     z-index: 2;
-    transform: rotate(30deg);
+    transform: rotate(35deg);
     text-align: center;
     min-width: 80px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

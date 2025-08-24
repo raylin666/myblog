@@ -10,7 +10,9 @@
                     :src="article.cover"
                     />
                     <div class="cover-tag">{{ article.tagName }}</div>
-                    <div class="cover-date"><icon-calendar /> {{ article.date }}</div>
+                    <div class="category-tag" v-if="article.category">
+                        {{ article.category }}
+                    </div>
                 </div>
                 </template>
                 <a-card-meta>
@@ -27,6 +29,9 @@
                         </span>
                         <span class="article-author">
                             <icon-user /> {{ article.author }}
+                        </span>
+                        <span class="article-date">
+                            <icon-calendar /> {{ article.date }}
                         </span>
                     </div>
                     <div class="article-tags">
@@ -59,6 +64,7 @@ defineProps({
       tags: string[]
       description: string
       commentCount?: number
+      category?: string  // 添加分类属性
     }>,
     required: true
   }
@@ -216,6 +222,23 @@ function tagColor(tag: string) {
     color: #333;
 }
 
+.category-tag {
+    position: absolute;
+    top: 12px;
+    right: -24px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 20px 4px 12px;
+    font-size: 12px;
+    border-radius: 0 4px 4px 0;
+    z-index: 2;
+    transform: rotate(35deg);
+    text-align: center;
+    min-width: 80px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+
 .article-title {
     font-size: 22px;
     font-weight: 800;
@@ -279,8 +302,9 @@ function tagColor(tag: string) {
     font-size: 14px;
     color: #718096;
     margin-bottom: 16px;
-    padding-bottom: 16px;
     position: relative;
+    justify-content: space-between;
+    padding-bottom: 20px;
 }
 
 .article-meta::after {
@@ -301,14 +325,23 @@ function tagColor(tag: string) {
     vertical-align: middle;
 }
 
-.read-count, .article-author, .comment-count {
+.read-count, .article-author, .comment-count, .article-date {
     display: flex;
     align-items: center;
     gap: 6px;
     transition: all 0.3s ease;
 }
 
-.read-count:hover, .comment-count:hover {
+.read-count, .article-author, .comment-count {
+    flex-shrink: 0;
+}
+
+.article-date {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.read-count:hover, .comment-count:hover, .article-date:hover {
     color: var(--primary-color);
     transform: translateY(-2px);
 
