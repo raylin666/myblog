@@ -98,7 +98,7 @@ function tagColor(tag: string) {
 
 <style scoped>
 .article-card {
-    padding: 0px 16px 0px 0px;
+    padding: 0px 20px 0px 0px;
 }
 
 .card-link {

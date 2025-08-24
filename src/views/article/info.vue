@@ -1,15 +1,13 @@
 <template>
-    <ContentRow>
-        <a-row class="content">
-            <a-col :span="24" class="article-banner">
-                <!-- 文章封面区域 -->
-                <div class="article-cover">
-                    <img :src="coverImage" alt="文章封面" class="cover-image" />
-                </div>
-            </a-col>
+    <a-row class="content">
+        <a-col :span="24" class="article-banner">
+            <div class="article-cover">
+                <img :src="coverImage" alt="文章封面" class="cover-image" />
+            </div>
+        </a-col>
 
+        <ContentRow>
             <a-col :span="18" class="article">
-                <!-- 文章标题和meta信息移到这里 -->
                 <h1 class="article-title">{{ article.title }}</h1>
                 <div class="article-meta">
                     <span class="meta-item">
@@ -42,8 +40,8 @@
             <a-col :span="6" id="side-main">
                 <Side />
             </a-col>
-        </a-row>
-    </ContentRow>
+        </ContentRow>
+    </a-row>
     
     <!-- 屏幕中间两侧的导航按钮 -->
     <div class="fixed-navigation">
@@ -76,14 +74,108 @@ import { ContentRow, Side } from '@/components'
 import { useNProgress } from '@/hooks/useNProgress'
 
 const article = ref({
-    title: 'App Store Server API 实践总结',
-    content: '<p>这里是富文本文章内容...</p>'.repeat(20),
+    title: '分布式系统架构设计与实践',
+    content: `
+    <h2>引言</h2>
+    <p>随着互联网业务的快速发展，单一应用架构已经无法满足日益增长的用户需求。分布式系统架构作为一种可扩展、高可用的解决方案，逐渐成为大型互联网应用的首选架构模式。</p>
+    
+    <h2>什么是分布式系统</h2>
+    <p>分布式系统是由一组独立的计算机组成的系统，这些计算机通过网络互联，对外表现为一个统一的整体。其主要特征包括：</p>
+    <ul>
+        <li><strong>透明性</strong>：用户无需知道资源的物理位置</li>
+        <li><strong>扩展性</strong>：可以通过增加节点来提升系统性能</li>
+        <li><strong>容错性</strong>：单个节点故障不会导致整个系统瘫痪</li>
+        <li><strong>并发性</strong>：多个节点可以同时处理请求</li>
+    </ul>
+    
+    <h2>分布式系统的核心挑战</h2>
+    <h3>1. 数据一致性</h3>
+    <p>在分布式环境中，如何保证多个节点间数据的一致性是一个核心问题。常见的解决方案包括：</p>
+    <ul>
+        <li>两阶段提交（2PC）</li>
+        <li>三阶段提交（3PC）</li>
+        <li>Paxos算法</li>
+        <li>Raft算法</li>
+    </ul>
+    
+    <h3>2. 服务拆分与治理</h3>
+    <p>微服务架构是当前主流的分布式系统设计模式，其优势在于：</p>
+    <ul>
+        <li>服务独立部署和升级</li>
+        <li>技术栈多样化</li>
+        <li>团队自治</li>
+        <li>故障隔离</li>
+    </ul>
+    
+    <h3>3. 分布式事务</h3>
+    <p>分布式事务的实现方案主要包括：</p>
+    <ul>
+        <li><strong>XA协议</strong>：基于两阶段提交的分布式事务解决方案</li>
+        <li><strong>TCC模式</strong>：Try-Confirm-Cancel的补偿型事务</li>
+        <li><strong>Saga模式</strong>：长事务解决方案</li>
+        <li><strong>本地消息表</strong>：通过消息队列实现最终一致性</li>
+    </ul>
+    
+    <h2>分布式系统设计模式</h2>
+    <h3>1. 负载均衡</h3>
+    <p>负载均衡是分布式系统中的基础组件，常见的负载均衡策略包括：</p>
+    <ul>
+        <li>轮询（Round Robin）</li>
+        <li>加权轮询（Weighted Round Robin）</li>
+        <li>最少连接（Least Connections）</li>
+        <li>IP哈希（IP Hash）</li>
+    </ul>
+    
+    <h3>2. 服务注册与发现</h3>
+    <p>服务注册与发现机制是微服务架构的核心组件，常用的解决方案有：</p>
+    <ul>
+        <li>Eureka（Netflix开源）</li>
+        <li>Consul（HashiCorp）</li>
+        <li>Nacos（阿里巴巴）</li>
+        <li>etcd（CoreOS）</li>
+    </ul>
+    
+    <h3>3. 熔断与降级</h3>
+    <p>为提高系统的稳定性和容错能力，需要实现熔断和降级机制：</p>
+    <ul>
+        <li><strong>熔断器模式</strong>：当服务调用失败率达到阈值时，暂时切断调用</li>
+        <li><strong>降级策略</strong>：在系统压力过大时，关闭非核心功能</li>
+    </ul>
+    
+    <h2>分布式缓存策略</h2>
+    <p>缓存是提升系统性能的重要手段，在分布式环境下需要考虑：</p>
+    <ul>
+        <li>缓存一致性</li>
+        <li>缓存穿透</li>
+        <li>缓存雪崩</li>
+        <li>缓存击穿</li>
+    </ul>
+    
+    <h2>分布式锁实现</h2>
+    <p>在分布式环境中，需要通过分布式锁来保证数据一致性：</p>
+    <ul>
+        <li>基于数据库实现</li>
+        <li>基于Redis实现</li>
+        <li>基于Zookeeper实现</li>
+    </ul>
+    
+    <h2>监控与追踪</h2>
+    <p>分布式系统的可观测性至关重要：</p>
+    <ul>
+        <li><strong>日志收集</strong>：集中式日志管理（ELK）</li>
+        <li><strong>指标监控</strong>：Prometheus + Grafana</li>
+        <li><strong>链路追踪</strong>：Zipkin、SkyWalking</li>
+    </ul>
+    
+    <h2>总结</h2>
+    <p>分布式系统架构虽然带来了复杂性，但其在可扩展性、高可用性方面的优势使其成为构建大型互联网应用的必然选择。在实际应用中，需要根据业务特点选择合适的架构模式和技术方案。</p>
+    `,
     cover: '/src/assets/articleCover.png',
-    date: '2023-06-15',
-    category: '技术文章',
-    tags: ['Vue', '前端开发', 'UI设计'],
-    wordCount: 2560,
-    views: 1245
+    date: '2023-07-20',
+    category: '架构设计',
+    tags: ['分布式系统', '微服务', '架构设计'],
+    wordCount: 3200,
+    views: 2560
 })
 
 const prevArticle = ref({
@@ -111,12 +203,14 @@ useNProgress()
 </script>
 
 <style scoped>
+.article {
+    padding-right: 20px;
+}
+
 .article-cover {
     position: relative;
-    margin-bottom: 1rem;
     height: 400px;
     overflow: hidden;
-    border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -176,6 +270,27 @@ useNProgress()
 .article-content {
     line-height: 1.8;
     font-size: 1.1rem;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+    margin: 1.5rem 0 1rem;
+    color: #333;
+}
+
+.article-content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.article-content ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
 }
 
 .fixed-navigation {

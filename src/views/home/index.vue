@@ -1,8 +1,6 @@
 <template>
     <TopBanner v-bind="{ aimPositionId: 'index-main' }" />
 
-    <br />
-
     <div id="index-main">
         <ContentRow>
             <a-col :span="18" class="article">
@@ -252,11 +250,15 @@ const paginatedArticles = computed(() => {
 </script>
 
 <style scoped>
+#index-article-category {
+    margin-right: 10px;
+}
+
 .article-list-item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    padding: 0 10px 0 0;
+    padding: 0 16px 0 0;
 }
 
 .pagination-container {
