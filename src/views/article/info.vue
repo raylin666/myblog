@@ -1,8 +1,33 @@
 <template>
     <a-row class="content">
         <a-col :span="24" class="article-banner">
-            <div class="article-cover">
+            <div class="article-cover" ref="coverRef">
                 <img :src="coverImage" alt="文章封面" class="cover-image" />
+                <!-- 恢复下雨效果 -->
+                <div class="rain-effect">
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                    <div class="rain"></div>
+                </div>
+                <!-- 文章标题显示在封面中央 -->
+                <div class="cover-title">{{ article.title }}</div>
             </div>
         </a-col>
 
@@ -68,7 +93,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ContentRow, Side } from '@/components'
 import { useNProgress } from '@/hooks/useNProgress'
@@ -198,15 +223,14 @@ const navigateTo = (id: string) => {
 const showPrevTitle = ref(false)
 const showNextTitle = ref(false)
 
+const coverRef = ref<HTMLElement | null>(null)
+
 // 使用封装的NProgress hooks
 useNProgress()
+
 </script>
 
 <style scoped>
-.article {
-    padding-right: 20px;
-}
-
 .article-cover {
     position: relative;
     height: 400px;
@@ -224,6 +248,88 @@ useNProgress()
 .article-cover:hover .cover-image {
     transform: scale(1.05);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.rain-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.rain {
+    position: absolute;
+    top: -20px;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.8));
+    border-radius: 0 0 2px 2px;
+    animation: rainFall var(--duration, 3s) linear infinite var(--delay, 0s);
+    z-index: 1;
+}
+
+/* 为每个雨滴设置不同的位置、延迟和持续时间 */
+.rain:nth-child(1) { --delay: 0s; --duration: 1.2s; left: 5%; }
+.rain:nth-child(2) { --delay: 0.3s; --duration: 1.7s; left: 15%; }
+.rain:nth-child(3) { --delay: 0.6s; --duration: 1.4s; left: 25%; }
+.rain:nth-child(4) { --delay: 0.1s; --duration: 1.6s; left: 35%; }
+.rain:nth-child(5) { --delay: 0.9s; --duration: 1.3s; left: 45%; }
+.rain:nth-child(6) { --delay: 0.4s; --duration: 1.8s; left: 55%; }
+.rain:nth-child(7) { --delay: 0.7s; --duration: 1.5s; left: 65%; }
+.rain:nth-child(8) { --delay: 0.2s; --duration: 1.9s; left: 75%; }
+.rain:nth-child(9) { --delay: 0.5s; --duration: 1.1s; left: 85%; }
+.rain:nth-child(10) { --delay: 0.8s; --duration: 1.6s; left: 95%; }
+.rain:nth-child(11) { --delay: 0.1s; --duration: 1.3s; left: 10%; }
+.rain:nth-child(12) { --delay: 0.6s; --duration: 1.7s; left: 20%; }
+.rain:nth-child(13) { --delay: 0.9s; --duration: 1.2s; left: 30%; }
+.rain:nth-child(14) { --delay: 0.3s; --duration: 1.8s; left: 40%; }
+.rain:nth-child(15) { --delay: 0.7s; --duration: 1.4s; left: 50%; }
+.rain:nth-child(16) { --delay: 0.2s; --duration: 1.6s; left: 60%; }
+.rain:nth-child(17) { --delay: 0.5s; --duration: 1.9s; left: 70%; }
+.rain:nth-child(18) { --delay: 0.8s; --duration: 1.1s; left: 80%; }
+.rain:nth-child(19) { --delay: 0.4s; --duration: 1.5s; left: 90%; }
+.rain:nth-child(20) { --delay: 0s; --duration: 1.7s; left: 50%; top: -40px; height: 30px; }
+
+@keyframes rainFall {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(420px) translateX(5px);
+        opacity: 0;
+    }
+}
+
+.cover-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    width: 80%;
+    line-height: 1.3;
+    transition: all 1s ease;
+}
+
+.article-cover:hover .cover-title {
+    transform: translate(-50%, -50%) scale(1.05);
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.9), 0 4px 30px rgba(0, 0, 0, 0.9);
 }
 
 .article-title {
@@ -362,3 +468,4 @@ useNProgress()
     max-width: 500px;
 }
 </style>
+
