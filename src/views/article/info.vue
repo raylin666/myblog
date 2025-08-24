@@ -53,7 +53,7 @@
                 @click="navigateTo(prevArticle.id)"
                 class="fixed-nav-button prev"
             >
-                <span class="nav-arrow">←</span>
+                <span class="nav-text">上一篇</span>
             </a-button>
         </a-tooltip>
         
@@ -63,7 +63,7 @@
                 @click="navigateTo(nextArticle.id)"
                 class="fixed-nav-button next"
             >
-                <span class="nav-arrow">→</span>
+                <span class="nav-text">下一篇</span>
             </a-button>
         </a-tooltip>
     </div>
@@ -189,11 +189,10 @@ useNProgress()
 
 .fixed-nav-button {
     position: relative;
-    width: 60px;
-    height: 60px;
-    padding: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3); /* 降低透明度 */
+    min-width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 20px;
     backdrop-filter: blur(10px);
     color: var(--text-color);
     font-weight: bold;
@@ -204,6 +203,9 @@ useNProgress()
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     z-index: 1001; /* 提高z-index确保按钮在上层 */
     pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .fixed-nav-button::before {
@@ -213,7 +215,7 @@ useNProgress()
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--gradient-base-0), var(--gradient-base-1));
+    background-color: #232324;
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
@@ -224,19 +226,18 @@ useNProgress()
 }
 
 .fixed-nav-button:hover {
-    transform: translateY(-3px) scale(1.1);
+    transform: translateY(-3px);
     color: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.nav-arrow {
-    font-size: 2.2rem;
-    line-height: 60px;
+.nav-text {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
     transition: transform 0.3s ease;
 }
-
-.fixed-nav-button:hover .nav-arrow {
-    transform: scale(1.1);
-}
-
 </style>
+
