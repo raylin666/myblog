@@ -133,7 +133,6 @@ function formatDate(dateString: string): string {
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* background: linear-gradient(145deg, #ffffff, #f0f0f0); */
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
     height: 100%;
     display: flex;
@@ -281,7 +280,6 @@ function formatDate(dateString: string): string {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    /* 限制标签区域高度 */
     max-height: 60px;
     overflow: hidden;
 }
@@ -289,7 +287,7 @@ function formatDate(dateString: string): string {
 .article-item-tags :deep(.arco-tag) {
     margin-right: 0 !important;
     font-size: 11px; 
-    padding: 0 6px; 
+    padding: 4px 12px; 
     border-radius: 8px; 
     transition: all 0.3s ease;
 }

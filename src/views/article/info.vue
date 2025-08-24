@@ -3,7 +3,6 @@
         <a-col :span="24" class="article-banner">
             <div class="article-cover" ref="coverRef">
                 <img :src="coverImage" alt="文章封面" class="cover-image" />
-                <!-- 恢复下雨效果 -->
                 <div class="rain-effect">
                     <div class="rain"></div>
                     <div class="rain"></div>
@@ -28,37 +27,43 @@
                 </div>
                 <!-- 文章标题显示在封面中央 -->
                 <div class="cover-title">{{ article.title }}</div>
+                
+                <!-- 文章分类显示在封面左上角 -->
+                <div class="cover-category">{{ article.category }}</div>
+                
+                <!-- 发布时间显示在封面右上角 -->
+                <div class="publish-date">
+                   <icon-calendar />
+                    {{ article.date || '2023-01-01' }}
+                </div>
+
+                <!-- 将标签移到封面图内，放在顶部 -->
+                <div class="cover-tags">
+                    <a-tag v-for="tag in article.tags" :key="tag" :color="tagColor(tag)">{{ tag }}</a-tag>
+                </div>
+
+                <!-- 新增：文章信息显示在封面图内 -->
+                <div class="cover-meta">
+                    <span class="meta-item">
+                        <icon-user /> {{ article.author }}
+                    </span>
+                    <span class="meta-item">
+                        <icon-eye /> <span class="meta-number">{{ article.viewCount || '0' }}</span> 阅读量
+                    </span>
+                    <span class="meta-item">
+                        <icon-message /> <span class="meta-number">{{ article.commentCount || 0 }}</span> 评论数
+                    </span>
+                    <span class="meta-item">
+                        <icon-translate /> <span class="meta-number">{{ article.wordCount || '0' }}</span> 字数
+                    </span>
+                    
+                </div>
             </div>
         </a-col>
 
         <ContentRow>
             <a-col :span="18" class="article">
-                <div class="article-meta">
-                    <span class="meta-item">
-                        <i class="far fa-calendar-alt"></i>
-                        {{ article.date || '2023-01-01' }}
-                    </span>
-                    <span class="meta-item">
-                        <i class="far fa-folder"></i>
-                        {{ article.category || '未分类' }}
-                    </span>
-                    <span class="meta-item">
-                        <i class="far fa-tags"></i>
-                        {{ article.tags?.join(' · ') || '无标签' }}
-                    </span>
-                    <span class="meta-item">
-                        <i class="far fa-file-word"></i>
-                        {{ article.wordCount || '0' }}字
-                    </span>
-                    <span class="meta-item">
-                        <i class="far fa-eye"></i>
-                        {{ article.views || '0' }}阅读
-                    </span>
-                </div>
-                
-                <!-- 文章内容区域 -->
                 <div class="article-content" v-html="article.content"></div>
-
             </a-col>
 
             <a-col :span="6" id="side-main">
@@ -93,11 +98,13 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { IconEye, IconUser, IconMessage, IconCalendar, IconTranslate } from '@arco-design/web-vue/es/icon'
 import { useRouter } from 'vue-router'
 import { ContentRow, Side } from '@/components'
 import { useNProgress } from '@/hooks/useNProgress'
 
 const article = ref({
+    author: '林山',
     title: '分布式系统架构设计与实践',
     content: `
     <h2>引言</h2>
@@ -197,9 +204,10 @@ const article = ref({
     cover: '/src/assets/articleCover.png',
     date: '2023-07-20',
     category: '架构设计',
-    tags: ['分布式系统', '微服务', '架构设计'],
+    tags: ['前端', 'JavaScript', '架构'],
+    commentCount: 12,
     wordCount: 3200,
-    views: 2560
+    viewCount: 2560,
 })
 
 const prevArticle = ref({
@@ -227,12 +235,71 @@ const coverRef = ref<HTMLElement | null>(null)
 // 使用封装的NProgress hooks
 useNProgress()
 
+function tagColor(tag: string) {
+    switch (tag) {
+        case 'Vue':
+            return 'blue'
+        case '前端':
+            return 'green'
+        case '教程':
+            return 'orange'
+        case 'UI/UX':
+            return 'purple'
+        case '设计':
+            return 'red'
+        case 'CSS':
+            return 'cyan'
+        case 'JavaScript':
+            return 'arcoblue'
+        case 'React':
+            return 'green'
+        case '性能':
+            return 'purple'
+        case 'TypeScript':
+            return 'cyan'
+        case '架构':
+            return 'blue'
+        case '微前端':
+            return 'arcoblue'
+        default:
+            return 'orange'
+    }
+}
 </script>
 
 <style scoped>
+.cover-tags {
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 60%;
+    cursor: pointer;
+}
+
+.cover-tags :deep(.arco-tag) {
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.cover-tags :deep(.arco-tag):hover {
+    transform: translateY(-2px);
+}
+
 .article-cover {
     position: relative;
-    height: 400px;
+    height: 460px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -242,11 +309,13 @@ useNProgress()
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0.9; /* 添加透明效果 */
 }
 
 .article-cover:hover .cover-image {
     transform: scale(1.05);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    opacity: 1; /* 悬停时恢复不透明 */
 }
 
 .rain-effect {
@@ -312,7 +381,7 @@ useNProgress()
 
 .cover-title {
     position: absolute;
-    top: 50%;
+    top: 40%; /* 调整标题位置，为meta信息留出空间 */
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -330,6 +399,71 @@ useNProgress()
 .article-cover:hover .cover-title {
     transform: translate(-50%, -50%) scale(1.05);
     text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.cover-category {
+    position: absolute;
+    top: 20px;
+    left: -40px;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--gradient-base-0) 0%, var(--gradient-base-1) 100%);
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 3;
+    transform: rotate(-45deg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.publish-date {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cover-meta {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.9rem;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.2); /* 半透明背景 */
+    border-radius: 20px;
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cover-meta .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.cover-meta .meta-item .meta-number {
+    color: #e32694;
+    font-weight: 800;
 }
 
 .article-meta {

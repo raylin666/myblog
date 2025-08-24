@@ -328,7 +328,7 @@ function tagColor(tag: string) {
 .article-tags :deep(.arco-tag) {
     margin-right: 0 !important;
     border-radius: 20px;
-    padding: 2px 14px;
+    padding: 6px 16px;
     font-size: 13px;
     font-weight: 500;
     border: none;
