@@ -33,7 +33,6 @@
 
         <ContentRow>
             <a-col :span="18" class="article">
-                <h1 class="article-title">{{ article.title }}</h1>
                 <div class="article-meta">
                     <span class="meta-item">
                         <i class="far fa-calendar-alt"></i>
@@ -93,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ContentRow, Side } from '@/components'
 import { useNProgress } from '@/hooks/useNProgress'
@@ -325,31 +324,12 @@ useNProgress()
     width: 80%;
     line-height: 1.3;
     transition: all 1s ease;
+    cursor: pointer;
 }
 
 .article-cover:hover .cover-title {
     transform: translate(-50%, -50%) scale(1.05);
-    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.9), 0 4px 30px rgba(0, 0, 0, 0.9);
-}
-
-.article-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-align: center;
-    margin: 1.5rem 0 2rem;
-    color: var(--text-color);
-    line-height: 1.3;
-    letter-spacing: -0.5px;
-}
-
-.article-title::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: var(--primary-color);
-    margin: 1.5rem auto 0;
-    border-radius: 2px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .article-meta {
