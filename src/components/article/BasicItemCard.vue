@@ -9,6 +9,10 @@
                         alt="article cover"
                         :src="article.cover"
                         />
+                        <!-- 添加文章分类标签 -->
+                        <div class="category-tag" v-if="article.category">
+                            {{ article.category }}
+                        </div>
                         <div class="cover-overlay"></div>
                     </div>
                 </template>
@@ -68,6 +72,7 @@ defineProps({
       tags: string[]
       description: string
       commentCount?: number
+      category?: string  // 添加分类属性
     }>,
     required: true
   }
@@ -153,6 +158,23 @@ function formatDate(dateString: string): string {
 .cover-container {
     position: relative;
     overflow: hidden;
+}
+
+.category-tag {
+    position: absolute;
+    top: 12px;
+    right: -24px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 20px 4px 12px;
+    font-size: 12px;
+    border-radius: 0 4px 4px 0;
+    z-index: 2;
+    transform: rotate(30deg);
+    text-align: center;
+    min-width: 80px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
 }
 
 .cover-container:hover .cover-overlay {

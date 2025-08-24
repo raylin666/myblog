@@ -93,6 +93,7 @@ const articles = ref([
         date: '2023-11-05',
         viewCount: '856',
         author: '林山',
+        category: '前端',
         tags: ['JavaScript', '前端', '技术'],
         description: '详细介绍JavaScript闭包的概念、使用场景以及常见误区，帮助开发者深入理解这一重要概念...'
     },
@@ -103,6 +104,7 @@ const articles = ref([
         date: '2023-11-01',
         viewCount: '1.5K',
         author: '林山',
+        category: '客户端',
         tags: ['CSS', '前端', '教程'],
         description: '全面介绍CSS Grid布局的使用方法，包括网格容器、网格项、对齐方式等核心概念和实际应用...'
     },
@@ -113,6 +115,7 @@ const articles = ref([
         date: '2023-10-28',
         viewCount: '2.1K',
         author: '林山',
+        category: 'JavaScript',
         tags: ['React', '前端', '技术'],
         description: '深入解析React Hooks的使用方法，包括useState、useEffect等常用Hooks的使用技巧和最佳实践...'
     },
@@ -123,6 +126,7 @@ const articles = ref([
         date: '2023-10-25',
         viewCount: '1.8K',
         author: '林山',
+        category: '系统架构',
         tags: ['Node.js', '后端', '性能'],
         description: '分享Node.js性能优化的实用技巧，包括内存管理、异步处理、缓存策略等方面的优化方案...'
     },
@@ -133,6 +137,7 @@ const articles = ref([
         date: '2023-10-20',
         viewCount: '1.3K',
         author: '林山',
+        category: '系统架构',
         tags: ['TypeScript', '前端', '教程'],
         description: '详细介绍TypeScript中的高级类型概念，包括泛型、条件类型、映射类型等高级特性的使用...'
     },
@@ -143,6 +148,7 @@ const articles = ref([
         date: '2023-10-15',
         viewCount: '2.7K',
         author: '林山',
+        category: '系统架构',
         tags: ['架构', '前端', '微前端'],
         description: '探讨微前端架构的设计理念和实现方案，包括主流微前端框架的对比和实际项目应用经验...'
     },
@@ -153,6 +159,7 @@ const articles = ref([
         date: '2023-10-15',
         viewCount: '2.7K',
         author: '林山',
+        category: '系统架构',
         tags: ['架构', '前端', '微前端'],
         description: '探讨微前端架构的设计理念和实现方案，包括主流微前端框架的对比和实际项目应用经验...'
     },
@@ -163,6 +170,7 @@ const articles = ref([
         date: '2023-11-05',
         viewCount: '856',
         author: '林山',
+        category: '系统架构',
         tags: ['JavaScript', '前端', '技术'],
         description: '详细介绍JavaScript闭包的概念、使用场景以及常见误区，帮助开发者深入理解这一重要概念...'
     },
@@ -173,6 +181,7 @@ const articles = ref([
         date: '2023-11-01',
         viewCount: '1.5K',
         author: '林山',
+        category: '系统架构',
         tags: ['CSS', '前端', '教程'],
         description: '全面介绍CSS Grid布局的使用方法，包括网格容器、网格项、对齐方式等核心概念和实际应用...'
     },
@@ -183,6 +192,7 @@ const articles = ref([
         date: '2023-10-28',
         viewCount: '2.1K',
         author: '林山',
+        category: '系统架构',
         tags: ['React', '前端', '技术'],
         description: '深入解析React Hooks的使用方法，包括useState、useEffect等常用Hooks的使用技巧和最佳实践...'
     },
@@ -193,6 +203,7 @@ const articles = ref([
         date: '2023-10-25',
         viewCount: '1.8K',
         author: '林山',
+        category: '系统架构',
         tags: ['Node.js', '后端', '性能'],
         description: '分享Node.js性能优化的实用技巧，包括内存管理、异步处理、缓存策略等方面的优化方案...'
     },
@@ -203,6 +214,7 @@ const articles = ref([
         date: '2023-10-20',
         viewCount: '1.3K',
         author: '林山',
+        category: '系统架构',
         tags: ['TypeScript', '前端', '教程'],
         description: '详细介绍TypeScript中的高级类型概念，包括泛型、条件类型、映射类型等高级特性的使用...'
     },
@@ -213,6 +225,7 @@ const articles = ref([
         date: '2023-10-15',
         viewCount: '2.7K',
         author: '林山',
+        category: '系统架构',
         tags: ['架构', '前端', '微前端'],
         description: '探讨微前端架构的设计理念和实现方案，包括主流微前端框架的对比和实际项目应用经验...'
     },
@@ -223,6 +236,7 @@ const articles = ref([
         date: '2023-10-15',
         viewCount: '2.7K',
         author: '林山',
+        category: '系统架构',
         tags: ['架构', '前端', '微前端'],
         description: '探讨微前端架构的设计理念和实现方案，包括主流微前端框架的对比和实际项目应用经验...'
     }
