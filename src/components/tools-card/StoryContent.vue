@@ -62,14 +62,8 @@ const getNewStory = () => {
     background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
-    border: 1px solid #d1d7e0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: 1px solid #efefef;
     transition: all 0.3s ease;
-}
-
-.story-content:hover {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
 }
 
 .story-footer {

@@ -63,7 +63,9 @@
 
         <ContentRow>
             <a-col :span="18" class="article">
-                <div class="article-content" v-html="article.content"></div>
+                <a-card class="article-content-card">
+                    <div class="article-content" v-html="article.content"></div>
+                </a-card>
             </a-col>
 
             <a-col :span="6" id="side-main">
@@ -485,6 +487,12 @@ function tagColor(tag: string) {
 
 .meta-item i {
     color: var(--primary-color);
+}
+
+.article-content-card {
+    margin-right: 16px;
+    border-radius: 8px;
+    border: 1px solid #f9f8f8;
 }
 
 .article-content {

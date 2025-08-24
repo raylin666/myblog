@@ -84,7 +84,7 @@ const latestComments = ref([
     border-radius: 8px;
     font-size: 13px;
     transition: all 0.2s ease;
-    border: 1px solid #e1e5eb;
+    border: 1px solid #efefef;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
