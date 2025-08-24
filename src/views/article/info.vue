@@ -47,25 +47,25 @@
     
     <!-- 屏幕中间两侧的导航按钮 -->
     <div class="fixed-navigation">
-        <a-tooltip :content="prevArticle.title" position="right">
-            <a-button
-                v-if="prevArticle" 
-                @click="navigateTo(prevArticle.id)"
-                class="fixed-nav-button prev"
-            >
-                <span class="nav-text">上一篇</span>
-            </a-button>
-        </a-tooltip>
+        <a-button
+            v-if="prevArticle" 
+            @click="navigateTo(prevArticle.id)"
+            class="fixed-nav-button prev"
+            @mouseenter="showPrevTitle = true"
+            @mouseleave="showPrevTitle = false"
+        >
+            <span class="nav-text">{{ showPrevTitle ? prevArticle.title : '上一篇' }}</span>
+        </a-button>
         
-        <a-tooltip :content="nextArticle.title" position="left">
-            <a-button
-                v-if="nextArticle" 
-                @click="navigateTo(nextArticle.id)"
-                class="fixed-nav-button next"
-            >
-                <span class="nav-text">下一篇</span>
-            </a-button>
-        </a-tooltip>
+        <a-button
+            v-if="nextArticle" 
+            @click="navigateTo(nextArticle.id)"
+            class="fixed-nav-button next"
+            @mouseenter="showNextTitle = true"
+            @mouseleave="showNextTitle = false"
+        >
+            <span class="nav-text">{{ showNextTitle ? nextArticle.title : '下一篇' }}</span>
+        </a-button>
     </div>
 </template>
 
@@ -102,6 +102,9 @@ const router = useRouter()
 const navigateTo = (id: string) => {
     router.push(`/article/${id}`)
 }
+
+const showPrevTitle = ref(false)
+const showNextTitle = ref(false)
 
 // 使用封装的NProgress hooks
 useNProgress()
@@ -236,8 +239,11 @@ useNProgress()
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
-    transition: transform 0.3s ease;
+    max-width: 80px;
+    transition: all 1.2s ease-in-out;
+}
+
+.fixed-nav-button:hover .nav-text {
+    max-width: 500px;
 }
 </style>
-
