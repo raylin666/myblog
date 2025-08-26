@@ -36,10 +36,10 @@ const getNewStory = () => {
 .sidebar-module {
     background: var(--background-secondary);
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
     margin-top: 20px;
     color: var(--text-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); */
 }
 
 .module-title {
