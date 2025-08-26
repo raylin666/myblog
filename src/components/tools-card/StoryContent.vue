@@ -51,7 +51,6 @@ const getNewStory = () => {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* 每日小故事样式 */
 .story-content {
     font-size: 14px;
     line-height: 1.6;
