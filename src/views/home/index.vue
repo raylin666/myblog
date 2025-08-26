@@ -33,7 +33,7 @@
                 </a-row>
             </a-col>
 
-            <a-col :span="6" id="side-main">
+            <a-col :span="6" class="side-container">
                 <Side />
             </a-col>
         </ContentRow>

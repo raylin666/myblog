@@ -23,7 +23,6 @@
                     <div class="rain"></div>
                     <div class="rain"></div>
                     <div class="rain"></div>
-                    <div class="rain"></div>
                 </div>
                 <!-- 文章标题显示在封面中央 -->
                 <div class="cover-title">{{ article.title }}</div>
@@ -68,7 +67,7 @@
                 </a-card>
             </a-col>
 
-            <a-col :span="6" id="side-main">
+            <a-col :span="6" class="side-container">
                 <Side />
             </a-col>
         </ContentRow>
@@ -590,4 +589,3 @@ function tagColor(tag: string) {
     max-width: 500px;
 }
 </style>
-

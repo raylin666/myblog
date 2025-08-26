@@ -70,3 +70,15 @@ html, body, #app {
   background: var(--primary-color-hover);
   border-radius: 8px;
 }
+
+/**
+ * 侧边栏样式定制，使用时在侧边栏上层布局使用该class类即可，有代码使用示例。
+ * 使其可以跟随滚动条移动（仅在侧边栏高度超出屏幕时生效），实现侧边栏的粘性定位效果。
+ * 注意：此处使用了 flex 布局，确保侧边栏始终占据固定空间，不会因为内容溢出而影响滚动条的正常显示 (避免在业务代码也使用该类名进行样式定义覆盖)。
+ */
+ .side-container {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  align-self: flex-start;
+}

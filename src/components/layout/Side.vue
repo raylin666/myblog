@@ -1,19 +1,15 @@
 <template>
-    <div class="side">
-        
-        <!-- 用户详情模块 -->
-        <ToolsCardUserDetail />
+    <!-- 用户详情模块 -->
+    <ToolsCardUserDetail />
 
-        <!-- 最新评论模块 -->
-        <ToolsCardCommentList />
+    <!-- 最新评论模块 -->
+    <ToolsCardCommentList />
 
-        <!-- 标签云模块 -->
-        <ToolsCardTagCloud />
+    <!-- 标签云模块 -->
+    <ToolsCardTagCloud />
 
-        <!-- 每日小故事模块 -->
-        <ToolsCardStoryContent />
-
-    </div>
+    <!-- 每日小故事模块 -->
+    <ToolsCardStoryContent />
 </template>
 
 <script setup lang="ts" name="Side">
