@@ -9,7 +9,7 @@
       </div>
 
       <!-- 返回顶部按钮 -->
-      <a-back-top target-container="#content-container" :style="{ position:'fixed', right:'70px', bottom:'50px' }" >
+      <a-back-top target-container="#content-container" :style="{ position:'fixed', right:'75px', bottom:'30px' }" >
         <div class="rocket-container" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" ref="rocketRef">
           <div class="arrow-up">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
