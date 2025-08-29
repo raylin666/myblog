@@ -7,12 +7,18 @@ import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import i18n from './locale'
 import { router } from '@/router'
 import { createPinia } from 'pinia'
+import '@/utils/request'
+import { initAppSettings } from '@/plugins/settings'
 
 const app = createApp(App)
 
 app.use(router)
 
-app.use(createPinia())
+const pinia = createPinia()
+app.use(pinia)
+
+// 初始化应用设置
+initAppSettings()
 
 app.use(ArcoVue, {
     // 用于改变使用组件时的前缀名称, Arco Design UI 默认使用的是 a 前缀

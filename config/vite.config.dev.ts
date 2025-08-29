@@ -27,7 +27,6 @@ export default mergeConfig(
       // 为开发服务器配置自定义代理规则
       proxy: {
         [env.VITE_API_BASIC_URL]: {
-          // 接口地址, 按实际填写
           target: env.VITE_API_BASIC_PROXY_PASS,
           changeOrigin: true,
           rewrite: (path: string) =>
