@@ -1,7 +1,7 @@
 <template>
     <div class="top-banner">
         <div class="avatar">
-            <a href="#"><a-avatar :size="120"><img :src="avatarUrl" class="avatar-img" alt="avatar" /></a-avatar></a>
+            <a href="#"><a-avatar :size="120"><img :src="topAvatarUrl" class="avatar-img" alt="avatar" /></a-avatar></a>
         </div>
         <div class="title">{{ titleText }}</div>
         <div class="move">
@@ -15,12 +15,10 @@
 </template>
 
 <script setup lang="ts" name="TopBanner" >
-import { ref, onMounted } from 'vue'
-import avatarUrl from 'assets/tavatar.png'
-import backgroundImage1 from 'assets/background/1.jpeg'
-import backgroundImage2 from 'assets/background/2.jpeg'
-import backgroundImage3 from 'assets/background/3.jpeg'
+import { ref, onMounted, reactive } from 'vue'
+import { useWatch } from '@/hooks/useWatch'
 import gsap from 'gsap'
+import { useSettingsStore } from '@/stores/settings'
 
 const props = defineProps({
     // 点击箭头时，滚动到指定DOM ID的位置
@@ -30,15 +28,25 @@ const props = defineProps({
     }
 })
 
-const title = 'KAKA - 梦很美 技术博客'
+const settingsStore = useSettingsStore()
 
-let titleText = ref('')
+// 网站标题
+const titleText = ref('')
+// 首页顶部头像
+const topAvatarUrl = ref(settingsStore.settings.topAvatarUrl)
+// 背景封面图
+const coverUrls = reactive<string[]>([])
+for (let i = 0; i < settingsStore.settings.coverUrls.length; i++) {
+    coverUrls.push(new URL(settingsStore.settings.coverUrls[i], import.meta.url).href)
+}
 
 // 标题打字效果
 function textEffect(text: string) {
+    // 清空之前的内容
+    titleText.value = ''
     let index = 0
     const intervalId = setInterval(() => {
-        if (index >= title.length) {
+        if (index >= text.length) {
             clearInterval(intervalId)
             return;
         }
@@ -48,26 +56,23 @@ function textEffect(text: string) {
     }, 200)
 }
 
-// 预加载背景图片
-const backgroundImages = [
-  new URL(backgroundImage1, import.meta.url).href,
-  new URL(backgroundImage2, import.meta.url).href,
-  new URL(backgroundImage3, import.meta.url).href
-]
-
+// 图片预加载
 const preloadImages = () => {
-  backgroundImages.forEach(src => {
+  coverUrls.forEach(src => {
     const img = new Image()
     img.src = src
   })
+}
+
+// 获取顶部轮播图选择器
+const getTopBannerSelector = () => {
+    return document.querySelector('.top-banner') as HTMLElement
 }
 
 onMounted(() => {
     // 预加载背景图片
     preloadImages()
     
-    // 标题打字效果
-    textEffect(title)
     // 使用GSAP创建动画效果，使其无限循环上下移动
     gsap.to('.move .arrow-down', { y: '+=10', duration: 1, yoyo: true, repeat: -1 })
     // 鼠标悬停在箭头时，放大箭头
@@ -112,12 +117,15 @@ onMounted(() => {
     
     // 无缝背景切换效果
     let currentIndex = 0
-    const banner = document.querySelector('.top-banner') as HTMLElement
+    const banner = getTopBannerSelector()
     if (banner) {
+        // 设置默认背景封面
+        banner.style.backgroundImage = `url(${coverUrls[0]})`
+
         // 创建第二个背景层
         const backLayer = document.createElement('div')
         backLayer.className = 'background-layer'
-        backLayer.style.backgroundImage = `url(${backgroundImages[1]})`
+        backLayer.style.backgroundImage = `url(${coverUrls[1]})`
         backLayer.style.opacity = '0'
         backLayer.style.position = 'absolute'
         backLayer.style.top = '0'
@@ -131,11 +139,11 @@ onMounted(() => {
         banner.appendChild(backLayer)
         
         const switchBackground = () => {
-            currentIndex = (currentIndex + 1) % backgroundImages.length
-            const nextIndex = (currentIndex + 1) % backgroundImages.length
+            currentIndex = (currentIndex + 1) % coverUrls.length
+            const nextIndex = (currentIndex + 1) % coverUrls.length
             
             // 更新后层背景
-            backLayer.style.backgroundImage = `url(${backgroundImages[nextIndex]})`
+            backLayer.style.backgroundImage = `url(${coverUrls[nextIndex]})`
             
             // 使用GSAP实现更平滑的交叉淡入淡出效果
             gsap.fromTo(backLayer, 
@@ -152,7 +160,7 @@ onMounted(() => {
                     ease: "power2.inOut",
                     onComplete: () => {
                         if (banner) {
-                            banner.style.backgroundImage = `url(${backgroundImages[currentIndex]})`
+                            banner.style.backgroundImage = `url(${coverUrls[currentIndex]})`
                             gsap.set(backLayer, {
                                 opacity: 0
                             })
@@ -165,6 +173,39 @@ onMounted(() => {
         setInterval(switchBackground, 8000)
     }
 })
+
+const watch = useWatch()
+
+// 监听网站标题变化，打字效果
+watch.simple(
+    () => settingsStore.settings.siteTitle,
+    (value) => textEffect(value),
+    true
+)
+
+// 监听顶部头像变化，更新顶部头像URL
+watch.simple(
+    () => settingsStore.settings.topAvatarUrl,
+    (value) => topAvatarUrl.value = value,
+    true
+)
+
+// 监听背景图片变化，替换背景图片URL
+watch.simple(
+    () => settingsStore.settings.coverUrls,
+    (value) => {
+        // 配置的背景封面图是否有值并判断是否URL地址, 因为加载的本地图片是没有域名的(刚加载组件时会加载一次, 是本地图片的地址)
+        if (value && /^https?:\/\//i.test(value[0])) {
+            Object.assign(coverUrls, [])
+            for (let i = 0; i < value.length; i++) {
+                coverUrls[i] = new URL(value[i], import.meta.url).href
+                if (i === 0) {
+                    getTopBannerSelector().style.backgroundImage = `url(${coverUrls[0]})`
+                }
+            }
+        }
+    },
+)
 </script>
 
 <style scoped>
@@ -174,7 +215,6 @@ onMounted(() => {
     flex-direction: column;
     justify-content: space-between;
     /* border-radius: 10px; */
-    background-image: url('assets/background/1.jpeg');
     background-repeat:no-repeat;
     background-position: center;
     background-size: cover;

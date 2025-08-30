@@ -2,10 +2,10 @@
     <div class="user-detail">
         <div class="avatar-wrapper">
             <a-avatar :size="80" class="avatar">
-                <img alt="avatar" src="assets/avatar.png" />
+                <img alt="avatar" :src="avatarUrl" />
             </a-avatar>
             </div>
-            <div class="name">KAKA - 梦很美</div>
+            <div class="name">{{ authorName }}</div>
             
             <div class="desc">
             热爱前端开发，专注于 VueJS 技术栈分享
@@ -28,6 +28,32 @@
 </template>
 
 <script setup lang="ts" name="UserDetail">
+import { ref } from 'vue'
+import { useWatch } from '@/hooks/useWatch'
+import { useSettingsStore } from '@/stores/settings'
+
+const settingsStore = useSettingsStore()
+
+// 作者头像
+const avatarUrl = ref(settingsStore.settings.avatarUrl)
+// 作者名称
+const authorName = ref(settingsStore.settings.authorName)
+
+const watch = useWatch()
+
+// 监听作者头像
+watch.simple(
+    () => settingsStore.settings.avatarUrl,
+    (value) => avatarUrl.value = value,
+    true
+)
+
+// 监听作者名称
+watch.simple(
+    () => settingsStore.settings.authorName,
+    (value) => authorName.value = value,
+    true
+)
 </script>
 
 <style scoped>

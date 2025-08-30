@@ -1,42 +1,51 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { getCommonSettings } from '@/api/common'
 import type { CommonSettings } from '@/types/common'
+import avatarUrl from 'assets/tavatar.png'
+import topAvatarUrl from 'assets/tavatar.png'
+import backgroundImage1 from 'assets/background/1.jpeg'
+import backgroundImage2 from 'assets/background/2.jpeg'
+import backgroundImage3 from 'assets/background/3.jpeg'
 
 export const useSettingsStore = defineStore('settings', () => {
-  const settings = ref<CommonSettings | null>(null)
-  const loading = ref<boolean>(false)
-  const error = ref<string | null>(null)
+  const isRequest = ref(false)
+
+  const settings = reactive<CommonSettings>({
+    logoUrl: '',
+    authorName: '林山',
+    avatarUrl: avatarUrl,
+    topAvatarUrl: topAvatarUrl,
+    siteTitle: '', // 网站标题, 这里不能设置默认值, 不然打字效果会出现混合展示
+    coverUrls: [
+      backgroundImage1,
+      backgroundImage2,
+      backgroundImage3,
+    ]
+  })
 
   // 获取通用设置
   const fetchCommonSettings = async () => {
-    if (loading.value) return
-    
-    loading.value = true
-    error.value = null
-    
     try {
       const response = await getCommonSettings()
-      settings.value = response.data || {}
+      if (!response.data) return
+      Object.assign(settings, response.data)
+      isRequest.value = true
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch settings'
-      console.error('Failed to fetch common settings:', err)
+      console.error('获取配置信息接口失败:', err)
     } finally {
-      loading.value = false
     }
   }
 
   // 初始化设置（只在设置不存在时获取）
   const initSettings = async () => {
-    if (!settings.value) {
+    if (isRequest.value === false) {
       await fetchCommonSettings()
     }
   }
 
   return {
     settings,
-    loading,
-    error,
     fetchCommonSettings,
     initSettings
   }
