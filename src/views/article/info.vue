@@ -102,7 +102,6 @@ import { ref } from 'vue'
 import { IconEye, IconUser, IconMessage, IconCalendar, IconTranslate } from '@arco-design/web-vue/es/icon'
 import { useRouter } from 'vue-router'
 import { ContentRow, Side } from '@/components'
-import { useNProgress } from '@/hooks/useNProgress'
 
 const article = ref({
     author: '林山',
@@ -232,9 +231,6 @@ const showPrevTitle = ref(false)
 const showNextTitle = ref(false)
 
 const coverRef = ref<HTMLElement | null>(null)
-
-// 使用封装的NProgress hooks
-useNProgress()
 
 function tagColor(tag: string) {
     switch (tag) {

@@ -15,7 +15,7 @@ export const useSettingsStore = defineStore('settings', () => {
   const settings = reactive<CommonSettings>({
     iconUrl: iconUrl,
     logoUrl: avatarUrl,
-    authorName: '林山',
+    authorName: 'KAKA',
     authorDescription: '专注于后端开发, 熟悉各类服务接口',
     avatarUrl: avatarUrl,
     topAvatarUrl: topAvatarUrl,

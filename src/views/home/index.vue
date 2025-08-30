@@ -52,11 +52,7 @@ import {
  } from '@/components'
 import articleCover from 'assets/articleCover.png'
 import articleRecommendCover from 'assets/articleRecommendCover.png'
-import { useNProgress } from '@/hooks/useNProgress'
 import { ref, computed } from 'vue'
-
-// 使用封装的NProgress hooks
-useNProgress()
 
 // 添加置顶文章列表数据
 const recommendArticles = ref([
