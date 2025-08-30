@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
 import { getCommonSettings } from '@/api/common'
 import type { CommonSettings } from '@/types/common'
-import logoUrl from '/public/icon.png'
+import iconUrl from '/public/icon.png'
 import avatarUrl from 'assets/tavatar.png'
 import topAvatarUrl from 'assets/tavatar.png'
 import backgroundImage1 from 'assets/background/1.jpeg'
@@ -13,7 +13,8 @@ export const useSettingsStore = defineStore('settings', () => {
   const isRequest = ref(false)
 
   const settings = reactive<CommonSettings>({
-    logoUrl: logoUrl,
+    iconUrl: iconUrl,
+    logoUrl: avatarUrl,
     authorName: '林山',
     authorDescription: '专注于后端开发, 熟悉各类服务接口',
     avatarUrl: avatarUrl,

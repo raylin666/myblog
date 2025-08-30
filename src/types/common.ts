@@ -1,4 +1,5 @@
 export interface CommonSettings {
+  iconUrl: string
   logoUrl: string
   authorName: string
   authorDescription: string
