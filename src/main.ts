@@ -9,6 +9,7 @@ import { router } from '@/router'
 import { createPinia } from 'pinia'
 import '@/utils/request'
 import { initAppSettings } from '@/plugins/settings'
+import nProgress from '@/plugins/nprogress'
 
 const app = createApp(App)
 
@@ -19,6 +20,9 @@ app.use(pinia)
 
 // 初始化应用设置
 initAppSettings()
+
+// 初始化加载进度条插件
+app.use(nProgress, router)
 
 app.use(ArcoVue, {
     // 用于改变使用组件时的前缀名称, Arco Design UI 默认使用的是 a 前缀
