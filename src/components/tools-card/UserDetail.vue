@@ -7,9 +7,7 @@
             </div>
             <div class="name">{{ authorName }}</div>
             
-            <div class="desc">
-            热爱前端开发，专注于 VueJS 技术栈分享
-            </div>
+            <div class="desc">{{ authorDescription }}</div>
             <div class="stats">
             <div class="stat-item">
                 <span class="stat-number">128</span>
@@ -38,6 +36,8 @@ const settingsStore = useSettingsStore()
 const avatarUrl = ref(settingsStore.settings.avatarUrl)
 // 作者名称
 const authorName = ref(settingsStore.settings.authorName)
+// 作者描述
+const authorDescription = ref(settingsStore.settings.authorDescription)
 
 const watch = useWatch()
 
@@ -52,6 +52,13 @@ watch.simple(
 watch.simple(
     () => settingsStore.settings.authorName,
     (value) => authorName.value = value,
+    true
+)
+
+// 监听作者描述
+watch.simple(
+    () => settingsStore.settings.authorDescription,
+    (value) => authorDescription.value = value,
     true
 )
 </script>

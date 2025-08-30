@@ -92,7 +92,7 @@ import {
   IconMoonFill,
   IconSunFill
 } from '@arco-design/web-vue/es/icon'
-import { useThemeStore } from '@/store/themeStore'
+import { useThemeStore } from '@/stores/themeStore'
 
 const themeStore = useThemeStore()
 

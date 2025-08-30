@@ -5,7 +5,7 @@
     :collapsed="true"
   >
     <div class="brand">
-      <img :src="avatarUrl" class="avatar-img" alt="avatar" />
+      <img :src="logoUrl" class="avatar-img" alt="avatar" />
     </div>
     <a-menu :defaultSelectedKeys="['l_1']" mode="vertical">
       <RouterLink to="/">
@@ -23,12 +23,27 @@
 </template>
 
 <script setup lang="ts" name="Left">
-import { useThemeStore } from '@/store/themeStore'
-import avatarUrl from 'assets/avatar.png'
-// 防止某些静态分析未识别到模板中的使用
-void avatarUrl;
+import { ref } from 'vue'
+import { useThemeStore } from '@/stores/themeStore'
+import { useSettingsStore } from '@/stores/settings'
+import { useWatch } from '@/hooks/useWatch'
 
 const themeStore = useThemeStore()
+
+const settingsStore = useSettingsStore()
+
+const logoUrl = ref(settingsStore.settings.logoUrl)
+
+const watch = useWatch()
+
+// 监听网站 LOGO 图片地址
+watch.simple(
+  () => settingsStore.settings.logoUrl,
+  (value) => {
+    logoUrl.value = value
+  },
+  true
+)
 </script>
 
 <style scoped>
