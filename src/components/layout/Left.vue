@@ -5,19 +5,21 @@
     :collapsed="true"
   >
     <div class="brand">
-      <img :src="logoUrl" class="avatar-img" alt="avatar" />
+      <RouterLink :to="{ name: 'home' }" @click="handlerLogo"> 
+        <img :src="logoUrl" class="avatar-img" alt="avatar" />
+      </RouterLink>
     </div>
-    <a-menu :defaultSelectedKeys="['l_1']" mode="vertical">
-      <RouterLink to="/">
-        <a-menu-item key="l_1">
-          <IconBookmark /> H O M E
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_2">
-          <IconApps /> 关于作者
-        </a-menu-item>
-      </RouterLink>
+    <a-menu v-model:selectedKeys="selectedKeys" mode="vertical">
+      <a-menu-item key="menu_1">
+        <RouterLink :to="{ name: 'home' }">
+          <icon-home /> H O M E
+        </RouterLink>
+      </a-menu-item>
+      <a-menu-item key="menu_2">
+        <RouterLink :to="{ name: 'home' }">
+          <icon-user /> 关于作者
+        </RouterLink>
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
@@ -33,6 +35,14 @@ const themeStore = useThemeStore()
 const settingsStore = useSettingsStore()
 
 const logoUrl = ref(settingsStore.settings.logoUrl)
+
+const selectedKeys = ref<string[]>(['menu_1'])
+
+function handlerLogo()
+{
+  // 点击 Logo 时，切换到菜单一
+  selectedKeys.value = ['menu_1']
+}
 
 const watch = useWatch()
 
@@ -53,6 +63,7 @@ watch.simple(
   align-items: center;
   justify-content: center;
   margin: 8px 8px 12px;
+  cursor: pointer;
 }
 .logo-img {
   width: 100%;

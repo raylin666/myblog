@@ -24,7 +24,10 @@ export const useSettingsStore = defineStore('settings', () => {
       backgroundImage1,
       backgroundImage2,
       backgroundImage3,
-    ]
+    ],
+    articleCount: 0,
+    articleCommentCount: 0,
+    articleLikeCount: 0,
   })
 
   // 获取通用设置

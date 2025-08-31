@@ -4,52 +4,12 @@
     :width="220"
     :collapsed="true"
   >
-    <a-menu :defaultSelectedKeys="['r_1']" mode="vertical">
-      <RouterLink to="/">
-        <a-menu-item key="l_1">
-          <IconBookmark /> 首页
+    <a-menu :defaultSelectedKeys="['menu_0']" mode="vertical">
+      <a href="https://github.com/raylin666" target="_blank">
+        <a-menu-item key="menu_1">
+          <icon-github /> 知识仓库
         </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_2">
-          <IconApps /> 分类
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_3">
-          <IconUser /> 作者
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_4">
-          <IconBookmark /> 导航
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_5">
-          <IconApps /> 分类
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_6">
-          <IconUser /> 作者
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_7">
-          <IconBookmark /> 导航
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/article">
-        <a-menu-item key="l_8">
-          <IconApps /> 分类
-        </a-menu-item>
-      </RouterLink>
-      <RouterLink to="/">
-        <a-menu-item key="l_9">
-          <IconUser /> 作者
-        </a-menu-item>
-      </RouterLink>
+      </a>
     </a-menu>
 
     <!-- 底部图标区域 -->
@@ -66,14 +26,9 @@
           </a-button>
         </div>
       </a-tooltip>
-      <a-tooltip content="音乐播放" position="right">
-        <div class="icon-item" @click="toggleMusic">
-          <icon-music />
-        </div>
-      </a-tooltip>
-      <a-tooltip content="切换主题" position="right">
+      <a-tooltip :content="themeStore.theme === 'light' ? '经典亮白' : '酷黑模式'" position="right">
         <div class="icon-item" @click="toggleTheme">
-          <icon-moon-fill v-if="themeStore.theme === 'light'" />
+          <icon-moon-fill v-if="themeStore.theme === 'dark'" />
           <icon-sun-fill v-else />
         </div>
       </a-tooltip>
@@ -84,27 +39,12 @@
 
 <script setup lang="ts" name="Right">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { 
-  IconBookmark, 
-  IconApps, 
-  IconUser,
-  IconMusic,
-  IconMoonFill,
-  IconSunFill
-} from '@arco-design/web-vue/es/icon'
 import { useThemeStore } from '@/stores/themeStore'
 
 const themeStore = useThemeStore()
 
 const toggleTheme = () => {
   themeStore.toggleTheme()
-}
-
-const musicPlaying = ref(false)
-
-const toggleMusic = () => {
-  musicPlaying.value = !musicPlaying.value
-  // 这里可以添加音乐播放逻辑
 }
 
 // 右侧侧栏：保持折叠且不可展开，不提供 collapsible/trigger

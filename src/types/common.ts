@@ -7,4 +7,7 @@ export interface CommonSettings {
   topAvatarUrl: string
   siteTitle: string
   coverUrls: string[]
+  articleCount: number
+  articleCommentCount: number
+  articleLikeCount: number
 }

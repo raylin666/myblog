@@ -2,23 +2,23 @@
     <div class="user-detail">
         <div class="avatar-wrapper">
             <a-avatar :size="80" class="avatar">
-                <img alt="avatar" :src="avatarUrl" />
+                <img alt="avatar" :src="userDetail.avatarUrl" />
             </a-avatar>
             </div>
-            <div class="name">{{ authorName }}</div>
+            <div class="name">{{ userDetail.authorName }}</div>
             
-            <div class="desc">{{ authorDescription }}</div>
+            <div class="desc">{{ userDetail.authorDescription }}</div>
             <div class="stats">
             <div class="stat-item">
-                <span class="stat-number">128</span>
+                <span class="stat-number">{{ userDetail.articleCount }}</span>
                 <span class="stat-label">文章</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">1.2K</span>
-                <span class="stat-label">粉丝</span>
+                <span class="stat-number">{{ userDetail.articleCommentCount }}</span>
+                <span class="stat-label">评论</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">3.5K</span>
+                <span class="stat-number">{{ userDetail.articleLikeCount }}</span>
                 <span class="stat-label">点赞</span>
             </div>
         </div>
@@ -26,39 +26,68 @@
 </template>
 
 <script setup lang="ts" name="UserDetail">
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import { useWatch } from '@/hooks/useWatch'
 import { useSettingsStore } from '@/stores/settings'
 
 const settingsStore = useSettingsStore()
 
-// 作者头像
-const avatarUrl = ref(settingsStore.settings.avatarUrl)
-// 作者名称
-const authorName = ref(settingsStore.settings.authorName)
-// 作者描述
-const authorDescription = ref(settingsStore.settings.authorDescription)
+const userDetail = reactive({
+    // 作者头像
+    avatarUrl: settingsStore.settings.avatarUrl,
+    // 作者名称
+    authorName: settingsStore.settings.authorName,
+    // 作者简介
+    authorDescription: settingsStore.settings.authorDescription,
+    // 文章数量
+    articleCount: settingsStore.settings.articleCount,
+    // 文章评论数量
+    articleCommentCount: settingsStore.settings.articleCommentCount,
+    // 文章点赞数量
+    articleLikeCount: settingsStore.settings.articleLikeCount,
+})
 
 const watch = useWatch()
 
 // 监听作者头像
 watch.simple(
     () => settingsStore.settings.avatarUrl,
-    (value) => avatarUrl.value = value,
+    (value) => userDetail.avatarUrl = value,
     true
 )
 
 // 监听作者名称
 watch.simple(
     () => settingsStore.settings.authorName,
-    (value) => authorName.value = value,
+    (value) => userDetail.authorName = value,
     true
 )
 
 // 监听作者描述
 watch.simple(
     () => settingsStore.settings.authorDescription,
-    (value) => authorDescription.value = value,
+    (value) => userDetail.authorDescription = value,
+    true
+)
+
+// 监听文章数量
+watch.simple(
+    () => settingsStore.settings.articleCount,
+    (value) => userDetail.articleCount = value,
+    true
+)
+
+// 监听文章评论数量
+watch.simple(
+    () => settingsStore.settings.articleCommentCount,
+    (value) => userDetail.articleCommentCount = value,
+    true
+)
+
+// 监听文章点赞数量
+watch.simple(
+    () => settingsStore.settings.articleLikeCount,
+    (value) => userDetail.articleLikeCount = value,
     true
 )
 </script>
