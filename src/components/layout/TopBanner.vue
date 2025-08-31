@@ -69,6 +69,45 @@ const getTopBannerSelector = () => {
     return document.querySelector('.top-banner') as HTMLElement
 }
 
+const watch = useWatch()
+
+// 监听网站标题变化，打字效果
+watch.simple(
+    () => settingsStore.settings.siteTitle,
+    (value) => textEffect(value),
+    true
+)
+
+// 监听顶部头像变化，更新顶部头像URL
+watch.simple(
+    () => settingsStore.settings.topAvatarUrl,
+    (value) => topAvatarUrl.value = value,
+    true
+)
+
+// 监听背景图片变化，替换背景图片URL
+watch.simple(
+    () => settingsStore.settings.coverUrls,
+    (value) => {
+        // 配置的背景封面图是否有值并判断是否URL地址, 因为加载的本地图片是没有域名的(刚加载组件时会加载一次, 是本地图片的地址)
+        if (value && /^https?:\/\//i.test(value[0])) {
+            Object.assign(coverUrls, [])
+            for (let i = 0; i < value.length; i++) {
+                coverUrls[i] = new URL(value[i], import.meta.url).href
+                if (i === 0) {
+                    // 延迟执行确保DOM已经挂载
+                    setTimeout(() => {
+                        const banner = getTopBannerSelector()
+                        if (banner) {
+                            banner.style.backgroundImage = `url(${coverUrls[0]})`
+                        }
+                    }, 0)
+                }
+            }
+        }
+    },
+)
+
 onMounted(() => {
     // 预加载背景图片
     preloadImages()
@@ -173,39 +212,6 @@ onMounted(() => {
         setInterval(switchBackground, 8000)
     }
 })
-
-const watch = useWatch()
-
-// 监听网站标题变化，打字效果
-watch.simple(
-    () => settingsStore.settings.siteTitle,
-    (value) => textEffect(value),
-    true
-)
-
-// 监听顶部头像变化，更新顶部头像URL
-watch.simple(
-    () => settingsStore.settings.topAvatarUrl,
-    (value) => topAvatarUrl.value = value,
-    true
-)
-
-// 监听背景图片变化，替换背景图片URL
-watch.simple(
-    () => settingsStore.settings.coverUrls,
-    (value) => {
-        // 配置的背景封面图是否有值并判断是否URL地址, 因为加载的本地图片是没有域名的(刚加载组件时会加载一次, 是本地图片的地址)
-        if (value && /^https?:\/\//i.test(value[0])) {
-            Object.assign(coverUrls, [])
-            for (let i = 0; i < value.length; i++) {
-                coverUrls[i] = new URL(value[i], import.meta.url).href
-                if (i === 0) {
-                    getTopBannerSelector().style.backgroundImage = `url(${coverUrls[0]})`
-                }
-            }
-        }
-    },
-)
 </script>
 
 <style scoped>
