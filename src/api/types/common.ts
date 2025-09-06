@@ -1,4 +1,4 @@
-export interface CommonSettingsResponse {
+export interface SettingsResponse {
     logoUrl: string
     avatarUrl: string
     topAvatarUrl: string

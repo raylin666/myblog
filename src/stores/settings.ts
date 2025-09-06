@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
-import { getCommonSettings } from '@/api/common'
-import type { CommonSettings } from '@/types/common'
+import { getSettings } from '@/api/common'
+import type { Settings } from '@/types/common'
 import iconUrl from '/public/icon.png'
 import avatarUrl from 'assets/tavatar.png'
 import topAvatarUrl from 'assets/tavatar.png'
@@ -12,7 +12,7 @@ import backgroundImage3 from 'assets/background/3.jpeg'
 export const useSettingsStore = defineStore('settings', () => {
   const isRequest = ref(false)
 
-  const settings = reactive<CommonSettings>({
+  const settings = reactive<Settings>({
     iconUrl: iconUrl,
     logoUrl: avatarUrl,
     authorName: 'KAKA',
@@ -30,10 +30,10 @@ export const useSettingsStore = defineStore('settings', () => {
     articleLikeCount: 0,
   })
 
-  // 获取通用设置
-  const fetchCommonSettings = async () => {
+  // 获取设置
+  const fetchSettings = async () => {
     try {
-      const response = await getCommonSettings()
+      const response = await getSettings()
       if (!response.data) return
       Object.assign(settings, response.data)
       isRequest.value = true
@@ -46,13 +46,13 @@ export const useSettingsStore = defineStore('settings', () => {
   // 初始化设置（只在设置不存在时获取）
   const initSettings = async () => {
     if (isRequest.value === false) {
-      await fetchCommonSettings()
+      await fetchSettings()
     }
   }
 
   return {
     settings,
-    fetchCommonSettings,
+    fetchSettings,
     initSettings
   }
 })

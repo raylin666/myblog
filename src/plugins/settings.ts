@@ -1,6 +1,6 @@
 import { useSettingsStore } from '@/stores/settings'
 
-// 应用初始化时加载通用设置
+// 应用初始化时加载设置
 export async function initAppSettings() {
   const settingsStore = useSettingsStore()
   await settingsStore.initSettings()

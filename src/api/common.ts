@@ -1,6 +1,10 @@
 import axios from 'axios'
-import type { CommonSettingsResponse } from './types/common'
+import type { SettingsResponse } from './types/common'
 
-export function getCommonSettings() {
-  return axios.get<CommonSettingsResponse>('/common/settings')
+export function getSettings() {
+  return axios.get<SettingsResponse>('/common/settings')
+}
+
+export function getMenus() {
+  return axios.get<SettingsResponse>('/common/menus')
 }
