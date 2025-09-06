@@ -9,16 +9,16 @@
         <img :src="logoUrl" class="avatar-img" alt="avatar" />
       </RouterLink>
     </div>
-    <a-menu v-model:selectedKeys="selectedKeys" mode="vertical">
-      <a-menu-item key="menu_1">
-        <RouterLink :to="{ name: 'home' }">
-          <icon-home /> H O M E
-        </RouterLink>
-      </a-menu-item>
-      <a-menu-item key="menu_2">
-        <RouterLink :to="{ name: 'home' }">
-          <icon-user /> 关于作者
-        </RouterLink>
+    <a-menu v-model:selectedKeys="menusStore.selectedKeys" mode="vertical">
+      <a-menu-item v-for="menu in menusStore.menus.list" :key="menusStore.getMenuKeyName(menu.id)">
+        <div v-if="menu.position === 'left'">
+          <RouterLink v-if="menu.routeName" :to="{ name: menu.routeName }">
+            <icon-home /> {{ menu.name }}
+          </RouterLink>
+          <a v-else-if="menu.hrefUrl" :href="menu.hrefUrl" :target="menu.target ?? '_self'">
+            <icon-home /> {{ menu.name }}
+          </a>
+        </div>
       </a-menu-item>
     </a-menu>
   </a-layout-sider>
@@ -26,25 +26,41 @@
 
 <script setup lang="ts" name="Left">
 import { ref } from 'vue'
-import { useThemeStore } from '@/stores/themeStore'
+import { useThemeStore } from '@/stores/theme'
 import { useSettingsStore } from '@/stores/settings'
 import { useWatch } from '@/hooks/useWatch'
+import { useRoute } from 'vue-router'
+import { useMenusStore } from '@/stores/menus'
 
 const themeStore = useThemeStore()
+
+const menusStore = useMenusStore()
 
 const settingsStore = useSettingsStore()
 
 const logoUrl = ref(settingsStore.settings.logoUrl)
 
-const selectedKeys = ref<string[]>(['menu_1'])
+const route = useRoute()
 
 function handlerLogo()
 {
-  // 点击 Logo 时，切换到菜单一
-  selectedKeys.value = ['menu_1']
+  menusStore.setSelectedByKey('menu_1')
 }
 
 const watch = useWatch()
+
+// 根据路由变化更新选中菜单
+watch.simple(
+  () => route.name,
+  (newRouteName) => {
+    if (newRouteName === 'home') {
+      menusStore.setSelectedByKey('menu_1')
+    } else if (newRouteName === 'about') {
+      menusStore.setSelectedByKey('menu_2')
+    }
+  },
+  true
+)
 
 // 监听网站 LOGO 图片地址
 watch.simple(

@@ -5,6 +5,20 @@ import type { Menus } from '@/types/common'
 
 export const useMenusStore = defineStore('menus', () => {
   const isRequest = ref(false)
+  
+  const selectedKeys = ref<string[]>([getMenuKeyName(0)])
+
+  function getMenuKeyName(value: number) {
+    return 'menu_' + value
+  }
+
+  function setSelectedKeys(keys: string[]) {
+    selectedKeys.value = keys
+  }
+
+  function setSelectedByKey(key: string) {
+    selectedKeys.value = [key]
+  }
 
   const menus = reactive<Menus>({
     list: [
@@ -39,8 +53,12 @@ export const useMenusStore = defineStore('menus', () => {
   }
 
   return {
+    getMenuKeyName,
     menus,
     fetchMenus,
-    initMenus
+    initMenus,
+    selectedKeys,
+    setSelectedKeys,
+    setSelectedByKey
   }
 })

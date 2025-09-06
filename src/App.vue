@@ -13,7 +13,7 @@
 
 <script setup lang="ts" name="App">
 import { Left, Content, Right } from '@/components'
-import { useThemeStore } from '@/stores/themeStore'
+import { useThemeStore } from '@/stores/theme'
 
 // 初始化主题
 useThemeStore().initTheme()

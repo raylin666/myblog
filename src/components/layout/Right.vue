@@ -4,12 +4,17 @@
     :width="220"
     :collapsed="true"
   >
-    <a-menu :defaultSelectedKeys="['menu_0']" mode="vertical">
-      <a href="https://github.com/raylin666" target="_blank">
-        <a-menu-item key="menu_1">
-          <icon-github /> 知识仓库
-        </a-menu-item>
-      </a>
+    <a-menu v-model:selectedKeys="menusStore.selectedKeys" mode="vertical">
+      <a-menu-item v-for="menu in menusStore.menus.list" :key="menusStore.getMenuKeyName(menu.id)">
+        <div v-if="menu.position === 'right'">
+          <RouterLink v-if="menu.routeName" :to="{ name: menu.routeName }">
+            <icon-home /> {{ menu.name }}
+          </RouterLink>
+          <a v-else-if="menu.hrefUrl" :href="menu.hrefUrl" :target="menu.target ?? '_self'">
+            <icon-home /> {{ menu.name }}
+          </a>
+        </div>
+      </a-menu-item>
     </a-menu>
 
     <!-- 底部图标区域 -->
@@ -39,9 +44,11 @@
 
 <script setup lang="ts" name="Right">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { useThemeStore } from '@/stores/themeStore'
+import { useThemeStore } from '@/stores/theme'
+import { useMenusStore } from '@/stores/menus'
 
 const themeStore = useThemeStore()
+const menusStore = useMenusStore()
 
 const toggleTheme = () => {
   themeStore.toggleTheme()
@@ -140,5 +147,3 @@ onBeforeUnmount(() => {
   color: white;
 }
 </style>
-
-
