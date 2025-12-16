@@ -1,0 +1,19 @@
+{
+    "name": "kaka/myblog",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "raylin666",
+            "email": "1099013371@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    }
+}

@@ -13,6 +13,8 @@ if (!defined('__TYPECHO_ROOT_DIR__') && !@include_once 'config.inc.php') {
     exit;
 }
 
+require __DIR__ . '/vendor/autoload.php';
+
 /** 初始化组件 */
 \Widget\Init::alloc();
 
