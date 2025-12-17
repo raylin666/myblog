@@ -7,6 +7,7 @@
  * @version    $Id: index.php 1153 2009-07-02 10:53:22Z magike.net $
  */
 
+/** 引入 Composer 自动加载 */
 require __DIR__ . '/vendor/autoload.php';
 
 /** 载入配置支持 */
