@@ -74,6 +74,9 @@ namespace {
 }
 
 namespace Typecho {
+
+    use Core\Config\Env;
+
     const PLUGIN_NAMESPACE = 'TypechoPlugin';
 
     spl_autoload_register(function (string $className) {
@@ -196,6 +199,9 @@ namespace Typecho {
          */
         public static function init()
         {
+            // TODO 系统文件配置加载
+            Env::init();
+
             // init response
             Response::getInstance()->enableAutoSendHeaders(false);
 

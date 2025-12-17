@@ -20,13 +20,13 @@ require_once __TYPECHO_ROOT_DIR__ . '/var/Typecho/Common.php';
 // config db
 $db = new \Typecho\Db('Pdo_Mysql', 'typecho_');
 $db->addServer(array (
-  'host' => 'localhost',
-  'port' => 3306,
-  'user' => 'root',
-  'password' => 'Aa123456#',
-  'charset' => 'utf8mb4',
-  'database' => 'myblog',
-  'engine' => 'InnoDB',
+  'host' => env('MYSQL_DEFAULT_HOST'),
+  'port' => env('MYSQL_DEFAULT_PORT'),
+  'user' => env('MYSQL_DEFAULT_USER'),
+  'password' => env('MYSQL_DEFAULT_PASSWORD'),
+  'charset' => env('MYSQL_DEFAULT_CHARSET'),
+  'database' => env('MYSQL_DEFAULT_DB'),
+  'engine' => env('MYSQL_DEFAULT_ENGINE'),
   'sslCa' => '',
   'sslVerify' => true,
 ), \Typecho\Db::READ | \Typecho\Db::WRITE);

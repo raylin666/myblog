@@ -7,13 +7,13 @@
  * @version    $Id: index.php 1153 2009-07-02 10:53:22Z magike.net $
  */
 
+require __DIR__ . '/vendor/autoload.php';
+
 /** 载入配置支持 */
 if (!defined('__TYPECHO_ROOT_DIR__') && !@include_once 'config.inc.php') {
     file_exists('./install.php') ? header('Location: install.php') : print('Missing Config File');
     exit;
 }
-
-require __DIR__ . '/vendor/autoload.php';
 
 /** 初始化组件 */
 \Widget\Init::alloc();

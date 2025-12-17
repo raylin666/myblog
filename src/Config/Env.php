@@ -1,10 +1,23 @@
 <?php
 
 namespace Core\Config;
+
+use Dotenv\Dotenv;
+
 class Env
 {
-    public function __construct()
+    /**
+     * @var Dotenv $env
+     */
+    public static Dotenv $env;
+
+    /**
+     * 初始化 Dotenv .env 文件
+     * @return void
+     */
+    public static function init(): void
     {
-        echo "Hello";
+        self::$env = Dotenv::createUnsafeMutable(dirname(__DIR__) . '/../');
+        self::$env->load();
     }
 }
