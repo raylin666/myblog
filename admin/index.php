@@ -1,8 +1,5 @@
 <?php
 
-/** 引入 Composer 自动加载 */
-require dirname(__DIR__) . '/vendor/autoload.php';
-
 include 'common.php';
 include 'header.php';
 include 'menu.php';

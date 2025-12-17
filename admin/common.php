@@ -1,4 +1,8 @@
 <?php
+
+/** 引入 Composer 自动加载 */
+require dirname(__DIR__) . '/vendor/autoload.php';
+
 if (!defined('__DIR__')) {
     define('__DIR__', dirname(__FILE__));
 }
